@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    const [movieData, setMovieData] = useState([]);
+    // const [movieData, setMovieData] = useState([]);
     const [searchResults, setSearchResults] = useState({
         category: "",
         results: [],

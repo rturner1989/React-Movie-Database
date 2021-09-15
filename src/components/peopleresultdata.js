@@ -2,7 +2,7 @@ import React from "react";
 
 const PeopleResultData = ({ person }) => {
     return (
-        <div id="person-search-results" className="search-result-card">
+        <div id="person-search-results">
             <img
                 id="person-img"
                 className="search-img"
