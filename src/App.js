@@ -1,10 +1,12 @@
 import React from "react";
 import Searchbar from "./components/searchbar";
+import SearchResults from "./components/searchresults";
 
 function App() {
     return (
-        <div className="App">
+        <div id="app-container">
             <Searchbar />
+            <SearchResults />
         </div>
     );
 }

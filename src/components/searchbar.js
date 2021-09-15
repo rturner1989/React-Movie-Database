@@ -34,7 +34,7 @@ const Searchbar = () => {
                         setSearchTitle("");
                     }}
                 >
-                    Submit
+                    Search
                 </button>
                 <label
                     htmlFor="search-options-dropdown"

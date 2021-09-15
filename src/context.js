@@ -52,23 +52,10 @@ const AppProvider = ({ children }) => {
         }
     };
 
-    // const getMovieData = async (id) => {
-    //     const response = await fetch(
-    //         `https://api.themoviedb.org/3/movie/${id}?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
-    //     );
-    //     const data = await response.json();
-    //     console.log(data);
-    //     return data;
-    // };
-
-    // useEffect(() => {
-    //     searchResults.map((id) => {
-    //         setMovieData((prev) => [...prev, getMovieData(id)]);
-    //     });
-    // }, [searchResults]);
-
     return (
-        <AppContext.Provider value={{ search }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{ search, searchResults }}>
+            {children}
+        </AppContext.Provider>
     );
 };
 
