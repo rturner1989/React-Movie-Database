@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import MovieResultData from "../SearchResultsCard/movieresultdata";
 import TvResultData from "../SearchResultsCard/tvresultdata";
@@ -20,27 +21,36 @@ const SearchResults = () => {
                     switch (searchResults.category) {
                         case "movie":
                             return (
-                                <MovieResultData
+                                <Link
+                                    to={`/result/movie/${item.id}`}
                                     key={item.id}
-                                    index={index}
-                                    movie={item}
-                                />
+                                >
+                                    <MovieResultData
+                                        index={index}
+                                        movie={item}
+                                    />
+                                </Link>
                             );
                         case "tv":
                             return (
-                                <TvResultData
+                                <Link
+                                    to={`/result/tv/${item.id}`}
                                     key={item.id}
-                                    index={index}
-                                    tvshow={item}
-                                />
+                                >
+                                    <TvResultData index={index} tvshow={item} />
+                                </Link>
                             );
                         case "people":
                             return (
-                                <PeopleResultData
+                                <Link
+                                    to={`/result/people/${item.id}`}
                                     key={item.id}
-                                    index={index}
-                                    person={item}
-                                />
+                                >
+                                    <PeopleResultData
+                                        index={index}
+                                        person={item}
+                                    />
+                                </Link>
                             );
                         default:
                             break;

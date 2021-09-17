@@ -18,6 +18,7 @@ const TvResultData = ({ tvshow }) => {
                         id="tvshow-img"
                         className="search-img"
                         src={`https://image.tmdb.org/t/p/w500/${tvshow.poster_path}`}
+                        alt=""
                     />
                 )}
             </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineFileImage } from "react-icons/ai";
+import { useGlobalContext } from "../../context";
 
 const MovieResultData = ({ movie }) => {
     const date = new Date(movie.release_date);
@@ -24,6 +25,7 @@ const MovieResultData = ({ movie }) => {
                         id="movie-img"
                         className="search-img"
                         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                        alt=""
                     />
                 )}
             </div>

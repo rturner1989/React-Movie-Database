@@ -7,7 +7,7 @@ const PeopleResultData = ({ person }) => {
                 id="person-img"
                 className="search-img"
                 src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                alt="movie poster image"
+                alt=""
             />
             <div className="search-info">
                 <h3 id="person-name">{person.name}</h3>

@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    // const [movieData, setMovieData] = useState([]);
+    const [movieData, setMovieData] = useState([]);
     const [searchResults, setSearchResults] = useState({
         category: "",
         results: [],
@@ -53,7 +53,7 @@ const AppProvider = ({ children }) => {
     };
 
     return (
-        <AppContext.Provider value={{ search, searchResults }}>
+        <AppContext.Provider value={{ search, searchResults, movieData }}>
             {children}
         </AppContext.Provider>
     );
