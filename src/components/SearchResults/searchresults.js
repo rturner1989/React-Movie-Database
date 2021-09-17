@@ -1,8 +1,8 @@
 import React from "react";
-import { useGlobalContext } from "../context";
-import MovieResultData from "./movieresultdata";
-import TvResultData from "./tvresultdata";
-import PeopleResultData from "./peopleresultdata";
+import { useGlobalContext } from "../../context";
+import MovieResultData from "../SearchResultsCard/movieresultdata";
+import TvResultData from "../SearchResultsCard/tvresultdata";
+import PeopleResultData from "../SearchResultsCard/peopleresultdata";
 
 const SearchResults = () => {
     const { searchResults } = useGlobalContext();
