@@ -19,10 +19,10 @@ export default function App() {
                     <Route path="/result/movie/:id">
                         <FullScreenResult />
                     </Route>
-                    {/* <Route path="/result/:category/:id">
+                    {/* <Route path="/result/tv/:id">
                         <FullScreenResult />
                     </Route>
-                    <Route path="/result/:category/:id">
+                    <Route path="/result/people/:id">
                         <FullScreenResult />
                     </Route> */}
                     <Route path="/">

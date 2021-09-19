@@ -6,6 +6,9 @@ import "./components/Homepage/homepage.css";
 import "./components/Searchbar/searchbar.css";
 import "./components/SearchResults/searchresults.css";
 import "./components/FullScreenResult/fullscreenresult.css";
+import "./components/SearchResultsCard/movieresultdata.css";
+import "./components/SearchResultsCard/tvresultdata.css";
+import "./components/SearchResultsCard/peopleresultdata.css";
 import App from "./App";
 import { AppProvider } from "./context";
 

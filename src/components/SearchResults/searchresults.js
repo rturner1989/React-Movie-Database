@@ -24,6 +24,7 @@ const SearchResults = () => {
                                 <Link
                                     to={`/result/movie/${item.id}`}
                                     key={item.id}
+                                    className="search-result-card"
                                 >
                                     <MovieResultData
                                         index={index}
@@ -36,6 +37,7 @@ const SearchResults = () => {
                                 <Link
                                     to={`/result/tv/${item.id}`}
                                     key={item.id}
+                                    className="search-result-card"
                                 >
                                     <TvResultData index={index} tvshow={item} />
                                 </Link>

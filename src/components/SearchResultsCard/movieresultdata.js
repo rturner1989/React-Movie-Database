@@ -10,7 +10,7 @@ const MovieResultData = ({ movie }) => {
         year: "numeric",
     });
     return (
-        <div id="movie-search-results" className="search-result-card">
+        <div id="movie-search-results">
             <div id="movie-image-container">
                 {movie.poster_path === null ? (
                     <div className="search-img">

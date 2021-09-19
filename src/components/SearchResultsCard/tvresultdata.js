@@ -3,7 +3,7 @@ import { AiOutlineFileImage } from "react-icons/ai";
 
 const TvResultData = ({ tvshow }) => {
     return (
-        <div id="tvshow-search-results" className="search-result-card">
+        <div id="tvshow-search-results">
             <div id="tvshow-image-container">
                 {tvshow.poster_path === null ? (
                     <div className="search-img">
