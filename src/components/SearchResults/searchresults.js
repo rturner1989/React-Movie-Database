@@ -47,6 +47,7 @@ const SearchResults = () => {
                                 <Link
                                     to={`/result/people/${item.id}`}
                                     key={item.id}
+                                    className="person-result-card"
                                 >
                                     <PeopleResultData
                                         index={index}

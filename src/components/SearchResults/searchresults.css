@@ -1,8 +1,14 @@
 .search-result-card {
     display: flex;
     flex-direction: row;
-    width: 45%;
+    width: 49%;
     height: fit-content;
+    margin: 5px 5px;
+}
+.person-result-card {
+    display: flex;
+    height: fit-content;
+    width: 19%;
     margin: 5px 5px;
 }
 #movie-image-container,

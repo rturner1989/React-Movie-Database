@@ -1,9 +1,7 @@
-#people-search-results {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 150px;
-    border: grey solid 1px;
-    margin: 5px 0;
+#person-search-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     border-radius: 5px;
+    border: grey solid 1px;
 }

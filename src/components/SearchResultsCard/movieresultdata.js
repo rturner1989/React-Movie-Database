@@ -1,6 +1,5 @@
 import React from "react";
 import { AiOutlineFileImage } from "react-icons/ai";
-import { useGlobalContext } from "../../context";
 
 const MovieResultData = ({ movie }) => {
     const date = new Date(movie.release_date);
