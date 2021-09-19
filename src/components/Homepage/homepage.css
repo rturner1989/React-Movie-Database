@@ -1,0 +1,32 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#popular-container,
+#top-rated-container,
+#watchlist-container {
+    display: flex;
+    width: 50%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+}
+.popular-card,
+.top-rated-card,
+.watchlist-card {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px;
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+.popular-img,
+.top-rated-img,
+.watchlist-img {
+    width: 150px;
+    border-radius: 10px;
+}

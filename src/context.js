@@ -3,11 +3,11 @@ import React, { useContext, useState } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    const [movieData, setMovieData] = useState([]);
     const [searchResults, setSearchResults] = useState({
         category: "",
         results: [],
     });
+    const [watchList, setWatchList] = useState([{ category: "", list: [] }]);
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -52,8 +52,14 @@ const AppProvider = ({ children }) => {
         }
     };
 
+    const addToWatchList = (category, item) => {
+        setWatchList([...watchList, { category: category, list: item }]);
+    };
+
     return (
-        <AppContext.Provider value={{ search, searchResults, movieData }}>
+        <AppContext.Provider
+            value={{ search, searchResults, watchList, addToWatchList }}
+        >
             {children}
         </AppContext.Provider>
     );
