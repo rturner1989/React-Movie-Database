@@ -7,7 +7,7 @@ const AppProvider = ({ children }) => {
         category: "",
         results: [],
     });
-    const [watchList, setWatchList] = useState([{ category: "", list: [] }]);
+    const [watchList, setWatchList] = useState([]);
 
     const searchMovies = async (query) => {
         const response = await fetch(

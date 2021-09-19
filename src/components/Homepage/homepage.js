@@ -72,8 +72,8 @@ const Homepage = () => {
                                             alt=""
                                             className="popular-img"
                                         />
+                                        <h3>{movie.title}</h3>
                                     </Link>
-                                    <h3>{movie.title}</h3>
                                     <p className="popular-vote">
                                         {movie.vote_average}
                                     </p>
@@ -90,23 +90,27 @@ const Homepage = () => {
                     ) : popularData.category === "tv" ? (
                         popularData.results.map((tv) => {
                             return (
-                                <Link
-                                    to={`/result/tv/${tv.id}`}
-                                    key={tv.id}
-                                    className="popular-card-link"
-                                >
-                                    <div className="popular-card">
+                                <div className="popular-card" key={tv.id}>
+                                    <Link
+                                        to={`/result/tv/${tv.id}`}
+                                        className="popular-card-link"
+                                    >
                                         <img
                                             src={`http://image.tmdb.org/t/p/w500/${tv.poster_path}`}
                                             alt=""
                                             className="popular-img"
                                         />
                                         <h3>{tv.name}</h3>
-                                        <p className="popular-vote">
-                                            {tv.vote_average}
-                                        </p>
-                                    </div>
-                                </Link>
+                                    </Link>
+                                    <p className="popular-vote">
+                                        {tv.vote_average}
+                                    </p>
+                                    <button
+                                        onClick={() => addToWatchList("tv", tv)}
+                                    >
+                                        add to watchlist
+                                    </button>
+                                </div>
                             );
                         })
                     ) : (
@@ -124,45 +128,55 @@ const Homepage = () => {
                     {topRatedData.category === "movie" ? (
                         topRatedData.results.map((movie) => {
                             return (
-                                <Link
-                                    to={`/result/movie/${movie.id}`}
-                                    key={movie.id}
-                                    className="top-rated-card-link"
-                                >
-                                    <div className="top-rated-card">
+                                <div className="top-rated-card" key={movie.id}>
+                                    <Link
+                                        to={`/result/movie/${movie.id}`}
+                                        className="top-rated-card-link"
+                                    >
                                         <img
                                             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                             alt=""
                                             className="top-rated-img"
                                         />
                                         <h3>{movie.title}</h3>
-                                        <p className="top-rated-vote">
-                                            {movie.vote_average}
-                                        </p>
-                                    </div>
-                                </Link>
+                                    </Link>
+                                    <p className="top-rated-vote">
+                                        {movie.vote_average}
+                                    </p>
+                                    <button
+                                        onClick={() =>
+                                            addToWatchList("movie", movie)
+                                        }
+                                    >
+                                        add to watchlist
+                                    </button>
+                                </div>
                             );
                         })
                     ) : topRatedData.category === "tv" ? (
                         topRatedData.results.map((tv) => {
                             return (
-                                <Link
-                                    to={`/result/tv/${tv.id}`}
-                                    key={tv.id}
-                                    className="top-rated-card-link"
-                                >
-                                    <div className="top-rated-card">
+                                <div className="top-rated-card" key={tv.id}>
+                                    <Link
+                                        to={`/result/tv/${tv.id}`}
+                                        className="top-rated-card-link"
+                                    >
                                         <img
                                             src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
                                             alt=""
                                             className="top-rated-img"
                                         />
                                         <h3>{tv.name}</h3>
-                                        <p className="top-rated-vote">
-                                            {tv.vote_average}
-                                        </p>
-                                    </div>
-                                </Link>
+                                    </Link>
+                                    <p className="top-rated-vote">
+                                        {tv.vote_average}
+                                    </p>
+                                    <button
+                                        onClick={() => addToWatchList("tv", tv)}
+                                    >
+                                        add to watchlist
+                                    </button>
+                                </div>
                             );
                         })
                     ) : (
@@ -176,12 +190,17 @@ const Homepage = () => {
                     {watchList.map((item) => {
                         return (
                             <div className="watchlist-card" key={item.list.id}>
-                                <img
-                                    src={`http://image.tmdb.org/t/p/w500/${item.list.poster_path}`}
-                                    alt=""
-                                    className="watchlist-img"
-                                />
-                                <h3>{item.list.title}</h3>
+                                <Link
+                                    to={`/result/movie/${item.list.id}`}
+                                    className="wishlist-card-link"
+                                >
+                                    <img
+                                        src={`http://image.tmdb.org/t/p/w500/${item.list.poster_path}`}
+                                        alt=""
+                                        className="watchlist-img"
+                                    />
+                                    <h3>{item.list.title}</h3>
+                                </Link>
                                 <p className="watchlist-vote">
                                     {item.list.vote_average}
                                 </p>
