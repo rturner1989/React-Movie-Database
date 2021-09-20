@@ -4,13 +4,15 @@ import { AiOutlineFileImage } from "react-icons/ai";
 import { useGlobalContext } from "../../context";
 
 const MovieResultData = ({ movie }) => {
-    const { addToWatchList } = useGlobalContext();
+    const { addToWatchList, removeFromWatchList, isMovieInWatchlist } =
+        useGlobalContext();
     const date = new Date(movie.release_date);
     const string = date.toLocaleString("default", {
         day: "numeric",
         month: "long",
         year: "numeric",
     });
+    const found = isMovieInWatchlist(movie.id);
     return (
         <div id="movie-search-results">
             <Link
@@ -45,8 +47,14 @@ const MovieResultData = ({ movie }) => {
                 </p>
             </div>
             <div>
-                <button onClick={() => addToWatchList("movie", movie)}>
-                    add to watchlist
+                <button
+                    onClick={() => {
+                        found
+                            ? removeFromWatchList("movie", movie.id)
+                            : addToWatchList("movie", movie);
+                    }}
+                >
+                    {found ? "Remove From Watchlist" : "Add To Watchlist"}
                 </button>
             </div>
         </div>
