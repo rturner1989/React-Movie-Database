@@ -1,0 +1,42 @@
+.trending-data-container {
+    width: 65%;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+.trending-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: fit-content;
+    margin: 0px 5px;
+    border-radius: 10px;
+}
+/* .trending-link {
+    height: 100%;
+    width: auto;
+} */
+.trending-img {
+    height: 100%;
+    border-radius: 10px;
+    width: 160px;
+}
+.trending-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: transparent;
+    position: absolute;
+}
+.trending-link:hover {
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(128, 128, 128, 0.5);
+}

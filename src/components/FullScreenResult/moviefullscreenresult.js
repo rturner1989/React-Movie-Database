@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useGlobalContext } from "../../context";
 
 const MovieFullScreenResult = () => {
     const { id } = useParams();
     const [movieData, setMovieData] = useState({});
+    const { addToWatchList } = useGlobalContext();
 
     const date = new Date(movieData.release_date);
     const string = date.toLocaleString("default", {
@@ -70,6 +72,13 @@ const MovieFullScreenResult = () => {
                     <div>
                         <h4>Average Rating:</h4>
                         <p>{movieData.vote_average}/10</p>
+                    </div>
+                    <div>
+                        <button
+                            onClick={() => addToWatchList("movie", movieData)}
+                        >
+                            add to watchlist
+                        </button>
                     </div>
                 </div>
             </div>

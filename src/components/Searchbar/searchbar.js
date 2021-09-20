@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context";
 
 const Searchbar = () => {
     const [searchTitle, setSearchTitle] = useState("");
+    const [category, setCategory] = useState("movie");
 
-    const { search, category, setCategory } = useGlobalContext();
+    const { search, trendingData, setTrendingData } = useGlobalContext();
+
+    useEffect(() => {
+        setTrendingData({ ...trendingData, type: category });
+    }, [category]);
 
     return (
         <form id="title-searchbar">

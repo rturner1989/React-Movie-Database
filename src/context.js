@@ -12,7 +12,12 @@ const AppProvider = ({ children }) => {
         movie: [],
         tv: [],
     });
-    const [category, setCategory] = useState("movie");
+    const [trendingData, setTrendingData] = useState({
+        type: "movie",
+        movie: [],
+        tv: [],
+        person: [],
+    });
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -89,17 +94,26 @@ const AppProvider = ({ children }) => {
         }
     };
 
+    const isMovieInWatchlist = (id) => {
+        return watchList.movie.find((item) => item.id === id);
+    };
+    const isTvShowInWatchlist = (id) => {
+        return watchList.tv.find((item) => item.id === id);
+    };
+
     return (
         <AppContext.Provider
             value={{
-                category,
-                setCategory,
+                trendingData,
+                setTrendingData,
                 search,
                 searchResults,
                 watchList,
                 setWatchList,
                 addToWatchList,
                 removeFromWatchList,
+                isMovieInWatchlist,
+                isTvShowInWatchlist,
             }}
         >
             {children}

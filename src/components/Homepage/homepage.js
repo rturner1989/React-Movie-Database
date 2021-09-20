@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 
 const Homepage = () => {
-    const { watchList, setWatchList, addToWatchList, removeFromWatchList } =
-        useGlobalContext();
+    const {
+        watchList,
+        setWatchList,
+        addToWatchList,
+        removeFromWatchList,
+        isMovieInWatchlist,
+        isTvShowInWatchlist,
+    } = useGlobalContext();
     const [popularData, setPopularData] = useState({
         category: "",
         results: [],
@@ -50,13 +56,6 @@ const Homepage = () => {
         getPopularMovieData();
         getTopRatedMovieData();
     }, []);
-
-    const isMovieInWatchlist = (id) => {
-        return watchList.movie.find((item) => item.id === id);
-    };
-    const isTvShowInWatchlist = (id) => {
-        return watchList.tv.find((item) => item.id === id);
-    };
 
     return (
         <div>

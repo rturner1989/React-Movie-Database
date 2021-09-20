@@ -11,6 +11,7 @@ import "./components/FullScreenResult/peoplefullscreenresults.css";
 import "./components/SearchResultsCard/movieresultdata.css";
 import "./components/SearchResultsCard/tvresultdata.css";
 import "./components/SearchResultsCard/peopleresultdata.css";
+import "./components/SearchTrending/trendingdata.css";
 import App from "./App";
 import { AppProvider } from "./context";
 
