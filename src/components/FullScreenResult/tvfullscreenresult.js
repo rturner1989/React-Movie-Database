@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useGlobalContext } from "../../context";
 
 const TvFullScreenResult = () => {
     const { id } = useParams();
     const [tvData, setTvData] = useState({});
+    const { addToWatchList, removeFromWatchList, isTvShowInWatchlist } =
+        useGlobalContext();
 
     const date = new Date(tvData.first_air_date);
     const string = date.toLocaleString("default", {
@@ -23,6 +26,8 @@ const TvFullScreenResult = () => {
     useEffect(() => {
         getTvData();
     }, []);
+
+    const found = isTvShowInWatchlist(tvData.id);
 
     return (
         <div className="fullscreen">
@@ -70,6 +75,19 @@ const TvFullScreenResult = () => {
                     <div>
                         <h4>Average Rating:</h4>
                         <p>{tvData.vote_average}/10</p>
+                    </div>
+                    <div>
+                        <button
+                            onClick={() => {
+                                found
+                                    ? removeFromWatchList("tv", tvData.id)
+                                    : addToWatchList("tv", tvData);
+                            }}
+                        >
+                            {found
+                                ? "Remove From Watchlist"
+                                : "Add To Watchlist"}
+                        </button>
                     </div>
                 </div>
             </div>

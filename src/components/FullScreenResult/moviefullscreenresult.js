@@ -5,7 +5,8 @@ import { useGlobalContext } from "../../context";
 const MovieFullScreenResult = () => {
     const { id } = useParams();
     const [movieData, setMovieData] = useState({});
-    const { addToWatchList } = useGlobalContext();
+    const { addToWatchList, removeFromWatchList, isMovieInWatchlist } =
+        useGlobalContext();
 
     const date = new Date(movieData.release_date);
     const string = date.toLocaleString("default", {
@@ -25,6 +26,8 @@ const MovieFullScreenResult = () => {
     useEffect(() => {
         getMovieData();
     }, []);
+
+    const found = isMovieInWatchlist(movieData.id);
 
     return (
         <div className="fullscreen">
@@ -75,9 +78,15 @@ const MovieFullScreenResult = () => {
                     </div>
                     <div>
                         <button
-                            onClick={() => addToWatchList("movie", movieData)}
+                            onClick={() => {
+                                found
+                                    ? removeFromWatchList("movie", movieData.id)
+                                    : addToWatchList("movie", movieData);
+                            }}
                         >
-                            add to watchlist
+                            {found
+                                ? "Remove From Watchlist"
+                                : "Add To Watchlist"}
                         </button>
                     </div>
                 </div>
