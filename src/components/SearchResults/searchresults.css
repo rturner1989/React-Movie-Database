@@ -1,16 +1,3 @@
-.search-result-card {
-    display: flex;
-    flex-direction: row;
-    width: 49%;
-    height: fit-content;
-    margin: 5px 5px;
-}
-.person-result-card {
-    display: flex;
-    height: fit-content;
-    width: 19%;
-    margin: 5px 5px;
-}
 #movie-image-container,
 #tvshow-image-container {
     max-width: 100px;
@@ -37,6 +24,11 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 1%;
-    overflow-y: auto;
     scrollbar-width: thin;
+}
+.overview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

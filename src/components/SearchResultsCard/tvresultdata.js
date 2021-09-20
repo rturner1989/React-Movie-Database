@@ -1,10 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { AiOutlineFileImage } from "react-icons/ai";
+import { useGlobalContext } from "../../context";
 
 const TvResultData = ({ tvshow }) => {
+    const { addToWatchList } = useGlobalContext();
+
     return (
         <div id="tvshow-search-results">
-            <div id="tvshow-image-container">
+            <Link
+                to={`/result/tv/${tvshow.id}`}
+                id="tvshow-image-container"
+                className="tv-link"
+            >
                 {tvshow.poster_path === null ? (
                     <div className="search-img">
                         <AiOutlineFileImage
@@ -21,13 +29,20 @@ const TvResultData = ({ tvshow }) => {
                         alt=""
                     />
                 )}
-            </div>
+            </Link>
             <div className="search-info">
-                <h3 id="tvshow-title">{tvshow.name}</h3>
+                <Link to={`/result/tv/${tvshow.id}`} className="tv-link">
+                    <h3 id="tvshow-title">{tvshow.name}</h3>
+                </Link>
                 <p id="tvshow-air-date">{tvshow.first_air_date}</p>
                 <p id="tvshow-overview" className="overview">
                     {tvshow.overview}
                 </p>
+            </div>
+            <div>
+                <button onClick={() => addToWatchList("tv", tvshow)}>
+                    add to watchlist
+                </button>
             </div>
         </div>
     );

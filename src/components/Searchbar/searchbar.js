@@ -3,9 +3,8 @@ import { useGlobalContext } from "../../context";
 
 const Searchbar = () => {
     const [searchTitle, setSearchTitle] = useState("");
-    const [category, setCategory] = useState("movie");
 
-    const { search } = useGlobalContext();
+    const { search, category, setCategory } = useGlobalContext();
 
     return (
         <form id="title-searchbar">

@@ -7,7 +7,12 @@ const AppProvider = ({ children }) => {
         category: "",
         results: [],
     });
-    const [watchList, setWatchList] = useState([]);
+    const [watchList, setWatchList] = useState({
+        category: "movie",
+        movie: [],
+        tv: [],
+    });
+    const [category, setCategory] = useState("movie");
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -53,12 +58,49 @@ const AppProvider = ({ children }) => {
     };
 
     const addToWatchList = (category, item) => {
-        setWatchList([...watchList, { category: category, list: item }]);
+        if (
+            ![...watchList.movie, ...watchList.tv].find((w) => w.id === item.id)
+        ) {
+            if (category === "movie") {
+                setWatchList({
+                    ...watchList,
+                    movie: [...watchList.movie, item],
+                });
+            } else if (category === "tv") {
+                setWatchList({
+                    ...watchList,
+                    tv: [...watchList.tv, item],
+                });
+            }
+        }
+    };
+
+    const removeFromWatchList = (category, id) => {
+        if (category === "movie") {
+            setWatchList({
+                ...watchList,
+                movie: watchList.movie.filter((item) => item.id !== id),
+            });
+        } else if (category === "tv") {
+            setWatchList({
+                ...watchList,
+                tv: watchList.tv.filter((item) => item.id !== id),
+            });
+        }
     };
 
     return (
         <AppContext.Provider
-            value={{ search, searchResults, watchList, addToWatchList }}
+            value={{
+                category,
+                setCategory,
+                search,
+                searchResults,
+                watchList,
+                setWatchList,
+                addToWatchList,
+                removeFromWatchList,
+            }}
         >
             {children}
         </AppContext.Provider>

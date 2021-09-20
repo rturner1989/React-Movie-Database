@@ -1,9 +1,9 @@
 #movie-search-results {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 49%;
     height: 150px;
     border: grey solid 1px;
-    margin: 5px 0;
+    margin: 5px 5px;
     border-radius: 5px;
 }

@@ -1,7 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { AiOutlineFileImage } from "react-icons/ai";
+import { useGlobalContext } from "../../context";
 
 const MovieResultData = ({ movie }) => {
+    const { addToWatchList } = useGlobalContext();
     const date = new Date(movie.release_date);
     const string = date.toLocaleString("default", {
         day: "numeric",
@@ -10,7 +13,11 @@ const MovieResultData = ({ movie }) => {
     });
     return (
         <div id="movie-search-results">
-            <div id="movie-image-container">
+            <Link
+                to={`/result/movie/${movie.id}`}
+                id="movie-image-container"
+                className="movie-link"
+            >
                 {movie.poster_path === null ? (
                     <div className="search-img">
                         <AiOutlineFileImage
@@ -27,13 +34,20 @@ const MovieResultData = ({ movie }) => {
                         alt=""
                     />
                 )}
-            </div>
+            </Link>
             <div className="search-info">
-                <h3 id="movie-title">{movie.title}</h3>
+                <Link to={`/result/movie/${movie.id}`} className="movie-link">
+                    <h3 id="movie-title">{movie.title}</h3>
+                </Link>
                 <p id="movie-release-date">{string}</p>
                 <p id="movie-overview" className="overview">
                     {movie.overview}
                 </p>
+            </div>
+            <div>
+                <button onClick={() => addToWatchList("movie", movie)}>
+                    add to watchlist
+                </button>
             </div>
         </div>
     );
