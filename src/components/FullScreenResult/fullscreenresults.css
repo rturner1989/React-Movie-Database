@@ -8,9 +8,10 @@
 .fullscreen-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 47.5% 5% 47.5%;
     grid-template-areas:
         "img info"
+        "img button"
         "img review";
     width: 75vw;
     max-width: 1000px;
@@ -75,11 +76,17 @@ button {
 .company-name {
     font-size: var(--paragraph-font-size);
 }
-.fullscreen-reviews {
+/* review and cast container */
+.fullscreen-review-cast {
     grid-area: review;
-    overflow-y: auto;
+    width: 100%;
     height: 100%;
+    overflow-y: auto;
+}
+/* reviews */
+.fullscreen-reviews {
     scrollbar-width: thin;
+    height: 100%;
     padding: 0px 10px;
 }
 .review-content {
@@ -93,4 +100,41 @@ button {
 }
 .fullscreen-review h5 {
     font-weight: unset;
+}
+#review-cast-toggle-button {
+    grid-area: button;
+}
+/* cast and crew */
+.fullscreen-cast {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+.cast-credit {
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    margin: 5px 5px;
+    height: 96%;
+    width: 153px;
+    border: black solid 1px;
+}
+.cast-credit div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.cast-img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }

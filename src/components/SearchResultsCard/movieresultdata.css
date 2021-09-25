@@ -4,6 +4,10 @@
     width: 49%;
     height: 150px;
     border: grey solid 1px;
-    margin: 5px 5px;
+    margin: 10px 5px;
     border-radius: 5px;
+    position: relative;
+}
+.movie-link {
+    text-decoration: none;
 }

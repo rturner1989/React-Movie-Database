@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { IoMdRemoveCircleOutline } from "react-icons/io";
+import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
 import { useGlobalContext } from "../../context";
 
 const Homepage = () => {
@@ -60,104 +60,8 @@ const Homepage = () => {
 
     return (
         <div>
-            <section className="watchlist" className="section">
-                <h2>Watchlist</h2>
-                <div className="toggle-button-group">
-                    <button
-                        className="toggle-btn movie-toggle"
-                        onClick={() =>
-                            setWatchList({ ...watchList, category: "movie" })
-                        }
-                    >
-                        Movie
-                    </button>
-                    <button
-                        className="toggle-btn tv-toggle"
-                        onClick={() =>
-                            setWatchList({ ...watchList, category: "tv" })
-                        }
-                    >
-                        TV
-                    </button>
-                </div>
-                <div id="watchlist-container">
-                    {watchList.category === "movie" ? (
-                        watchList.movie.map((item) => {
-                            const found = isMovieInWatchlist(item.id);
-                            return (
-                                <div className="watchlist-card" key={item.id}>
-                                    <Link
-                                        to={`/result/movie/${item.id}`}
-                                        className="wishlist-card-link"
-                                    >
-                                        <img
-                                            src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                                            alt=""
-                                            className="watchlist-img"
-                                        />
-                                        <h3>{item.title}</h3>
-                                    </Link>
-                                    <p className="watchlist-vote">
-                                        {item.vote_average}/10
-                                    </p>
-                                    <button
-                                        className="remove-from-wishlist"
-                                        onClick={() => {
-                                            if (found) {
-                                                removeFromWatchList(
-                                                    "movie",
-                                                    item.id
-                                                );
-                                            }
-                                        }}
-                                    >
-                                        <IoMdRemoveCircleOutline className="remove-icon" />
-                                    </button>
-                                </div>
-                            );
-                        })
-                    ) : watchList.category === "tv" ? (
-                        watchList.tv.map((item) => {
-                            const found = isTvShowInWatchlist(item.id);
-                            return (
-                                <div className="watchlist-card" key={item.id}>
-                                    <Link
-                                        to={`/result/tv/${item.id}`}
-                                        className="wishlist-card-link"
-                                    >
-                                        <img
-                                            src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                                            alt=""
-                                            className="watchlist-img"
-                                        />
-                                        <h3>{item.name}</h3>
-                                    </Link>
-                                    <p className="watchlist-vote">
-                                        {item.vote_average}/10
-                                    </p>
-                                    <button
-                                        className="remove-from-wishlist"
-                                        onClick={() => {
-                                            if (found) {
-                                                removeFromWatchList(
-                                                    "tv",
-                                                    item.id
-                                                );
-                                            }
-                                        }}
-                                    >
-                                        <IoMdRemoveCircleOutline className="remove-icon" />
-                                    </button>
-                                </div>
-                            );
-                        })
-                    ) : (
-                        <div></div>
-                    )}
-                </div>
-            </section>
             <section className="section">
-                <h2>Popular</h2>
+                <h2>What's Popular</h2>
                 <div className="toggle-button-group">
                     <button
                         className="toggle-btn movie-toggle"
@@ -179,22 +83,29 @@ const Homepage = () => {
                             const found = isMovieInWatchlist(movie.id);
                             return (
                                 <div className="popular-card" key={movie.id}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                        alt=""
+                                        className="popular-img"
+                                    />
                                     <Link
                                         to={`/result/movie/${movie.id}`}
                                         className="popular-card-link"
                                     >
-                                        <img
-                                            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                            alt=""
-                                            className="popular-img"
-                                        />
                                         <h3>{movie.title}</h3>
                                     </Link>
                                     <p className="popular-vote">
                                         {movie.vote_average}/10
                                     </p>
-
+                                    <label
+                                        className="hidden-label"
+                                        htmlFor="remove2"
+                                    >
+                                        Remove/Add Watchlist
+                                    </label>
                                     <button
+                                        id="remove2"
+                                        className="remove-from-wishlist"
                                         onClick={() => {
                                             found
                                                 ? removeFromWatchList(
@@ -207,9 +118,19 @@ const Homepage = () => {
                                                   );
                                         }}
                                     >
-                                        {found
-                                            ? "Remove From Watchlist"
-                                            : "Add To Watchlist"}
+                                        {found ? (
+                                            <IoMdRemoveCircleOutline
+                                                className="remove-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        ) : (
+                                            <IoMdAddCircleOutline
+                                                className="add-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        )}
                                     </button>
                                 </div>
                             );
@@ -219,21 +140,29 @@ const Homepage = () => {
                             const found = isTvShowInWatchlist(tv.id);
                             return (
                                 <div className="popular-card" key={tv.id}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
+                                        alt=""
+                                        className="popular-img"
+                                    />
                                     <Link
                                         to={`/result/tv/${tv.id}`}
                                         className="popular-card-link"
                                     >
-                                        <img
-                                            src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
-                                            alt=""
-                                            className="popular-img"
-                                        />
                                         <h3>{tv.name}</h3>
                                     </Link>
                                     <p className="popular-vote">
                                         {tv.vote_average}/10
                                     </p>
+                                    <label
+                                        className="hidden-label"
+                                        htmlFor="remove3"
+                                    >
+                                        Remove/Add Watchlist
+                                    </label>
                                     <button
+                                        id="remove3"
+                                        className="remove-from-wishlist"
                                         onClick={() => {
                                             found
                                                 ? removeFromWatchList(
@@ -243,9 +172,19 @@ const Homepage = () => {
                                                 : addToWatchList("tv", tv);
                                         }}
                                     >
-                                        {found
-                                            ? "Remove From Watchlist"
-                                            : "Add To Watchlist"}
+                                        {found ? (
+                                            <IoMdRemoveCircleOutline
+                                                className="remove-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        ) : (
+                                            <IoMdAddCircleOutline
+                                                className="add-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        )}
                                     </button>
                                 </div>
                             );
@@ -277,21 +216,29 @@ const Homepage = () => {
                             const found = isMovieInWatchlist(movie.id);
                             return (
                                 <div className="top-rated-card" key={movie.id}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                        alt=""
+                                        className="top-rated-img"
+                                    />
                                     <Link
                                         to={`/result/movie/${movie.id}`}
                                         className="top-rated-card-link"
                                     >
-                                        <img
-                                            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                            alt=""
-                                            className="top-rated-img"
-                                        />
                                         <h3>{movie.title}</h3>
                                     </Link>
                                     <p className="top-rated-vote">
                                         {movie.vote_average}/10
                                     </p>
+                                    <label
+                                        className="hidden-label"
+                                        htmlFor="remove4"
+                                    >
+                                        Remove/Add Watchlist
+                                    </label>
                                     <button
+                                        id="remove4"
+                                        className="remove-from-wishlist"
                                         onClick={() => {
                                             found
                                                 ? removeFromWatchList(
@@ -304,9 +251,19 @@ const Homepage = () => {
                                                   );
                                         }}
                                     >
-                                        {found
-                                            ? "Remove From Watchlist"
-                                            : "Add To Watchlist"}
+                                        {found ? (
+                                            <IoMdRemoveCircleOutline
+                                                className="remove-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        ) : (
+                                            <IoMdAddCircleOutline
+                                                className="add-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        )}
                                     </button>
                                 </div>
                             );
@@ -316,21 +273,29 @@ const Homepage = () => {
                             const found = isTvShowInWatchlist(tv.id);
                             return (
                                 <div className="top-rated-card" key={tv.id}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
+                                        alt=""
+                                        className="top-rated-img"
+                                    />
                                     <Link
                                         to={`/result/tv/${tv.id}`}
                                         className="top-rated-card-link"
                                     >
-                                        <img
-                                            src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
-                                            alt=""
-                                            className="top-rated-img"
-                                        />
                                         <h3>{tv.name}</h3>
                                     </Link>
                                     <p className="top-rated-vote">
                                         {tv.vote_average}/10
                                     </p>
+                                    <label
+                                        className="hidden-label"
+                                        htmlFor="remove5"
+                                    >
+                                        Remove/Add Watchlist
+                                    </label>
                                     <button
+                                        id="remove5"
+                                        className="remove-from-wishlist"
                                         onClick={() => {
                                             found
                                                 ? removeFromWatchList(
@@ -340,9 +305,139 @@ const Homepage = () => {
                                                 : addToWatchList("tv", tv);
                                         }}
                                     >
-                                        {found
-                                            ? "Remove From Watchlist"
-                                            : "Add To Watchlist"}
+                                        {found ? (
+                                            <IoMdRemoveCircleOutline
+                                                className="remove-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        ) : (
+                                            <IoMdAddCircleOutline
+                                                className="add-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        )}
+                                    </button>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <div></div>
+                    )}
+                </div>
+            </section>
+            <section className="watchlist" className="section">
+                <h2>Watchlist</h2>
+                <div className="toggle-button-group">
+                    <button
+                        className="toggle-btn movie-toggle"
+                        onClick={() =>
+                            setWatchList({ ...watchList, category: "movie" })
+                        }
+                    >
+                        Movie
+                    </button>
+                    <button
+                        className="toggle-btn tv-toggle"
+                        onClick={() =>
+                            setWatchList({ ...watchList, category: "tv" })
+                        }
+                    >
+                        TV
+                    </button>
+                </div>
+                <div id="watchlist-container">
+                    {watchList.category === "movie" ? (
+                        watchList.movie.map((item) => {
+                            const found = isMovieInWatchlist(item.id);
+                            return (
+                                <div className="watchlist-card" key={item.id}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                                        alt=""
+                                        className="watchlist-img"
+                                    />
+                                    <Link
+                                        to={`/result/movie/${item.id}`}
+                                        className="wishlist-card-link"
+                                    >
+                                        <h3 className="watchlist-title">
+                                            {item.title}
+                                        </h3>
+                                    </Link>
+                                    <p className="watchlist-vote">
+                                        {item.vote_average}/10
+                                    </p>
+                                    <label
+                                        className="hidden-label"
+                                        htmlFor="remove-from-wishlist"
+                                    >
+                                        Remove/Add Watchlist
+                                    </label>
+                                    <button
+                                        id="remove-from-wishlist"
+                                        className="remove-from-wishlist"
+                                        onClick={() => {
+                                            if (found) {
+                                                removeFromWatchList(
+                                                    "movie",
+                                                    item.id
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        <IoMdRemoveCircleOutline
+                                            className="remove-icon"
+                                            aria-hidden={true}
+                                            focusable={false}
+                                        />
+                                    </button>
+                                </div>
+                            );
+                        })
+                    ) : watchList.category === "tv" ? (
+                        watchList.tv.map((item) => {
+                            const found = isTvShowInWatchlist(item.id);
+                            return (
+                                <div className="watchlist-card" key={item.id}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                                        alt=""
+                                        className="watchlist-img"
+                                    />
+                                    <Link
+                                        to={`/result/tv/${item.id}`}
+                                        className="wishlist-card-link"
+                                    >
+                                        <h3>{item.name}</h3>
+                                    </Link>
+                                    <p className="watchlist-vote">
+                                        {item.vote_average}/10
+                                    </p>
+                                    <label
+                                        className="hidden-label"
+                                        htmlFor="remove1"
+                                    >
+                                        Remove/Add Watchlist
+                                    </label>
+                                    <button
+                                        id="remove1"
+                                        className="remove-from-wishlist"
+                                        onClick={() => {
+                                            if (found) {
+                                                removeFromWatchList(
+                                                    "tv",
+                                                    item.id
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        <IoMdRemoveCircleOutline
+                                            className="remove-icon"
+                                            aria-hidden={true}
+                                            focusable={false}
+                                        />
                                     </button>
                                 </div>
                             );

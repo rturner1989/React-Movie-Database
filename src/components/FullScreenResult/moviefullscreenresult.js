@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 
 const MovieFullScreenResult = () => {
     const { id } = useParams();
     const [movieData, setMovieData] = useState({});
-    const [movieResultData, setMovieResultData] = useState({});
+    const [movieReviewData, setMovieReviewData] = useState({});
+    const [movieCreditData, setMovieCreditData] = useState({});
+    const [toggle, setToggle] = useState(false);
     const {
         addToWatchList,
         removeFromWatchList,
@@ -26,18 +30,37 @@ const MovieFullScreenResult = () => {
             `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
         );
         const data = await response.json();
-        setMovieResultData(data);
+        setMovieReviewData(data);
+    };
+
+    const getMovieCredit = async () => {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/movie/${id}/credits?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
+        );
+        const data = await response.json();
+        setMovieCreditData(data);
     };
 
     useEffect(() => {
         getMovieData();
         getMovieReview();
+        getMovieCredit();
     }, []);
 
     const found = isMovieInWatchlist(movieData.id);
 
     return (
-        <div className="fullscreen">
+        <div
+            className="fullscreen"
+            // style={{
+            //     backgroundImage:
+            //         "url(" +
+            //         `http://image.tmdb.org/t/p/w500/${movieData.backdrop_path}` +
+            //         ")",
+            //     backgroundSize: "cover",
+            //     backgroundPosition: "center",
+            // }}
+        >
             <div className="fullscreen-card">
                 <div className="fullscreen-img">
                     <img
@@ -102,27 +125,66 @@ const MovieFullScreenResult = () => {
                         <p>{movieData.overview}</p>
                     </div>
                 </div>
-                <div className="fullscreen-reviews">
-                    {movieResultData.results !== undefined ? (
-                        movieResultData.results.map((result) => {
-                            return (
-                                <div
-                                    key={result.id}
-                                    className="fullscreen-review"
-                                >
-                                    <h4>A review by {result.author}</h4>
-                                    <h5>
-                                        <i>
-                                            Written by {result.author} on{" "}
-                                            {convertDate(result.created_at)}
-                                        </i>
-                                    </h5>
-                                    <p class="review-content">
-                                        {result.content}
-                                    </p>
-                                </div>
-                            );
-                        })
+                <div id="review-cast-toggle-button">
+                    <button onClick={() => setToggle(false)}>Cast</button>
+                    <button onClick={() => setToggle(true)}>Reviews</button>
+                </div>
+                <div className="fullscreen-review-cast">
+                    {toggle ? (
+                        movieReviewData.results !== undefined ? (
+                            <div className="fullscreen-reviews">
+                                {movieReviewData.results.map((result) => {
+                                    return (
+                                        <div
+                                            key={result.id}
+                                            className="fullscreen-review"
+                                        >
+                                            <h4>A review by {result.author}</h4>
+                                            <h5>
+                                                <i>
+                                                    Written by {result.author}{" "}
+                                                    on{" "}
+                                                    {convertDate(
+                                                        result.created_at
+                                                    )}
+                                                </i>
+                                            </h5>
+                                            <p class="review-content">
+                                                {result.content}
+                                            </p>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        ) : (
+                            <div></div>
+                        )
+                    ) : movieCreditData.cast !== undefined ? (
+                        <div className="fullscreen-cast">
+                            {movieCreditData.cast.map((cast) => {
+                                return (
+                                    <Link
+                                        to={`/result/people/${cast.id}`}
+                                        key={cast.id}
+                                        className="cast-credit"
+                                    >
+                                        <img
+                                            className="cast-img"
+                                            src={`http://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+                                            alt=""
+                                        />
+                                        <div>
+                                            <h4 className="cast-name">
+                                                {cast.name}
+                                            </h4>
+                                            <p className="cast-role">
+                                                {cast.character}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                );
+                            })}
+                        </div>
                     ) : (
                         <div></div>
                     )}

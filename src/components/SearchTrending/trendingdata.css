@@ -6,6 +6,7 @@
     overflow-y: hidden;
     overflow-x: auto;
     scrollbar-width: thin;
+    margin: 10px 0px;
 }
 .trending-tile {
     position: relative;
@@ -34,6 +35,7 @@
     width: 100%;
     color: transparent;
     position: absolute;
+    text-decoration: none;
 }
 .trending-link:hover {
     border-radius: 10px;

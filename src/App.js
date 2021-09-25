@@ -7,6 +7,7 @@ import SearchResults from "./components/SearchResults/searchresults";
 import MovieFullScreenResult from "./components/FullScreenResult/moviefullscreenresult";
 import TvFullScreenResult from "./components/FullScreenResult/tvfullscreenresult";
 import PeopleFullScreenResult from "./components/FullScreenResult/peoplefullscreenresults";
+import Watchlist from "./components/Watchlist/watchlist";
 
 export default function App() {
     return (
@@ -26,6 +27,9 @@ export default function App() {
                     </Route>
                     <Route path="/result/people/:id">
                         <PeopleFullScreenResult />
+                    </Route>
+                    <Route path="/watchlist">
+                        <Watchlist />
                     </Route>
                     <Route path="/">
                         <Homepage />

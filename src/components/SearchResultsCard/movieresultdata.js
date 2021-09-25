@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineFileImage } from "react-icons/ai";
+import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
 import { useGlobalContext } from "../../context";
 
 const MovieResultData = ({ movie }) => {
@@ -46,13 +47,26 @@ const MovieResultData = ({ movie }) => {
             </div>
             <div>
                 <button
+                    className="remove-from-wishlist"
                     onClick={() => {
                         found
                             ? removeFromWatchList("movie", movie.id)
                             : addToWatchList("movie", movie);
                     }}
                 >
-                    {found ? "Remove From Watchlist" : "Add To Watchlist"}
+                    {found ? (
+                        <IoMdRemoveCircleOutline
+                            className="remove-icon"
+                            aria-hidden={true}
+                            focusable={false}
+                        />
+                    ) : (
+                        <IoMdAddCircleOutline
+                            className="add-icon"
+                            aria-hidden={true}
+                            focusable={false}
+                        />
+                    )}
                 </button>
             </div>
         </div>

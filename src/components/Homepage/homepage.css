@@ -5,6 +5,7 @@
     justify-content: center;
     width: 100%;
 }
+
 #popular-container,
 #top-rated-container,
 #watchlist-container {
@@ -18,11 +19,32 @@
 .top-rated-card,
 .watchlist-card {
     display: flex;
+    align-items: center;
     flex-direction: column;
     margin: 5px 5px;
     width: 150px;
     height: auto;
     border-radius: 10px;
+}
+.wishlist-card-link,
+.popular-card-link,
+.top-rated-card-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 89%;
+    width: 100%;
+    color: transparent;
+    position: absolute;
+    text-decoration: none;
+}
+.wishlist-card-link:hover,
+.popular-card-link:hover,
+.top-rated-card-link:hover {
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(128, 128, 128, 0.5);
 }
 .popular-img,
 .top-rated-img,
@@ -32,7 +54,9 @@
 }
 
 /* Remove from watchlist button */
-.watchlist-card {
+.watchlist-card,
+.popular-card,
+.top-rated-card {
     position: relative;
 }
 .remove-from-wishlist {
@@ -50,6 +74,15 @@
     cursor: pointer;
 }
 .remove-icon:hover {
+    color: green;
+}
+.add-icon {
+    display: block;
+    color: blue;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.add-icon:hover {
     color: green;
 }
 
