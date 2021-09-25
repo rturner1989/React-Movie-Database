@@ -1,0 +1,96 @@
+/* variables */
+:root {
+    --large-title-font-size: 1.6rem;
+    --medium-title-font-size: 1.4rem;
+    --small-title-font-size: 1.2rem;
+    --paragraph-font-size: 0.8rem;
+}
+.fullscreen-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "img info"
+        "img review";
+    width: 75vw;
+    max-width: 1000px;
+    height: 81vh;
+    border: black solid 1px;
+}
+.fullscreen-img {
+    grid-area: img;
+    height: 100%;
+    width: 100%;
+    max-width: 525px;
+}
+.fullscreen-info {
+    grid-area: info;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+.fullscreen-list-info {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+}
+.fullscreen-list-info p {
+    margin: 0px 5px;
+    font-size: var(--paragraph-font-size);
+}
+.ball {
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: black;
+    margin: 0px 5px;
+}
+.fullscreen-genre {
+    display: flex;
+    width: fit-content;
+    font-size: var(--paragraph-font-size);
+}
+.fullscreen-genre p {
+    margin: 0px 5px;
+    font-size: var(--paragraph-font-size);
+}
+.fullscreen-rating {
+    display: flex;
+    width: fit-content;
+}
+.fullscreen-rating p {
+    font-size: var(--paragraph-font-size);
+}
+.fullscreen-rating h4,
+p,
+button {
+    margin: 0px 5px;
+}
+.fullscreen-production {
+    display: flex;
+    width: fit-content;
+}
+.company-name {
+    font-size: var(--paragraph-font-size);
+}
+.fullscreen-reviews {
+    grid-area: review;
+    overflow-y: auto;
+    height: 100%;
+    scrollbar-width: thin;
+    padding: 0px 10px;
+}
+.review-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.fullscreen-review p {
+    font-size: var(--paragraph-font-size);
+}
+.fullscreen-review h5 {
+    font-weight: unset;
+}

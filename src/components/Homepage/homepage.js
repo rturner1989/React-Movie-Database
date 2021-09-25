@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { IoMdRemoveCircleOutline } from "react-icons/io";
 import { useGlobalContext } from "../../context";
 
 const Homepage = () => {
@@ -22,7 +23,7 @@ const Homepage = () => {
 
     const getPopularMovieData = async () => {
         const response = await fetch(
-            `https://api.themoviedb.org/3/movie/popular?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB&page=1`
+            `https://api.themoviedb.org/3/movie/popular?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
         );
         const data = await response.json();
         setPopularData({ category: "movie", results: data.results });
@@ -59,27 +60,30 @@ const Homepage = () => {
 
     return (
         <div>
-            <section id="watchlist" className="section">
+            <section className="watchlist" className="section">
                 <h2>Watchlist</h2>
-                <div>
+                <div className="toggle-button-group">
                     <button
+                        className="toggle-btn movie-toggle"
                         onClick={() =>
                             setWatchList({ ...watchList, category: "movie" })
                         }
                     >
-                        movies
+                        Movie
                     </button>
                     <button
+                        className="toggle-btn tv-toggle"
                         onClick={() =>
                             setWatchList({ ...watchList, category: "tv" })
                         }
                     >
-                        tv
+                        TV
                     </button>
                 </div>
                 <div id="watchlist-container">
                     {watchList.category === "movie" ? (
                         watchList.movie.map((item) => {
+                            const found = isMovieInWatchlist(item.id);
                             return (
                                 <div className="watchlist-card" key={item.id}>
                                     <Link
@@ -96,11 +100,25 @@ const Homepage = () => {
                                     <p className="watchlist-vote">
                                         {item.vote_average}/10
                                     </p>
+                                    <button
+                                        className="remove-from-wishlist"
+                                        onClick={() => {
+                                            if (found) {
+                                                removeFromWatchList(
+                                                    "movie",
+                                                    item.id
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        <IoMdRemoveCircleOutline className="remove-icon" />
+                                    </button>
                                 </div>
                             );
                         })
                     ) : watchList.category === "tv" ? (
                         watchList.tv.map((item) => {
+                            const found = isTvShowInWatchlist(item.id);
                             return (
                                 <div className="watchlist-card" key={item.id}>
                                     <Link
@@ -117,6 +135,19 @@ const Homepage = () => {
                                     <p className="watchlist-vote">
                                         {item.vote_average}/10
                                     </p>
+                                    <button
+                                        className="remove-from-wishlist"
+                                        onClick={() => {
+                                            if (found) {
+                                                removeFromWatchList(
+                                                    "tv",
+                                                    item.id
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        <IoMdRemoveCircleOutline className="remove-icon" />
+                                    </button>
                                 </div>
                             );
                         })
@@ -126,11 +157,22 @@ const Homepage = () => {
                 </div>
             </section>
             <section className="section">
-                <h2>Popular on TMDB</h2>
-                <span>
-                    <button onClick={getPopularMovieData}>movies</button>
-                    <button onClick={getPopularTVData}>tv</button>
-                </span>
+                <h2>Popular</h2>
+                <div className="toggle-button-group">
+                    <button
+                        className="toggle-btn movie-toggle"
+                        onClick={getPopularMovieData}
+                    >
+                        Movie
+                    </button>
+                    <button
+                        className="toggle-btn tv-toggle"
+                        onClick={getPopularTVData}
+                    >
+                        TV
+                    </button>
+                </div>
+
                 <div id="popular-container">
                     {popularData.category === "movie" ? (
                         popularData.results.map((movie) => {
@@ -151,6 +193,7 @@ const Homepage = () => {
                                     <p className="popular-vote">
                                         {movie.vote_average}/10
                                     </p>
+
                                     <button
                                         onClick={() => {
                                             found
@@ -214,9 +257,19 @@ const Homepage = () => {
             </section>
             <section className="section">
                 <h2>Top Rated</h2>
-                <div>
-                    <button onClick={getTopRatedMovieData}>movies</button>
-                    <button onClick={getTopRatedTVData}>tv</button>
+                <div className="toggle-button-group">
+                    <button
+                        className="toggle-btn movie-toggle"
+                        onClick={getTopRatedMovieData}
+                    >
+                        Movie
+                    </button>
+                    <button
+                        className="toggle-btn tv-toggle"
+                        onClick={getTopRatedTVData}
+                    >
+                        TV
+                    </button>
                 </div>
                 <div id="top-rated-container">
                     {topRatedData.category === "movie" ? (

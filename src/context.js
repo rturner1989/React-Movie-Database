@@ -62,6 +62,16 @@ const AppProvider = ({ children }) => {
         }
     };
 
+    const convertDate = (info) => {
+        const date = new Date(info);
+        const string = date.toLocaleString("default", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+        });
+        return string;
+    };
+
     const addToWatchList = (category, item) => {
         if (
             ![...watchList.movie, ...watchList.tv].find((w) => w.id === item.id)
@@ -114,6 +124,7 @@ const AppProvider = ({ children }) => {
                 removeFromWatchList,
                 isMovieInWatchlist,
                 isTvShowInWatchlist,
+                convertDate,
             }}
         >
             {children}

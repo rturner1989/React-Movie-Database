@@ -4,14 +4,13 @@ import { AiOutlineFileImage } from "react-icons/ai";
 import { useGlobalContext } from "../../context";
 
 const TvResultData = ({ tvshow }) => {
-    const { addToWatchList, removeFromWatchList, isTvShowInWatchlist } =
-        useGlobalContext();
-    const date = new Date(tvshow.first_air_date);
-    const string = date.toLocaleString("default", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    });
+    const {
+        addToWatchList,
+        removeFromWatchList,
+        isTvShowInWatchlist,
+        convertDate,
+    } = useGlobalContext();
+
     const found = isTvShowInWatchlist(tvshow.id);
     return (
         <div id="tvshow-search-results">
@@ -41,7 +40,7 @@ const TvResultData = ({ tvshow }) => {
                 <Link to={`/result/tv/${tvshow.id}`} className="tv-link">
                     <h3 id="tvshow-title">{tvshow.name}</h3>
                 </Link>
-                <p id="tvshow-air-date">{string}</p>
+                <p id="tvshow-air-date">{convertDate(tvshow.first_air_date)}</p>
                 <p id="tvshow-overview" className="overview">
                     {tvshow.overview}
                 </p>

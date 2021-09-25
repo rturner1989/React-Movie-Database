@@ -1,7 +1,0 @@
-#movie-fullscreen-card {
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    height: fit-content;
-    border: black solid 1px;
-}
