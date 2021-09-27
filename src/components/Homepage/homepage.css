@@ -26,59 +26,52 @@
 #watchlist {
     grid-area: watchlist;
 }
-#popular-container,
-#top-rated-container,
-#watchlist-container {
+.homepage-render-container {
     display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 33vh;
     padding: 5px 0px;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: thin;
 }
-.popular-card,
-.top-rated-card,
-.watchlist-card {
+.render-card {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    margin: 0px 5px;
-    width: 150px;
-    border-radius: 10px;
+    margin: 0px 3px;
+    width: 15%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
 }
-.wishlist-card-link,
-.popular-card-link,
-.top-rated-card-link {
+.render-card-link {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    height: 89%;
+    height: 91%;
     width: 100%;
     color: transparent;
     position: absolute;
     text-decoration: none;
 }
-.wishlist-card-link:hover,
-.popular-card-link:hover,
-.top-rated-card-link:hover {
+.render-card-link:hover {
     text-align: center;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     color: white;
     background-color: rgba(128, 128, 128, 0.5);
 }
-.popular-img,
-.top-rated-img,
-.watchlist-img {
-    width: 150px;
-    border-radius: 10px;
+.render-img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.render-vote {
+    width: 100%;
 }
 
 /* Remove from watchlist button */
-.watchlist-card,
-.popular-card,
-.top-rated-card {
-    position: relative;
-}
 .remove-from-wishlist {
     position: absolute;
     right: -12px;
@@ -127,8 +120,8 @@
     border-right: 1px white solid;
 }
 .movie-toggle:hover {
-    background-color: violet;
+    background-color: red;
 }
 .tv-toggle:hover {
-    background-color: violet;
+    background-color: red;
 }
