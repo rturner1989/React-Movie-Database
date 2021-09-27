@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
+import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
+import { AiFillStar } from "react-icons/ai";
 
 const TvFullScreenResult = () => {
     const { id } = useParams();
@@ -65,7 +67,10 @@ const TvFullScreenResult = () => {
                     </div>
                     <div className="fullscreen-rating">
                         <h4>Average Score:</h4>
-                        <p>{tvData.vote_average}/10</p>
+                        <p className="fullscreen-vote">
+                            <AiFillStar className="render-icon" />
+                            {tvData.vote_average}
+                        </p>
                         <button
                             className="add-remove-button"
                             onClick={() => {
@@ -74,9 +79,19 @@ const TvFullScreenResult = () => {
                                     : addToWatchList("tv", tvData);
                             }}
                         >
-                            {found
-                                ? "Remove From Watchlist"
-                                : "Add To Watchlist"}
+                            {found ? (
+                                <IoMdRemoveCircleOutline
+                                    className="remove-icon"
+                                    aria-hidden={true}
+                                    focusable={false}
+                                />
+                            ) : (
+                                <IoMdAddCircleOutline
+                                    className="add-icon"
+                                    aria-hidden={true}
+                                    focusable={false}
+                                />
+                            )}
                         </button>
                     </div>
                     <div className="fullscreen-production">
