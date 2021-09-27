@@ -12,6 +12,7 @@ const AppProvider = ({ children }) => {
         movie: [],
         tv: [],
     });
+    // const [lastAdded, setLastAdded] = useState("");
     const [trendingData, setTrendingData] = useState({
         type: "movie",
         movie: [],
@@ -81,11 +82,13 @@ const AppProvider = ({ children }) => {
                     ...watchList,
                     movie: [...watchList.movie, item],
                 });
+                // setLastAdded("movie");
             } else if (category === "tv") {
                 setWatchList({
                     ...watchList,
                     tv: [...watchList.tv, item],
                 });
+                // setLastAdded("tv");
             }
         }
     };

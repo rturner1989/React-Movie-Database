@@ -59,8 +59,8 @@ const Homepage = () => {
     }, []);
 
     return (
-        <div>
-            <section className="section">
+        <div id="homepage">
+            <section id="popular" className="section">
                 <h2>What's Popular</h2>
                 <div className="toggle-button-group">
                     <button
@@ -194,7 +194,7 @@ const Homepage = () => {
                     )}
                 </div>
             </section>
-            <section className="section">
+            <section id="rated" className="section">
                 <h2>Top Rated</h2>
                 <div className="toggle-button-group">
                     <button
@@ -327,7 +327,7 @@ const Homepage = () => {
                     )}
                 </div>
             </section>
-            <section className="watchlist" className="section">
+            <section id="watchlist" className="section">
                 <h2>Watchlist</h2>
                 <div className="toggle-button-group">
                     <button

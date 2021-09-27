@@ -1,16 +1,36 @@
+#homepage {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: ". popular popular ." ". rated rated ." ". watchlist watchlist .";
+}
 .section {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
 }
-
+.section h2 {
+    align-self: center;
+}
+#popular {
+    grid-area: popular;
+}
+#rated {
+    grid-area: rated;
+}
+#watchlist {
+    grid-area: watchlist;
+}
 #popular-container,
 #top-rated-container,
 #watchlist-container {
     display: flex;
-    width: 50%;
+    padding: 5px 0px;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: thin;
@@ -21,9 +41,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 5px 5px;
+    margin: 0px 5px;
     width: 150px;
-    height: auto;
     border-radius: 10px;
 }
 .wishlist-card-link,
@@ -42,6 +61,7 @@
 .wishlist-card-link:hover,
 .popular-card-link:hover,
 .top-rated-card-link:hover {
+    text-align: center;
     border-radius: 10px;
     color: white;
     background-color: rgba(128, 128, 128, 0.5);
