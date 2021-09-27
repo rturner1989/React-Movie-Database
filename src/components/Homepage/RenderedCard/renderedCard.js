@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
+import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../../../context";
 
 const RenderedCard = ({
@@ -26,7 +27,10 @@ const RenderedCard = ({
             <Link to={linkTo} className="render-card-link">
                 <h3>{title}</h3>
             </Link>
-            <p className="render-vote">{vote}/10</p>
+            <p className="render-vote">
+                <AiFillStar className="render-icon" />
+                {vote}
+            </p>
             <button
                 className="remove-from-wishlist"
                 onClick={() => {

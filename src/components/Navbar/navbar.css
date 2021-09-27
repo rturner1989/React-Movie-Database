@@ -1,6 +1,6 @@
 #navbar {
     width: 100vw;
-    background-color: blue;
+    background-color: rgb(0, 0, 255);
 }
 #navbar-list {
     display: flex;
@@ -23,4 +23,22 @@
 .link-icon {
     display: block;
     font-size: 1.4rem;
+}
+
+#display {
+    width: 100%;
+    position: relative;
+}
+.added-removed {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    font-size: 1.1rem;
+}
+#last-added {
+    background-color: rgb(110, 197, 110);
+}
+#last-removed {
+    background-color: rgb(231, 112, 112);
 }

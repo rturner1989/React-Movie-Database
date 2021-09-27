@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 const AppContext = React.createContext();
 
@@ -12,13 +12,14 @@ const AppProvider = ({ children }) => {
         movie: [],
         tv: [],
     });
-    // const [lastAdded, setLastAdded] = useState("");
     const [trendingData, setTrendingData] = useState({
         type: "movie",
         movie: [],
         tv: [],
         person: [],
     });
+    const [lastAdded, setLastAdded] = useState(false);
+    const [lastRemoved, setLastRemoved] = useState(false);
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -82,13 +83,13 @@ const AppProvider = ({ children }) => {
                     ...watchList,
                     movie: [...watchList.movie, item],
                 });
-                // setLastAdded("movie");
+                setLastAdded(true);
             } else if (category === "tv") {
                 setWatchList({
                     ...watchList,
                     tv: [...watchList.tv, item],
                 });
-                // setLastAdded("tv");
+                setLastAdded(true);
             }
         }
     };
@@ -99,11 +100,13 @@ const AppProvider = ({ children }) => {
                 ...watchList,
                 movie: watchList.movie.filter((item) => item.id !== id),
             });
+            setLastRemoved(true);
         } else if (category === "tv") {
             setWatchList({
                 ...watchList,
                 tv: watchList.tv.filter((item) => item.id !== id),
             });
+            setLastRemoved(true);
         }
     };
 
@@ -113,6 +116,24 @@ const AppProvider = ({ children }) => {
     const isTvShowInWatchlist = (id) => {
         return watchList.tv.find((item) => item.id === id);
     };
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLastAdded(false);
+        }, 3000);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [lastAdded]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLastRemoved(false);
+        }, 3000);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [lastRemoved]);
 
     return (
         <AppContext.Provider
@@ -128,6 +149,10 @@ const AppProvider = ({ children }) => {
                 isMovieInWatchlist,
                 isTvShowInWatchlist,
                 convertDate,
+                lastAdded,
+                setLastAdded,
+                lastRemoved,
+                setLastRemoved,
             }}
         >
             {children}

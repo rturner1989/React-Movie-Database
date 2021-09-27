@@ -4,8 +4,13 @@ import ToggleButton from "./ToggleButton/toggleButton";
 import RenderedCard from "./RenderedCard/renderedCard";
 
 const Homepage = () => {
-    const { watchList, setWatchList, isMovieInWatchlist, isTvShowInWatchlist } =
-        useGlobalContext();
+    const {
+        watchList,
+        setWatchList,
+        isMovieInWatchlist,
+        isTvShowInWatchlist,
+        lastAdded,
+    } = useGlobalContext();
     const [popularData, setPopularData] = useState({
         category: "",
         results: [],
@@ -173,8 +178,8 @@ const Homepage = () => {
                     {(watchList.category === "movie" &&
                         !watchList.movie.length) ||
                     (watchList.category === "tv" && !watchList.tv.length) ? (
-                        <div>
-                            <h2>Hello World</h2>
+                        <div id="watchlist-empty">
+                            <h2>Your Watchlist is Empty...</h2>
                         </div>
                     ) : watchList.category === "movie" ? (
                         watchList.movie.map((item) => {
