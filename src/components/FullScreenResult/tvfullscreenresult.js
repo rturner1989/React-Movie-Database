@@ -42,12 +42,11 @@ const TvFullScreenResult = () => {
     return (
         <div className="fullscreen">
             <div className="fullscreen-card">
-                <div className="fullscreen-img">
-                    <img
-                        src={`http://image.tmdb.org/t/p/w500/${tvData.poster_path}`}
-                        alt=""
-                    />
-                </div>
+                <img
+                    className="fullscreen-img"
+                    src={`http://image.tmdb.org/t/p/w500/${tvData.poster_path}`}
+                    alt=""
+                />
                 <div className="fullscreen-info">
                     <h1 className="fullscreen-title">{tvData.name}</h1>
                     <div className="fullscreen-list-info">

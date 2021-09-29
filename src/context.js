@@ -23,8 +23,8 @@ const AppProvider = ({ children }) => {
         isRemoved: false,
         title: "",
     });
-    // const [lastAdded, setLastAdded] = useState(false);
-    // const [lastRemoved, setLastRemoved] = useState(false);
+
+    const [expand, setExpand] = useState(false);
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -184,6 +184,8 @@ const AppProvider = ({ children }) => {
                 isTvShowInWatchlist,
                 convertDate,
                 watchListAlert,
+                expand,
+                setExpand,
             }}
         >
             {children}

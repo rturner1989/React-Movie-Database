@@ -4,6 +4,7 @@ import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
 import { AiFillStar, AiOutlineFileImage } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
+import FullScreenReview from "./fullscreenreview/fullscreenreview";
 
 const MovieFullScreenResult = () => {
     const { id } = useParams();
@@ -16,6 +17,8 @@ const MovieFullScreenResult = () => {
         removeFromWatchList,
         isMovieInWatchlist,
         convertDate,
+        expand,
+        setExpand,
     } = useGlobalContext();
 
     const getMovieData = async () => {
@@ -63,12 +66,11 @@ const MovieFullScreenResult = () => {
             // }}
         >
             <div className="fullscreen-card">
-                <div className="fullscreen-img">
-                    <img
-                        src={`http://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
-                        alt=""
-                    />
-                </div>
+                <img
+                    className="fullscreen-img"
+                    src={`http://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
+                    alt=""
+                />
                 <div className="fullscreen-section">
                     <div className="fullscreen-info">
                         <h1 className="fullscreen-title">{movieData.title}</h1>
@@ -145,35 +147,40 @@ const MovieFullScreenResult = () => {
                             <p>{movieData.overview}</p>
                         </div>
                     </div>
-                    <div id="review-cast-toggle-button">
-                        <button onClick={() => setToggle(false)}>Cast</button>
-                        <button onClick={() => setToggle(true)}>Reviews</button>
+                    <div
+                        id="review-cast-toggle-button"
+                        className="toggle-button-group"
+                    >
+                        <button
+                            className="fullscreen-toggle-btn"
+                            onClick={() => setToggle(false)}
+                        >
+                            Cast
+                        </button>
+                        <button
+                            className="fullscreen-toggle-btn"
+                            onClick={() => setToggle(true)}
+                        >
+                            Reviews
+                        </button>
                     </div>
                     {toggle ? (
                         movieReviewData.results !== undefined ? (
                             <div className="fullscreen-reviews">
-                                {movieReviewData.results.map((result) => {
-                                    return (
-                                        <div
-                                            key={result.id}
-                                            className="fullscreen-review"
-                                        >
-                                            <h4>A review by {result.author}</h4>
-                                            <h5>
-                                                <i>
-                                                    Written by {result.author}{" "}
-                                                    on{" "}
-                                                    {convertDate(
-                                                        result.created_at
-                                                    )}
-                                                </i>
-                                            </h5>
-                                            <p class="review-content">
-                                                {result.content}
-                                            </p>
-                                        </div>
-                                    );
-                                })}
+                                {movieReviewData.results.map(
+                                    (result, index) => {
+                                        return (
+                                            <FullScreenReview
+                                                key={index}
+                                                author={result.author}
+                                                written={convertDate(
+                                                    result.created_at
+                                                )}
+                                                review={result.content}
+                                            />
+                                        );
+                                    }
+                                )}
                             </div>
                         ) : (
                             <div></div>
@@ -183,19 +190,21 @@ const MovieFullScreenResult = () => {
                             {movieCreditData.cast.map((cast) => {
                                 return (
                                     <div key={cast.id} className="cast-credit">
-                                        {cast.profile_path === null ? (
-                                            <AiOutlineFileImage
-                                                className="btn-icon cast-img"
-                                                aria-hidden={true}
-                                                focusable={false}
-                                            />
-                                        ) : (
-                                            <img
-                                                className="cast-img"
-                                                src={`http://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                                                alt=""
-                                            />
-                                        )}
+                                        <div className="cast-img-container">
+                                            {cast.profile_path === null ? (
+                                                <AiOutlineFileImage
+                                                    className="cast-btn-icon"
+                                                    aria-hidden={true}
+                                                    focusable={false}
+                                                />
+                                            ) : (
+                                                <img
+                                                    className="cast-img"
+                                                    src={`http://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+                                                    alt=""
+                                                />
+                                            )}
+                                        </div>
 
                                         <p className="cast-role">
                                             {cast.character}
