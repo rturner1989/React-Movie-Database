@@ -4,20 +4,17 @@ import ToggleButton from "./ToggleButton/toggleButton";
 import RenderedCard from "./RenderedCard/renderedCard";
 
 const Homepage = () => {
-    const {
-        watchList,
-        setWatchList,
-        isMovieInWatchlist,
-        isTvShowInWatchlist,
-        lastAdded,
-    } = useGlobalContext();
+    const { watchList, setWatchList, isMovieInWatchlist, isTvShowInWatchlist } =
+        useGlobalContext();
     const [popularData, setPopularData] = useState({
-        category: "",
-        results: [],
+        category: "movie",
+        movie: [],
+        tv: [],
     });
     const [topRatedData, setTopRatedData] = useState({
-        category: "",
-        results: [],
+        category: "movie",
+        movie: [],
+        tv: [],
     });
 
     const getPopularMovieData = async () => {
@@ -25,7 +22,9 @@ const Homepage = () => {
             `https://api.themoviedb.org/3/movie/popular?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
         );
         const data = await response.json();
-        setPopularData({ category: "movie", results: data.results });
+        setPopularData((prev) => {
+            return { ...prev, movie: data.results };
+        });
     };
 
     const getPopularTVData = async () => {
@@ -33,7 +32,9 @@ const Homepage = () => {
             `https://api.themoviedb.org/3/tv/popular?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
         );
         const data = await response.json();
-        setPopularData({ category: "tv", results: data.results });
+        setPopularData((prev) => {
+            return { ...prev, tv: data.results };
+        });
     };
 
     const getTopRatedMovieData = async () => {
@@ -41,7 +42,9 @@ const Homepage = () => {
             `https://api.themoviedb.org/3/movie/top_rated?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
         );
         const data = await response.json();
-        setTopRatedData({ category: "movie", results: data.results });
+        setTopRatedData((prev) => {
+            return { ...prev, movie: data.results };
+        });
     };
 
     const getTopRatedTVData = async () => {
@@ -49,12 +52,37 @@ const Homepage = () => {
             `https://api.themoviedb.org/3/tv/top_rated?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
         );
         const data = await response.json();
-        setTopRatedData({ category: "tv", results: data.results });
+        setTopRatedData((prev) => {
+            return { ...prev, tv: data.results };
+        });
+    };
+
+    const togglePopularCategory = () => {
+        setPopularData({
+            ...popularData,
+            category: popularData.category === "movie" ? "tv" : "movie",
+        });
+    };
+
+    const toggleTopRatedCategory = () => {
+        setTopRatedData({
+            ...topRatedData,
+            category: topRatedData.category === "movie" ? "tv" : "movie",
+        });
+    };
+
+    const toggleWatchlistCategory = () => {
+        setWatchList({
+            ...watchList,
+            category: watchList.category === "movie" ? "tv" : "movie",
+        });
     };
 
     useEffect(() => {
         getPopularMovieData();
+        getPopularTVData();
         getTopRatedMovieData();
+        getTopRatedTVData();
     }, []);
 
     return (
@@ -62,15 +90,15 @@ const Homepage = () => {
             <section id="popular" className="section">
                 <h2>What's Popular</h2>
                 <ToggleButton
-                    function1={getPopularMovieData}
-                    function2={getPopularTVData}
+                    handleClick={togglePopularCategory}
+                    active={popularData.category}
                 />
                 <div
                     id="popular-container"
                     className="homepage-render-container"
                 >
                     {popularData.category === "movie" ? (
-                        popularData.results.map((movie) => {
+                        popularData.movie.map((movie) => {
                             return (
                                 <RenderedCard
                                     key={movie.id}
@@ -88,7 +116,7 @@ const Homepage = () => {
                             );
                         })
                     ) : popularData.category === "tv" ? (
-                        popularData.results.map((tv) => {
+                        popularData.tv.map((tv) => {
                             return (
                                 <RenderedCard
                                     key={tv.id}
@@ -113,15 +141,15 @@ const Homepage = () => {
             <section id="rated" className="section">
                 <h2>Top Rated</h2>
                 <ToggleButton
-                    function1={getTopRatedMovieData}
-                    function2={getTopRatedTVData}
+                    handleClick={toggleTopRatedCategory}
+                    active={topRatedData.category}
                 />
                 <div
                     id="top-rated-container"
                     className="homepage-render-container"
                 >
                     {topRatedData.category === "movie" ? (
-                        topRatedData.results.map((movie) => {
+                        topRatedData.movie.map((movie) => {
                             return (
                                 <RenderedCard
                                     key={movie.id}
@@ -139,7 +167,7 @@ const Homepage = () => {
                             );
                         })
                     ) : topRatedData.category === "tv" ? (
-                        topRatedData.results.map((tv) => {
+                        topRatedData.tv.map((tv) => {
                             return (
                                 <RenderedCard
                                     key={tv.id}
@@ -164,12 +192,8 @@ const Homepage = () => {
             <section id="watchlist" className="section">
                 <h2>Watchlist</h2>
                 <ToggleButton
-                    function1={() =>
-                        setWatchList({ ...watchList, category: "movie" })
-                    }
-                    function2={() =>
-                        setWatchList({ ...watchList, category: "tv" })
-                    }
+                    handleClick={toggleWatchlistCategory}
+                    active={watchList.category}
                 />
                 <div
                     id="watchlist-container"

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineFileImage } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 
@@ -183,11 +183,20 @@ const MovieFullScreenResult = () => {
                             {movieCreditData.cast.map((cast) => {
                                 return (
                                     <div key={cast.id} className="cast-credit">
-                                        <img
-                                            className="cast-img"
-                                            src={`http://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                                            alt=""
-                                        />
+                                        {cast.profile_path === null ? (
+                                            <AiOutlineFileImage
+                                                className="btn-icon cast-img"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        ) : (
+                                            <img
+                                                className="cast-img"
+                                                src={`http://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+                                                alt=""
+                                            />
+                                        )}
+
                                         <p className="cast-role">
                                             {cast.character}
                                         </p>

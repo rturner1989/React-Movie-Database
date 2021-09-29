@@ -135,6 +135,28 @@ const AppProvider = ({ children }) => {
         };
     }, [lastRemoved]);
 
+    useEffect(() => {
+        const LocalSaveWatchlist = {
+            category: watchList.category,
+            movie: watchList.movie.map((film) => {
+                return film.id;
+            }),
+            tv: watchList.tv.map((show) => {
+                return show.id;
+            }),
+        };
+        localStorage.setItem("Watchlist", JSON.stringify(LocalSaveWatchlist));
+    }, [watchList]);
+
+    useEffect(() => {
+        const LocalSaveWatchlist = localStorage.getItem("Watchlist");
+        if (LocalSaveWatchlist) {
+            const deString = JSON.parse(LocalSaveWatchlist);
+
+            const obj = { category: deString.category };
+        }
+    }, []);
+
     return (
         <AppContext.Provider
             value={{

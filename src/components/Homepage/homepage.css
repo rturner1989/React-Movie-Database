@@ -6,13 +6,13 @@
     position: relative;
     display: grid;
     row-gap: 2rem;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding: 2% 15%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
-        "added added added added"
-        ". popular popular ."
-        ". rated rated ."
-        ". watchlist watchlist .";
+        "popular popular"
+        "rated rated"
+        "watchlist watchlist";
 }
 .section {
     width: 100%;
@@ -151,9 +151,11 @@
 .movie-toggle {
     border-right: 1px white solid;
 }
-.movie-toggle:hover {
-    background-color: red;
+.movie-toggle:not(.active):hover,
+.tv-toggle:not(.active):hover {
+    background-color: green;
 }
-.tv-toggle:hover {
+.movie-toggle.active,
+.tv-toggle.active {
     background-color: red;
 }
