@@ -99,7 +99,8 @@
 /* Remove from watchlist button */
 .remove-from-wishlist {
     position: absolute;
-    right: -12px;
+    z-index: 200;
+    right: -7px;
     top: -7px;
     background-color: white;
     border: unset;

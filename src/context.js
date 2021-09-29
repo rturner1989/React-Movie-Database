@@ -160,7 +160,6 @@ const AppProvider = ({ children }) => {
 
     useEffect(() => {
         const LocalSaveWatchlist = localStorage.getItem("Watchlist");
-        console.log(LocalSaveWatchlist);
         if (LocalSaveWatchlist) {
             setWatchList(JSON.parse(LocalSaveWatchlist));
         }

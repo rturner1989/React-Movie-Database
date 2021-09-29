@@ -68,14 +68,16 @@ const MovieFullScreenResult = () => {
             <div className="fullscreen-card">
                 <img
                     className="fullscreen-img"
-                    src={`http://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
                     alt=""
                 />
-                <div className="fullscreen-section">
-                    <div className="fullscreen-info">
+                <section className="fullscreen-section">
+                    <section className="fullscreen-info">
                         <h1 className="fullscreen-title">{movieData.title}</h1>
                         <div className="fullscreen-list-info">
-                            <p>{convertDate(movieData.release_date)}</p>
+                            <p className="fullscreen-release-date">
+                                {convertDate(movieData.release_date)}
+                            </p>
                             <div className="ball"></div>
                             <div className="fullscreen-genre">
                                 {movieData.genres !== undefined ? (
@@ -90,7 +92,9 @@ const MovieFullScreenResult = () => {
                             <p>{movieData.runtime} mins</p>
                         </div>
                         <div className="fullscreen-rating">
-                            <h4>Average Score:</h4>
+                            <h4 className="average-score-title">
+                                Average Score:
+                            </h4>
                             <p className="fullscreen-vote">
                                 <AiFillStar className="render-icon" />
                                 {movieData.vote_average}
@@ -146,24 +150,25 @@ const MovieFullScreenResult = () => {
                             <h3>Overview</h3>
                             <p>{movieData.overview}</p>
                         </div>
-                    </div>
-                    <div
-                        id="review-cast-toggle-button"
-                        className="toggle-button-group"
-                    >
-                        <button
-                            className="fullscreen-toggle-btn"
-                            onClick={() => setToggle(false)}
-                        >
-                            Cast
-                        </button>
-                        <button
-                            className="fullscreen-toggle-btn"
-                            onClick={() => setToggle(true)}
-                        >
-                            Reviews
-                        </button>
-                    </div>
+                    </section>
+                    <section className="review-cast-btn-container">
+                        <div className="review-cast-toggle-button">
+                            <button
+                                id="cast-btn"
+                                className="fullscreen-toggle-btn"
+                                onClick={() => setToggle(false)}
+                            >
+                                Cast
+                            </button>
+                            <button
+                                id="review-btn"
+                                className="fullscreen-toggle-btn"
+                                onClick={() => setToggle(true)}
+                            >
+                                Reviews
+                            </button>
+                        </div>
+                    </section>
                     {toggle ? (
                         movieReviewData.results !== undefined ? (
                             <div className="fullscreen-reviews">
@@ -200,21 +205,19 @@ const MovieFullScreenResult = () => {
                                             ) : (
                                                 <img
                                                     className="cast-img"
-                                                    src={`http://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+                                                    src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
                                                     alt=""
                                                 />
                                             )}
                                         </div>
 
-                                        <p className="cast-role">
-                                            {cast.character}
-                                        </p>
                                         <Link
                                             to={`/result/people/${cast.id}`}
                                             className="cast-name"
                                         >
-                                            {cast.name}
+                                            {cast.character}
                                         </Link>
+                                        <p className="cast-role">{cast.name}</p>
                                     </div>
                                 );
                             })}
@@ -222,7 +225,7 @@ const MovieFullScreenResult = () => {
                     ) : (
                         <div></div>
                     )}
-                </div>
+                </section>
             </div>
         </div>
     );
