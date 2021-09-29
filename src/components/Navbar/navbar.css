@@ -24,7 +24,7 @@
     display: block;
     font-size: 1.4rem;
 }
-
+/* added or removed from watchlist */
 #display {
     width: 100%;
     position: relative;

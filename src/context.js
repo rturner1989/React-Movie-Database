@@ -75,22 +75,33 @@ const AppProvider = ({ children }) => {
     };
 
     const addToWatchList = (category, item) => {
-        if (
-            ![...watchList.movie, ...watchList.tv].find((w) => w.id === item.id)
-        ) {
-            if (category === "movie") {
-                setWatchList({
-                    ...watchList,
-                    movie: [...watchList.movie, item],
-                });
-                setLastAdded(true);
-            } else if (category === "tv") {
-                setWatchList({
-                    ...watchList,
-                    tv: [...watchList.tv, item],
-                });
-                setLastAdded(true);
-            }
+        if ([...watchList.movie, ...watchList.tv].find((w) => w.id === item.id))
+            return;
+
+        if (category === "movie") {
+            const obj = {
+                id: item.id,
+                title: item.title,
+                poster_path: item.poster_path,
+                vote_average: item.vote_average,
+            };
+            setWatchList({
+                ...watchList,
+                movie: [...watchList.movie, obj],
+            });
+            setLastAdded(true);
+        } else if (category === "tv") {
+            const obj = {
+                id: item.id,
+                title: item.name,
+                poster_path: item.poster_path,
+                vote_average: item.vote_average,
+            };
+            setWatchList({
+                ...watchList,
+                tv: [...watchList.tv, obj],
+            });
+            setLastAdded(true);
         }
     };
 
@@ -136,26 +147,15 @@ const AppProvider = ({ children }) => {
     }, [lastRemoved]);
 
     useEffect(() => {
-        const LocalSaveWatchlist = {
-            category: watchList.category,
-            movie: watchList.movie.map((film) => {
-                return film.id;
-            }),
-            tv: watchList.tv.map((show) => {
-                return show.id;
-            }),
-        };
-        localStorage.setItem("Watchlist", JSON.stringify(LocalSaveWatchlist));
-    }, [watchList]);
-
-    useEffect(() => {
         const LocalSaveWatchlist = localStorage.getItem("Watchlist");
+        console.log(LocalSaveWatchlist);
         if (LocalSaveWatchlist) {
-            const deString = JSON.parse(LocalSaveWatchlist);
-
-            const obj = { category: deString.category };
+            setWatchList(JSON.parse(LocalSaveWatchlist));
         }
     }, []);
+    useEffect(() => {
+        localStorage.setItem("Watchlist", JSON.stringify(watchList));
+    }, [watchList]);
 
     return (
         <AppContext.Provider
