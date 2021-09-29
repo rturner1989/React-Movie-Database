@@ -11,7 +11,7 @@ const MovieFullScreenResult = () => {
     const [movieData, setMovieData] = useState({});
     const [movieReviewData, setMovieReviewData] = useState({});
     const [movieCreditData, setMovieCreditData] = useState({});
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState({ category: "cast" });
     const {
         addToWatchList,
         removeFromWatchList,
@@ -155,21 +155,31 @@ const MovieFullScreenResult = () => {
                         <div className="review-cast-toggle-button">
                             <button
                                 id="cast-btn"
-                                className="fullscreen-toggle-btn"
-                                onClick={() => setToggle(false)}
+                                className={`fullscreen-toggle-btn cast-btn ${
+                                    toggle.category === "cast"
+                                        ? "review-cast-active"
+                                        : ""
+                                }`}
+                                onClick={() => setToggle({ category: "cast" })}
                             >
                                 Cast
                             </button>
                             <button
                                 id="review-btn"
-                                className="fullscreen-toggle-btn"
-                                onClick={() => setToggle(true)}
+                                className={`fullscreen-toggle-btn review-btn ${
+                                    toggle.category === "review"
+                                        ? "review-cast-active"
+                                        : ""
+                                }`}
+                                onClick={() =>
+                                    setToggle({ category: "review" })
+                                }
                             >
                                 Reviews
                             </button>
                         </div>
                     </section>
-                    {toggle ? (
+                    {toggle.category === "review" ? (
                         movieReviewData.results !== undefined ? (
                             <div className="fullscreen-reviews">
                                 {movieReviewData.results.map(
@@ -190,38 +200,47 @@ const MovieFullScreenResult = () => {
                         ) : (
                             <div></div>
                         )
-                    ) : movieCreditData.cast !== undefined ? (
-                        <div className="fullscreen-cast">
-                            {movieCreditData.cast.map((cast) => {
-                                return (
-                                    <div key={cast.id} className="cast-credit">
-                                        <div className="cast-img-container">
-                                            {cast.profile_path === null ? (
-                                                <AiOutlineFileImage
-                                                    className="cast-btn-icon"
-                                                    aria-hidden={true}
-                                                    focusable={false}
-                                                />
-                                            ) : (
-                                                <img
-                                                    className="cast-img"
-                                                    src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                                                    alt=""
-                                                />
-                                            )}
-                                        </div>
-
-                                        <Link
-                                            to={`/result/people/${cast.id}`}
-                                            className="cast-name"
+                    ) : toggle.category === "cast" ? (
+                        movieCreditData.cast !== undefined ? (
+                            <div className="fullscreen-cast">
+                                {movieCreditData.cast.map((cast) => {
+                                    return (
+                                        <div
+                                            key={cast.id}
+                                            className="cast-credit"
                                         >
-                                            {cast.character}
-                                        </Link>
-                                        <p className="cast-role">{cast.name}</p>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                                            <div className="cast-img-container">
+                                                {cast.profile_path === null ? (
+                                                    <AiOutlineFileImage
+                                                        className="cast-btn-icon"
+                                                        aria-hidden={true}
+                                                        focusable={false}
+                                                    />
+                                                ) : (
+                                                    <img
+                                                        className="cast-img"
+                                                        src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+                                                        alt=""
+                                                    />
+                                                )}
+                                            </div>
+
+                                            <Link
+                                                to={`/result/people/${cast.id}`}
+                                                className="cast-name"
+                                            >
+                                                {cast.character}
+                                            </Link>
+                                            <p className="cast-role">
+                                                {cast.name}
+                                            </p>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        ) : (
+                            <div></div>
+                        )
                     ) : (
                         <div></div>
                     )}

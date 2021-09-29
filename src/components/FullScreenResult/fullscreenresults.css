@@ -30,22 +30,25 @@
     display: flex;
     flex-direction: column;
 }
-.fullscreen-title {
-    text-align: center;
-    font-size: var(--large-title-font-size);
-}
 .fullscreen-info {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem;
+}
+.fullscreen-title {
+    width: 100%;
+    color: white;
+    background-color: blue;
+    text-align: center;
+    font-size: var(--large-title-font-size);
 }
 .fullscreen-list-info {
     display: flex;
     width: fit-content;
     align-items: center;
+    /* padding: 0.5rem; */
 }
 .fullscreen-release-date {
     margin: 0px 0.5rem;
@@ -89,8 +92,12 @@
     display: flex;
     width: fit-content;
 }
+.fullscreen-overview {
+    padding: 0.5rem;
+}
 .company-name {
     font-size: var(--paragraph-font-size);
+    margin: 0.3rem;
 }
 .add-remove-button {
     display: block;
@@ -127,6 +134,14 @@
 }
 #cast-btn {
     border-right: 1px solid white;
+}
+.cast-btn:not(.review-cast-active):hover,
+.review-btn:not(.review-cast-active):hover {
+    background-color: green;
+}
+.cast-btn.review-cast-active,
+.review-btn.review-cast-active {
+    background-color: red;
 }
 /* reviews */
 .fullscreen-reviews {
