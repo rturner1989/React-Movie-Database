@@ -29,16 +29,18 @@
     width: 100%;
     position: relative;
 }
-.added-removed {
+#watchlist-alert {
+    position: absolute;
+    z-index: 200;
     display: flex;
     justify-content: center;
     width: 100%;
     color: white;
     font-size: 1.1rem;
 }
-#last-added {
+#watchlist-alert.added {
     background-color: rgb(110, 197, 110);
 }
-#last-removed {
+#watchlist-alert.removed {
     background-color: rgb(231, 112, 112);
 }

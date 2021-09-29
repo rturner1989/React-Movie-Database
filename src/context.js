@@ -18,8 +18,13 @@ const AppProvider = ({ children }) => {
         tv: [],
         person: [],
     });
-    const [lastAdded, setLastAdded] = useState(false);
-    const [lastRemoved, setLastRemoved] = useState(false);
+    const [watchListAlert, setWatchListAlert] = useState({
+        isAdded: false,
+        isRemoved: false,
+        title: "",
+    });
+    // const [lastAdded, setLastAdded] = useState(false);
+    // const [lastRemoved, setLastRemoved] = useState(false);
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -89,11 +94,15 @@ const AppProvider = ({ children }) => {
                 ...watchList,
                 movie: [...watchList.movie, obj],
             });
-            setLastAdded(true);
+            setWatchListAlert({
+                isAdded: true,
+                isRemoved: false,
+                title: item.title,
+            });
         } else if (category === "tv") {
             const obj = {
                 id: item.id,
-                title: item.name,
+                name: item.name,
                 poster_path: item.poster_path,
                 vote_average: item.vote_average,
             };
@@ -101,7 +110,11 @@ const AppProvider = ({ children }) => {
                 ...watchList,
                 tv: [...watchList.tv, obj],
             });
-            setLastAdded(true);
+            setWatchListAlert({
+                isAdded: true,
+                isRemoved: false,
+                title: item.name,
+            });
         }
     };
 
@@ -111,13 +124,21 @@ const AppProvider = ({ children }) => {
                 ...watchList,
                 movie: watchList.movie.filter((item) => item.id !== id),
             });
-            setLastRemoved(true);
+            setWatchListAlert({
+                isAdded: false,
+                isRemoved: true,
+                title: watchList.movie.find((item) => item.id === id).title,
+            });
         } else if (category === "tv") {
             setWatchList({
                 ...watchList,
                 tv: watchList.tv.filter((item) => item.id !== id),
             });
-            setLastRemoved(true);
+            setWatchListAlert({
+                isAdded: false,
+                isRemoved: true,
+                title: watchList.tv.find((item) => item.id === id).name,
+            });
         }
     };
 
@@ -130,21 +151,12 @@ const AppProvider = ({ children }) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setLastAdded(false);
+            setWatchListAlert({ isAdded: false, isRemoved: false, title: "" });
         }, 3000);
         return () => {
             clearTimeout(timer);
         };
-    }, [lastAdded]);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLastRemoved(false);
-        }, 3000);
-        return () => {
-            clearTimeout(timer);
-        };
-    }, [lastRemoved]);
+    }, [watchListAlert]);
 
     useEffect(() => {
         const LocalSaveWatchlist = localStorage.getItem("Watchlist");
@@ -171,10 +183,7 @@ const AppProvider = ({ children }) => {
                 isMovieInWatchlist,
                 isTvShowInWatchlist,
                 convertDate,
-                lastAdded,
-                setLastAdded,
-                lastRemoved,
-                setLastRemoved,
+                watchListAlert,
             }}
         >
             {children}
