@@ -8,6 +8,9 @@ const PeopleFullScreenResult = () => {
     const { id } = useParams();
     const [peopleData, setPeopleData] = useState({});
     const [peopleCreditData, setPeopleCreditData] = useState({});
+    const [peopleImageData, setPeopleImageData] = useState({});
+    const [toggle, setToggle] = useState({ category: "credit" });
+
     const { convertDate } = useGlobalContext();
 
     const getPeopleData = async () => {
@@ -26,9 +29,18 @@ const PeopleFullScreenResult = () => {
         setPeopleCreditData(data);
     };
 
+    const getPeopleImageData = async () => {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/person/${id}/images?api_key=9ddeebbe780fac8f3f13322ce56a87af`
+        );
+        const data = await response.json();
+        setPeopleImageData(data);
+    };
+
     useEffect(() => {
         getPeopleData();
         getPeopleCreditData();
+        getPeopleImageData();
     }, []);
 
     return (
@@ -85,47 +97,97 @@ const PeopleFullScreenResult = () => {
                             </p>
                         </section>
                     </section>
-                    <h3 className="person-credits">Credits</h3>
-                    <div className="person-fullscreen-cast">
-                        {peopleCreditData.cast !== undefined ? (
-                            peopleCreditData.cast.map((cast, index) => {
-                                return (
-                                    <div key={index} className="cast-credit">
-                                        <div className="cast-img-container">
-                                            {cast.poster_path === null ? (
-                                                <div className="cast-btn-icon-container">
-                                                    <AiOutlineFileImage
-                                                        className="cast-btn-icon"
-                                                        aria-hidden={true}
-                                                        focusable={false}
-                                                    />
-                                                </div>
-                                            ) : (
-                                                <img
-                                                    className="cast-img"
-                                                    src={`https://image.tmdb.org/t/p/w500/${cast.poster_path}`}
-                                                    alt=""
-                                                />
-                                            )}
-                                        </div>
-                                        <Link
-                                            to={`/result/movie/${cast.id}`}
-                                            className="cast-name"
+                    <section className="review-cast-btn-container">
+                        <div className="review-cast-toggle-button">
+                            <button
+                                id="cast-btn"
+                                className={`fullscreen-toggle-btn cast-btn ${
+                                    toggle.category === "credit"
+                                        ? "review-cast-active"
+                                        : ""
+                                }`}
+                                onClick={() =>
+                                    setToggle({ category: "credit" })
+                                }
+                            >
+                                Movie
+                            </button>
+                            <button
+                                id="review-btn"
+                                className={`fullscreen-toggle-btn review-btn ${
+                                    toggle.category === "image"
+                                        ? "review-cast-active"
+                                        : ""
+                                }`}
+                                onClick={() => setToggle({ category: "image" })}
+                            >
+                                Images
+                            </button>
+                        </div>
+                    </section>
+                    {toggle.category === "credit" ? (
+                        <div className="person-fullscreen-cast">
+                            {peopleCreditData.cast !== undefined ? (
+                                peopleCreditData.cast.map((cast, index) => {
+                                    return (
+                                        <div
+                                            key={index}
+                                            className="cast-credit"
                                         >
-                                            <p className="cast-name">
-                                                {cast.title}
+                                            <div className="cast-img-container">
+                                                {cast.poster_path === null ? (
+                                                    <div className="cast-btn-icon-container">
+                                                        <AiOutlineFileImage
+                                                            className="cast-btn-icon"
+                                                            aria-hidden={true}
+                                                            focusable={false}
+                                                        />
+                                                    </div>
+                                                ) : (
+                                                    <img
+                                                        className="cast-img"
+                                                        src={`https://image.tmdb.org/t/p/w500/${cast.poster_path}`}
+                                                        alt=""
+                                                    />
+                                                )}
+                                            </div>
+                                            <Link
+                                                to={`/result/movie/${cast.id}`}
+                                                className="cast-name"
+                                            >
+                                                <p className="cast-name">
+                                                    {cast.title}
+                                                </p>
+                                            </Link>
+                                            <p className="cast-role">
+                                                {cast.character}
                                             </p>
-                                        </Link>
-                                        <p className="cast-role">
-                                            {cast.character}
-                                        </p>
-                                    </div>
-                                );
-                            })
-                        ) : (
-                            <div></div>
-                        )}
-                    </div>
+                                        </div>
+                                    );
+                                })
+                            ) : (
+                                <div></div>
+                            )}
+                        </div>
+                    ) : toggle.category === "image" ? (
+                        <div className="person-fullscreen-images-container">
+                            {peopleImageData.profiles !== null ? (
+                                peopleImageData.profiles.map((img, index) => {
+                                    return (
+                                        <img
+                                            className="person-img"
+                                            src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                            alt=""
+                                        />
+                                    );
+                                })
+                            ) : (
+                                <div></div>
+                            )}
+                        </div>
+                    ) : (
+                        <div></div>
+                    )}
                 </section>
             </div>
         </div>
