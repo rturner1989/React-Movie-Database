@@ -10,9 +10,6 @@ const FullScreenReview = ({ author, written, review }) => {
                 </i>
             </h5>
             <p className="review-content">{review}</p>
-            {/* <button onClick={() => setExpand(!expand)}>
-                {expand ? "retract" : "expand"}
-            </button> */}
         </div>
     );
 };

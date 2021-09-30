@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 const AppContext = React.createContext();
 
@@ -7,7 +8,7 @@ const AppProvider = ({ children }) => {
         category: "",
         results: [],
     });
-    const [watchList, setWatchList] = useState({
+    const [watchList, setWatchList] = useLocalStorage("Watchlist", {
         category: "movie",
         movie: [],
         tv: [],
@@ -23,8 +24,6 @@ const AppProvider = ({ children }) => {
         isRemoved: false,
         title: "",
     });
-
-    const [expand, setExpand] = useState(false);
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -82,7 +81,6 @@ const AppProvider = ({ children }) => {
     const addToWatchList = (category, item) => {
         if ([...watchList.movie, ...watchList.tv].find((w) => w.id === item.id))
             return;
-
         if (category === "movie") {
             const obj = {
                 id: item.id,
@@ -158,16 +156,6 @@ const AppProvider = ({ children }) => {
         };
     }, [watchListAlert]);
 
-    useEffect(() => {
-        const LocalSaveWatchlist = localStorage.getItem("Watchlist");
-        if (LocalSaveWatchlist) {
-            setWatchList(JSON.parse(LocalSaveWatchlist));
-        }
-    }, []);
-    useEffect(() => {
-        localStorage.setItem("Watchlist", JSON.stringify(watchList));
-    }, [watchList]);
-
     return (
         <AppContext.Provider
             value={{
@@ -183,8 +171,6 @@ const AppProvider = ({ children }) => {
                 isTvShowInWatchlist,
                 convertDate,
                 watchListAlert,
-                expand,
-                setExpand,
             }}
         >
             {children}

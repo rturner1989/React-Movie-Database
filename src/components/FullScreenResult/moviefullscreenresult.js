@@ -17,8 +17,6 @@ const MovieFullScreenResult = () => {
         removeFromWatchList,
         isMovieInWatchlist,
         convertDate,
-        expand,
-        setExpand,
     } = useGlobalContext();
 
     const getMovieData = async () => {
@@ -211,11 +209,13 @@ const MovieFullScreenResult = () => {
                                         >
                                             <div className="cast-img-container">
                                                 {cast.profile_path === null ? (
-                                                    <AiOutlineFileImage
-                                                        className="cast-btn-icon"
-                                                        aria-hidden={true}
-                                                        focusable={false}
-                                                    />
+                                                    <div className="cast-btn-icon-container">
+                                                        <AiOutlineFileImage
+                                                            className="cast-btn-icon"
+                                                            aria-hidden={true}
+                                                            focusable={false}
+                                                        />
+                                                    </div>
                                                 ) : (
                                                     <img
                                                         className="cast-img"

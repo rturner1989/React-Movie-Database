@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context";
+import useHorizontalScroll from "../../hooks/useHorizontalScroll";
 import MovieResultData from "../SearchResultsCard/movieresultdata";
 import TvResultData from "../SearchResultsCard/tvresultdata";
 import PeopleResultData from "../SearchResultsCard/peopleresultdata";
@@ -7,6 +8,10 @@ import TrendingData from "../SearchTrending/trendingdata";
 
 const SearchResults = () => {
     const { searchResults, trendingData, setTrendingData } = useGlobalContext();
+
+    const movieTrendingRef = useHorizontalScroll();
+    const tvTrendingRef = useHorizontalScroll();
+    const peopleTrendingRef = useHorizontalScroll();
 
     const getTrendingMovieData = async () => {
         const response = await fetch(
@@ -48,7 +53,10 @@ const SearchResults = () => {
         switch (trendingData.type) {
             case "movie":
                 return (
-                    <div className="trending-data-container">
+                    <div
+                        className="trending-data-container"
+                        ref={movieTrendingRef}
+                    >
                         {trendingData.movie.map((film) => {
                             return (
                                 <TrendingData
@@ -64,7 +72,10 @@ const SearchResults = () => {
                 );
             case "tv":
                 return (
-                    <div className="trending-data-container">
+                    <div
+                        className="trending-data-container"
+                        ref={tvTrendingRef}
+                    >
                         {trendingData.tv.map((show) => {
                             return (
                                 <TrendingData
@@ -80,7 +91,10 @@ const SearchResults = () => {
                 );
             case "people":
                 return (
-                    <div className="trending-data-container">
+                    <div
+                        className="trending-data-container"
+                        ref={peopleTrendingRef}
+                    >
                         {trendingData.person.map((peep) => {
                             return (
                                 <TrendingData

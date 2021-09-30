@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context";
+import useHorizontalScroll from "../../hooks/useHorizontalScroll";
 import ToggleButton from "./ToggleButton/toggleButton";
 import RenderedCard from "./RenderedCard/renderedCard";
 
@@ -16,6 +17,10 @@ const Homepage = () => {
         movie: [],
         tv: [],
     });
+
+    const popScrollRef = useHorizontalScroll();
+    const topScrollRef = useHorizontalScroll();
+    const watchScrollRef = useHorizontalScroll();
 
     const getPopularMovieData = async () => {
         const response = await fetch(
@@ -96,6 +101,7 @@ const Homepage = () => {
                 <div
                     id="popular-container"
                     className="homepage-render-container"
+                    ref={popScrollRef}
                 >
                     {popularData.category === "movie" ? (
                         popularData.movie.map((movie) => {
@@ -147,6 +153,7 @@ const Homepage = () => {
                 <div
                     id="top-rated-container"
                     className="homepage-render-container"
+                    ref={topScrollRef}
                 >
                     {topRatedData.category === "movie" ? (
                         topRatedData.movie.map((movie) => {
@@ -198,6 +205,7 @@ const Homepage = () => {
                 <div
                     id="watchlist-container"
                     className="homepage-render-container"
+                    ref={watchScrollRef}
                 >
                     {(watchList.category === "movie" &&
                         !watchList.movie.length) ||
