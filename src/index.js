@@ -6,7 +6,6 @@ import "./components/Homepage/homepage.css";
 import "./components/Searchbar/searchbar.css";
 import "./components/SearchResults/searchresults.css";
 import "./components/FullScreenResult/fullscreenresults.css";
-import "./components/FullScreenResult/peoplefullscreenresults.css";
 import "./components/SearchResultsCard/movieresultdata.css";
 import "./components/SearchResultsCard/tvresultdata.css";
 import "./components/SearchResultsCard/peopleresultdata.css";

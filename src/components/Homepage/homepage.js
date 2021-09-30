@@ -18,9 +18,9 @@ const Homepage = () => {
         tv: [],
     });
 
-    const popScrollRef = useHorizontalScroll();
-    const topScrollRef = useHorizontalScroll();
-    const watchScrollRef = useHorizontalScroll();
+    const popScrollRef = useHorizontalScroll(false);
+    const topScrollRef = useHorizontalScroll(false);
+    const watchScrollRef = useHorizontalScroll(false);
 
     const getPopularMovieData = async () => {
         const response = await fetch(

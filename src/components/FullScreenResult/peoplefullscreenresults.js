@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useGlobalContext } from "../../context";
+import { AiOutlineFileImage } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const PeopleFullScreenResult = () => {
     const { id } = useParams();
     const [peopleData, setPeopleData] = useState({});
-
-    const date = new Date(peopleData.birthday);
-    const string = date.toLocaleString("default", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    });
+    const [peopleCreditData, setPeopleCreditData] = useState({});
+    const { convertDate } = useGlobalContext();
 
     const getPeopleData = async () => {
         const response = await fetch(
@@ -20,33 +18,115 @@ const PeopleFullScreenResult = () => {
         setPeopleData(data);
     };
 
+    const getPeopleCreditData = async () => {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
+        );
+        const data = await response.json();
+        setPeopleCreditData(data);
+    };
+
     useEffect(() => {
         getPeopleData();
+        getPeopleCreditData();
     }, []);
 
     return (
         <div className="fullscreen">
-            <div id="people-fullscreen-card">
-                <div id="people-fullscreen-img">
+            <div className="fullscreen-card">
+                {peopleData.profile_path === null ? (
+                    <div className="fullscreen-img">
+                        <AiOutlineFileImage
+                            className="cast-btn-icon"
+                            aria-hidden={true}
+                            focusable={false}
+                        />
+                    </div>
+                ) : (
                     <img
-                        src={`http://image.tmdb.org/t/p/w500/${peopleData.profile_path}`}
+                        className="fullscreen-img"
+                        src={`https://image.tmdb.org/t/p/w500/${peopleData.profile_path}`}
                         alt=""
                     />
-                </div>
-                <div id="people-info">
-                    <h1>{peopleData.name}</h1>
-                    <h3>Personal Info</h3>
-                    <h4>Known For:</h4>
-                    <p>{peopleData.known_for_department}</p>
-                    <h4>Birthdate:</h4>
-                    <p>{string}</p>
-                    <h4>Place of Birth:</h4>
-                    <p>{peopleData.place_of_birth}</p>
-                </div>
-                <div id="people-biography">
-                    <h3>Biography</h3>
-                    <p>{peopleData.biography}</p>
-                </div>
+                )}
+                <section className="person-fullscreen-section">
+                    <section className="fullscreen-info">
+                        <h1 className="fullscreen-title">{peopleData.name}</h1>
+                        <section className="person-info">
+                            <div className="person-info-div">
+                                <h4 className="person-info-title">
+                                    Birthdate:
+                                </h4>
+                                <p className="person-info-para">
+                                    {convertDate(peopleData.birthday)}
+                                </p>
+                            </div>
+                            <div className="person-info-div">
+                                <h4 className="person-info-title">
+                                    Place of Birth:
+                                </h4>
+                                <p className="person-info-para">
+                                    {peopleData.place_of_birth}
+                                </p>
+                            </div>
+                            <div className="person-info-div">
+                                <h4 className="person-info-title">
+                                    Known For:
+                                </h4>
+                                <p className="person-info-para">
+                                    {peopleData.known_for_department}
+                                </p>
+                            </div>
+                        </section>
+                        <section className="person-biography">
+                            <h3>Biography</h3>
+                            <p className="person-bio-content">
+                                {peopleData.biography}
+                            </p>
+                        </section>
+                    </section>
+                    <h3 className="person-credits">Credits</h3>
+                    <div className="person-fullscreen-cast">
+                        {peopleCreditData.cast !== undefined ? (
+                            peopleCreditData.cast.map((cast, index) => {
+                                return (
+                                    <div key={index} className="cast-credit">
+                                        <div className="cast-img-container">
+                                            {cast.poster_path === null ? (
+                                                <div className="cast-btn-icon-container">
+                                                    <AiOutlineFileImage
+                                                        className="cast-btn-icon"
+                                                        aria-hidden={true}
+                                                        focusable={false}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                <img
+                                                    className="cast-img"
+                                                    src={`https://image.tmdb.org/t/p/w500/${cast.poster_path}`}
+                                                    alt=""
+                                                />
+                                            )}
+                                        </div>
+                                        <Link
+                                            to={`/result/movie/${cast.id}`}
+                                            className="cast-name"
+                                        >
+                                            <p className="cast-name">
+                                                {cast.title}
+                                            </p>
+                                        </Link>
+                                        <p className="cast-role">
+                                            {cast.character}
+                                        </p>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <div></div>
+                        )}
+                    </div>
+                </section>
             </div>
         </div>
     );
