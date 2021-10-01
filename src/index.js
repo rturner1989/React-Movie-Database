@@ -4,10 +4,8 @@ import "./index.css";
 import "./components/Navbar/navbar.css";
 import "./components/Homepage/homepage.css";
 import "./components/Searchbar/searchbar.css";
-import "./components/SearchResults/searchresults.css";
 import "./components/FullScreenResult/fullscreenresults.css";
-import "./components/SearchResultsCard/resultdata.css";
-import "./components/SearchTrending/trendingdata.css";
+import "./components/SearchResults/searchresults.css";
 import App from "./App";
 import { AppProvider } from "./context";
 

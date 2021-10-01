@@ -5,11 +5,10 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
     const [searchResults, setSearchResults] = useState({
-        category: "",
+        category: "movie",
         movie: [],
         tv: [],
         people: [],
-        results: [],
     });
     const [watchList, setWatchList] = useLocalStorage("Watchlist", {
         category: "movie",
@@ -34,7 +33,11 @@ const AppProvider = ({ children }) => {
         );
         const data = await response.json();
         console.log(data);
-        setSearchResults({ category: "movie", results: data.results });
+        setSearchResults({
+            ...searchResults,
+            category: "movie",
+            movie: data.results,
+        });
     };
 
     const searchTVShows = async (query) => {
@@ -43,7 +46,11 @@ const AppProvider = ({ children }) => {
         );
         const data = await response.json();
         console.log(data);
-        setSearchResults({ category: "tv", results: data.results });
+        setSearchResults({
+            ...searchResults,
+            category: "tv",
+            tv: data.results,
+        });
     };
 
     const searchPeople = async (query) => {
@@ -52,7 +59,11 @@ const AppProvider = ({ children }) => {
         );
         const data = await response.json();
         console.log(data);
-        setSearchResults({ category: "people", results: data.results });
+        setSearchResults({
+            ...searchResults,
+            category: "people",
+            people: data.results,
+        });
     };
 
     const search = async (category, query) => {

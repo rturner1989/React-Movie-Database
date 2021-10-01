@@ -2,24 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineFileImage } from "react-icons/ai";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
-import { useGlobalContext } from "../../context";
+import { useGlobalContext } from "../../../context";
 
-const MovieResultData = ({ movie }) => {
-    const {
-        addToWatchList,
-        removeFromWatchList,
-        isMovieInWatchlist,
-        convertDate,
-    } = useGlobalContext();
-    const found = isMovieInWatchlist(movie.id);
+const MovieTVResultData = ({
+    id,
+    linkTo,
+    img,
+    title,
+    release,
+    overview,
+    type,
+    found,
+    add,
+}) => {
+    const { addToWatchList, removeFromWatchList, convertDate } =
+        useGlobalContext();
     return (
-        <div id="movie-search-results">
-            <Link
-                to={`/result/movie/${movie.id}`}
-                id="movie-image-container"
-                className="movie-link"
-            >
-                {movie.poster_path === null ? (
+        <div className="search-results">
+            <Link to={linkTo} className="image-link-container">
+                {img === null ? (
                     <div className="search-img">
                         <AiOutlineFileImage
                             className="btn-icon"
@@ -29,29 +30,26 @@ const MovieResultData = ({ movie }) => {
                     </div>
                 ) : (
                     <img
-                        id="movie-img"
                         className="search-img"
-                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                        src={`https://image.tmdb.org/t/p/w500/${img}`}
                         alt=""
                     />
                 )}
             </Link>
             <div className="search-info">
-                <Link to={`/result/movie/${movie.id}`} className="movie-link">
-                    <h3 id="movie-title">{movie.title}</h3>
+                <Link to={linkTo} className="title-link">
+                    <h3 className="search-title">{title}</h3>
                 </Link>
-                <p id="movie-release-date">{convertDate(movie.release_date)}</p>
-                <p id="movie-overview" className="overview">
-                    {movie.overview}
-                </p>
+                <p className="search-release-date">{convertDate(release)}</p>
+                <p className="search-overview">{overview}</p>
             </div>
             <div>
                 <button
                     className="remove-from-wishlist"
                     onClick={() => {
                         found
-                            ? removeFromWatchList("movie", movie.id)
-                            : addToWatchList("movie", movie);
+                            ? removeFromWatchList(type, id)
+                            : addToWatchList(type, add);
                     }}
                 >
                     {found ? (
@@ -73,4 +71,4 @@ const MovieResultData = ({ movie }) => {
     );
 };
 
-export default MovieResultData;
+export default MovieTVResultData;

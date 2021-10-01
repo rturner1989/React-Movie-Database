@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context";
+import MovieTVResultData from "./SearchResultsCard/movietvresultdata";
+import PeopleResultData from "./SearchResultsCard/movietvresultdata";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
-import MovieResultData from "../SearchResultsCard/movieresultdata";
-import TvResultData from "../SearchResultsCard/tvresultdata";
-import PeopleResultData from "../SearchResultsCard/peopleresultdata";
-import TrendingData from "../SearchTrending/trendingdata";
+import TrendingData from "./SearchTrending/trendingdata";
 
 const SearchResults = () => {
-    const { searchResults, trendingData, setTrendingData } = useGlobalContext();
+    const {
+        searchResults,
+        trendingData,
+        setTrendingData,
+        isMovieInWatchList,
+        isTvShowInWatchlist,
+    } = useGlobalContext();
 
     const movieTrendingRef = useHorizontalScroll();
     const tvTrendingRef = useHorizontalScroll();
@@ -49,7 +54,11 @@ const SearchResults = () => {
         getAllTrending();
     }, []);
 
-    if (searchResults.results.length === 0) {
+    if (
+        searchResults.movie.length === 0 &&
+        searchResults.tv.length === 0 &&
+        searchResults.people.length === 0
+    ) {
         switch (trendingData.type) {
             case "movie":
                 return (
@@ -112,27 +121,53 @@ const SearchResults = () => {
                 break;
         }
     } else {
-        return (
-            <div id="search-results-container">
-                {searchResults.results.map((item, index) => {
-                    switch (searchResults.category) {
-                        case "movie":
+        switch (searchResults.category) {
+            case "movie":
+                return (
+                    <div className="search-results-container">
+                        {searchResults.movie.map((item) => {
                             return (
-                                <MovieResultData
+                                <MovieTVResultData
                                     key={item.id}
-                                    index={index}
-                                    movie={item}
+                                    id={item.id}
+                                    found={isMovieInWatchList(item.id)}
+                                    linkTo={`/result/movie/${item.id}`}
+                                    img={item.poster_path}
+                                    title={item.title}
+                                    release={item.release_date}
+                                    overview={item.overview}
+                                    type={"movie"}
+                                    addID={item}
                                 />
                             );
-                        case "tv":
+                        })}
+                    </div>
+                );
+            case "tv":
+                return (
+                    <div className="search-results-container">
+                        {searchResults.tv.map((item) => {
                             return (
-                                <TvResultData
-                                    index={index}
-                                    tvshow={item}
+                                <MovieTVResultData
                                     key={item.id}
+                                    id={item.id}
+                                    found={isTvShowInWatchlist(item.id)}
+                                    linkTo={`/result/tv/${item.id}`}
+                                    img={item.poster_path}
+                                    title={item.name}
+                                    release={item.first_air_date}
+                                    overview={item.overview}
+                                    type={"tv"}
+                                    addID={item}
                                 />
                             );
-                        case "people":
+                        })}
+                    </div>
+                );
+            case "people":
+                return (
+                    <div className="search-results-container">
+                        {searchResults.people.map((item, index) => {
                             return (
                                 <PeopleResultData
                                     key={item.id}
@@ -140,12 +175,10 @@ const SearchResults = () => {
                                     person={item}
                                 />
                             );
-                        default:
-                            break;
-                    }
-                })}
-            </div>
-        );
+                        })}
+                    </div>
+                );
+        }
     }
 };
 
