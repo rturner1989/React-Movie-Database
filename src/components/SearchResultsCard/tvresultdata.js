@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineFileImage } from "react-icons/ai";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
-
 import { useGlobalContext } from "../../context";
 
 const TvResultData = ({ tvshow }) => {

@@ -132,9 +132,9 @@ const PeopleFullScreenResult = () => {
                                     return (
                                         <div
                                             key={index}
-                                            className="cast-credit"
+                                            className="person-credit"
                                         >
-                                            <div className="cast-img-container">
+                                            <div className="person-cast-img-container">
                                                 {cast.poster_path === null ? (
                                                     <div className="cast-btn-icon-container">
                                                         <AiOutlineFileImage
@@ -145,7 +145,7 @@ const PeopleFullScreenResult = () => {
                                                     </div>
                                                 ) : (
                                                     <img
-                                                        className="cast-img"
+                                                        className="person-credit-img"
                                                         src={`https://image.tmdb.org/t/p/w500/${cast.poster_path}`}
                                                         alt=""
                                                     />
@@ -159,7 +159,7 @@ const PeopleFullScreenResult = () => {
                                                     {cast.title}
                                                 </p>
                                             </Link>
-                                            <p className="cast-role">
+                                            <p className="person-cast-role">
                                                 {cast.character}
                                             </p>
                                         </div>

@@ -6,6 +6,9 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
     const [searchResults, setSearchResults] = useState({
         category: "",
+        movie: [],
+        tv: [],
+        people: [],
         results: [],
     });
     const [watchList, setWatchList] = useLocalStorage("Watchlist", {
