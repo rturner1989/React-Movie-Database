@@ -13,10 +13,18 @@ const MovieTVResultData = ({
     overview,
     type,
     found,
-    add,
+    vote,
 }) => {
     const { addToWatchList, removeFromWatchList, convertDate } =
         useGlobalContext();
+
+    const obj = {
+        id: id,
+        title: title,
+        poster_path: img,
+        vote_average: vote,
+    };
+
     return (
         <div className="search-results">
             <Link to={linkTo} className="image-link-container">
@@ -37,11 +45,15 @@ const MovieTVResultData = ({
                 )}
             </Link>
             <div className="search-info">
-                <Link to={linkTo} className="title-link">
-                    <h3 className="search-title">{title}</h3>
+                <Link to={linkTo} className="search-title">
+                    {title}
                 </Link>
-                <p className="search-release-date">{convertDate(release)}</p>
-                <p className="search-overview">{overview}</p>
+                <div className="search-release-overview-container">
+                    <p className="search-release-date">
+                        {convertDate(release)}
+                    </p>
+                    <p className="search-overview">{overview}</p>
+                </div>
             </div>
             <div>
                 <button
@@ -49,7 +61,7 @@ const MovieTVResultData = ({
                     onClick={() => {
                         found
                             ? removeFromWatchList(type, id)
-                            : addToWatchList(type, add);
+                            : addToWatchList(type, obj);
                     }}
                 >
                     {found ? (

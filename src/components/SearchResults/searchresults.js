@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import MovieTVResultData from "./SearchResultsCard/movietvresultdata";
-import PeopleResultData from "./SearchResultsCard/movietvresultdata";
+import PeopleResultData from "./SearchResultsCard/peopleresultdata";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
 import TrendingData from "./SearchTrending/trendingdata";
 
@@ -10,13 +10,13 @@ const SearchResults = () => {
         searchResults,
         trendingData,
         setTrendingData,
-        isMovieInWatchList,
+        isMovieInWatchlist,
         isTvShowInWatchlist,
     } = useGlobalContext();
 
-    const movieTrendingRef = useHorizontalScroll();
-    const tvTrendingRef = useHorizontalScroll();
-    const peopleTrendingRef = useHorizontalScroll();
+    const movieTrendingRef = useHorizontalScroll(false);
+    const tvTrendingRef = useHorizontalScroll(false);
+    const peopleTrendingRef = useHorizontalScroll(false);
 
     const getTrendingMovieData = async () => {
         const response = await fetch(
@@ -125,19 +125,19 @@ const SearchResults = () => {
             case "movie":
                 return (
                     <div className="search-results-container">
-                        {searchResults.movie.map((item) => {
+                        {searchResults.movie.map((movie) => {
                             return (
                                 <MovieTVResultData
-                                    key={item.id}
-                                    id={item.id}
-                                    found={isMovieInWatchList(item.id)}
-                                    linkTo={`/result/movie/${item.id}`}
-                                    img={item.poster_path}
-                                    title={item.title}
-                                    release={item.release_date}
-                                    overview={item.overview}
+                                    key={movie.id}
+                                    id={movie.id}
+                                    found={isMovieInWatchlist(movie.id)}
+                                    linkTo={`/result/movie/${movie.id}`}
+                                    img={movie.poster_path}
+                                    title={movie.title}
+                                    release={movie.release_date}
+                                    overview={movie.overview}
                                     type={"movie"}
-                                    addID={item}
+                                    vote={movie.vote_average}
                                 />
                             );
                         })}
@@ -146,19 +146,19 @@ const SearchResults = () => {
             case "tv":
                 return (
                     <div className="search-results-container">
-                        {searchResults.tv.map((item) => {
+                        {searchResults.tv.map((tvshow) => {
                             return (
                                 <MovieTVResultData
-                                    key={item.id}
-                                    id={item.id}
-                                    found={isTvShowInWatchlist(item.id)}
-                                    linkTo={`/result/tv/${item.id}`}
-                                    img={item.poster_path}
-                                    title={item.name}
-                                    release={item.first_air_date}
-                                    overview={item.overview}
+                                    key={tvshow.id}
+                                    id={tvshow.id}
+                                    found={isTvShowInWatchlist(tvshow.id)}
+                                    linkTo={`/result/tv/${tvshow.id}`}
+                                    img={tvshow.poster_path}
+                                    title={tvshow.name}
+                                    release={tvshow.first_air_date}
+                                    overview={tvshow.overview}
                                     type={"tv"}
-                                    addID={item}
+                                    vote={tvshow.vote_average}
                                 />
                             );
                         })}
@@ -166,7 +166,7 @@ const SearchResults = () => {
                 );
             case "people":
                 return (
-                    <div className="search-results-container">
+                    <div className="people-search-results-container">
                         {searchResults.people.map((item, index) => {
                             return (
                                 <PeopleResultData

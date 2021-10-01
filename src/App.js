@@ -15,7 +15,6 @@ export default function App() {
         <Router>
             <div id="app-container">
                 <Navbar />
-
                 <Switch>
                     <Route path="/search">
                         <Searchbar />

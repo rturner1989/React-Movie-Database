@@ -18,10 +18,6 @@
     margin: 0px 5px;
     border-radius: 10px;
 }
-/* .trending-link {
-    height: 100%;
-    width: auto;
-} */
 .trending-img {
     height: 100%;
     border-radius: 10px;
@@ -47,17 +43,17 @@
 /* Search Results */
 .search-results-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
     height: 100%;
     width: 100%;
+    padding: 0 30rem;
 }
-
 /* Search Result Card */
 .search-results {
     display: flex;
     flex-direction: row;
-    width: 49%;
+    width: 100%;
     height: 150px;
     border: grey solid 1px;
     margin: 10px 5px;
@@ -89,28 +85,66 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1%;
     scrollbar-width: thin;
 }
-
+.search-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0 0.3rem;
+    background-color: blue;
+    color: white;
+}
+.search-release-overview-container {
+    width: 100%;
+    height: 100%;
+}
 .search-overview {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-
 /* Person Result */
-#person-result-card {
-    display: flex;
-    height: fit-content;
-    width: 19%;
-    margin: 5px 5px;
-}
-#person-search-results {
+
+.people-search-results-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 30rem;
+    width: 100%;
+    height: 100%;
+}
+.person-search-results {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0.5rem;
     border-radius: 5px;
     border: grey solid 1px;
+}
+.person-image-container {
+    width: 100%;
+    height: 100%;
+}
+.person-search-img {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.person-search-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.person-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0 0.3rem;
+    width: 100%;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
 }
