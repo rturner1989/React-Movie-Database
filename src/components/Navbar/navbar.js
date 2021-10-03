@@ -4,13 +4,24 @@ import { GoSearch } from "react-icons/go";
 import { useGlobalContext } from "../../context";
 
 const Navbar = () => {
-    const { watchListAlert } = useGlobalContext();
+    const { watchListAlert, setSearchResults } = useGlobalContext();
     return (
         <div>
             <nav id="navbar">
                 <ul id="navbar-list">
                     <li>
-                        <Link className="nav-link" to="/">
+                        <Link
+                            className="nav-link"
+                            to="/"
+                            onClick={() => {
+                                setSearchResults({
+                                    category: "movie",
+                                    movie: [],
+                                    tv: [],
+                                    people: [],
+                                });
+                            }}
+                        >
                             Home
                         </Link>
                     </li>

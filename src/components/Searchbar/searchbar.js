@@ -46,7 +46,9 @@ const Searchbar = () => {
                 <div className="category-btn-container">
                     <button
                         id="category-movie-btn"
-                        className="category-btn"
+                        className={`category-btn category-movie-btn ${
+                            category === "movie" ? "category-active" : ""
+                        }`}
                         onClick={() => {
                             setCategory("movie");
                             setSearchResults({
@@ -59,7 +61,9 @@ const Searchbar = () => {
                     </button>
                     <button
                         id="category-tv-btn"
-                        className="category-btn"
+                        className={`category-btn category-tv-btn ${
+                            category === "tv" ? "category-active" : ""
+                        }`}
                         onClick={() => {
                             setCategory("tv");
                             setSearchResults({
@@ -72,7 +76,9 @@ const Searchbar = () => {
                     </button>
                     <button
                         id="category-people-btn"
-                        className="category-btn"
+                        className={`category-btn category-people-btn ${
+                            category === "people" ? "category-active" : ""
+                        }`}
                         onClick={() => {
                             setCategory("people");
                             setSearchResults({
@@ -85,6 +91,7 @@ const Searchbar = () => {
                     </button>
                 </div>
                 <button
+                    id="clear-search-btn"
                     onClick={() => {
                         setSearchResults({
                             category: "movie",
@@ -94,7 +101,7 @@ const Searchbar = () => {
                         });
                     }}
                 >
-                    clear
+                    Clear
                 </button>
             </div>
         </form>

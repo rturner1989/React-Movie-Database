@@ -29,6 +29,7 @@
     border-bottom-left-radius: 5px;
     width: 95%;
     height: 100%;
+    font-size: 1.2rem;
     border: unset;
     text-align: center;
 }
@@ -70,9 +71,6 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-#category-movie-btn:hover {
-    background-color: black;
-}
 #category-tv-btn {
     border-left: 1px solid white;
     border-right: 1px solid white;
@@ -81,12 +79,28 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-#category-movie-btn:hover {
-    background-color: black;
+.category-movie-btn:not(.category-active):hover,
+.category-tv-btn:not(.category-active):hover,
+.category-people-btn:not(.category-active):hover {
+    background-color: rgb(131, 131, 255);
 }
-#category-tv-btn:hover {
-    background-color: black;
+.category-movie-btn.category-active,
+.category-tv-btn.category-active,
+.category-people-btn.category-active {
+    background-color: rgb(22, 22, 97);
 }
-#category-people-btn:hover {
-    background-color: black;
+/* Clear Button */
+#clear-search-btn {
+    background-color: red;
+    border: white solid 1px;
+    border-radius: 5px;
+    width: 3rem;
+    height: 42%;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0 0.2rem;
+}
+#clear-search-btn:hover {
+    background-color: rgb(156, 0, 0);
 }
