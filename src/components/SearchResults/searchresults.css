@@ -1,12 +1,11 @@
 /* Trending Data */
 .trending-data-container {
-    width: 65%;
+    width: 65vw;
     height: 250px;
     display: flex;
     flex-direction: row;
     overflow-y: hidden;
     overflow-x: auto;
-    scrollbar-width: thin;
     margin: 10px 0px;
 }
 .trending-tile {
@@ -15,13 +14,13 @@
     flex-direction: column;
     height: 100%;
     width: fit-content;
-    margin: 0px 5px;
+    margin: 0 0.2rem;
     border-radius: 10px;
 }
 .trending-img {
-    height: 100%;
+    max-height: 100%;
     border-radius: 10px;
-    width: 160px;
+    width: auto;
 }
 .trending-link {
     display: flex;
@@ -33,6 +32,7 @@
     color: transparent;
     position: absolute;
     text-decoration: none;
+    text-align: center;
 }
 .trending-link:hover {
     border-radius: 10px;

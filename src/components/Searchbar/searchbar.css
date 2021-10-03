@@ -1,0 +1,92 @@
+/* searchbar form container */
+#title-searchbar {
+    width: 100%;
+    min-height: 5rem;
+    background-color: rgb(88, 88, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* searchbar container */
+.title-bar {
+    width: 50%;
+    height: 75%;
+    border-radius: 10px;
+    background-color: rgb(160, 160, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Search input bar */
+.search-input-container {
+    display: flex;
+    width: 50%;
+    height: 42%;
+    margin: 0 0.2rem;
+}
+#title-input {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 95%;
+    height: 100%;
+    border: unset;
+    text-align: center;
+}
+#search-btn {
+    border: white solid 1px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 100%;
+    width: 5%;
+    background-color: rgb(70, 70, 199);
+    color: white;
+    cursor: pointer;
+}
+.search-btn-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0.2rem;
+}
+/* category btn group */
+.category-btn-container {
+    width: 10rem;
+    height: 42%;
+    display: flex;
+    border-radius: 5px;
+    border: solid white 1px;
+    margin: 0 0.2rem;
+}
+.category-btn {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: rgb(70, 70, 199);
+    color: white;
+    border: unset;
+    cursor: pointer;
+}
+#category-movie-btn {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#category-movie-btn:hover {
+    background-color: black;
+}
+#category-tv-btn {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+#category-people-btn {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#category-movie-btn:hover {
+    background-color: black;
+}
+#category-tv-btn:hover {
+    background-color: black;
+}
+#category-people-btn:hover {
+    background-color: black;
+}

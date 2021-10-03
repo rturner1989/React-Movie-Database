@@ -178,6 +178,7 @@ const SearchResults = () => {
                         })}
                     </div>
                 );
+
             default:
                 break;
         }

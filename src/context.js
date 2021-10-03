@@ -77,6 +77,7 @@ const AppProvider = ({ children }) => {
             case "people":
                 searchPeople(query);
                 break;
+
             default:
                 break;
         }
@@ -175,6 +176,7 @@ const AppProvider = ({ children }) => {
             value={{
                 trendingData,
                 setTrendingData,
+                setSearchResults,
                 search,
                 searchResults,
                 watchList,
