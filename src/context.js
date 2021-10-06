@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import Watchlist from "./components/Watchlist/watchlist";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const AppContext = React.createContext();
@@ -26,13 +27,14 @@ const AppProvider = ({ children }) => {
         isRemoved: false,
         title: "",
     });
+    const [movieCount, setMovieCount] = useState(0);
+    const [tvCount, setTvCount] = useState(0);
 
     const searchMovies = async (query) => {
         const response = await fetch(
             `https://api.themoviedb.org/3/search/movie?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB&query=${query}&page=1&include_adult=false`
         );
         const data = await response.json();
-        console.log(data);
         setSearchResults({
             ...searchResults,
             category: "movie",
@@ -45,7 +47,6 @@ const AppProvider = ({ children }) => {
             `https://api.themoviedb.org/3/search/tv?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB&query=${query}&page=1&include_adult=false`
         );
         const data = await response.json();
-        console.log(data);
         setSearchResults({
             ...searchResults,
             category: "tv",
@@ -58,7 +59,6 @@ const AppProvider = ({ children }) => {
             `https://api.themoviedb.org/3/search/person?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB&query=${query}&page=1&include_adult=false`
         );
         const data = await response.json();
-        console.log(data);
         setSearchResults({
             ...searchResults,
             category: "people",
@@ -171,6 +171,11 @@ const AppProvider = ({ children }) => {
         };
     }, [watchListAlert]);
 
+    useEffect(() => {
+        setMovieCount(watchList.movie.length);
+        setTvCount(watchList.tv.length);
+    }, [watchList]);
+
     return (
         <AppContext.Provider
             value={{
@@ -187,6 +192,8 @@ const AppProvider = ({ children }) => {
                 isTvShowInWatchlist,
                 convertDate,
                 watchListAlert,
+                movieCount,
+                tvCount,
             }}
         >
             {children}

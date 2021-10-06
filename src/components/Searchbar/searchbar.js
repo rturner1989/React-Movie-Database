@@ -35,9 +35,13 @@ const Searchbar = () => {
                         id="search-btn"
                         type="submit"
                         onClick={(e) => {
-                            e.preventDefault();
-                            search(category, searchTitle);
-                            setSearchTitle("");
+                            if (searchTitle === "") {
+                                alert("Please Enter Title");
+                            } else {
+                                e.preventDefault();
+                                search(category, searchTitle);
+                                // setSearchTitle("");
+                            }
                         }}
                     >
                         <GoSearch className="search-btn-icon" />

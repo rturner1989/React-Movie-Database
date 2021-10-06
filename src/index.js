@@ -6,6 +6,7 @@ import "./components/Homepage/homepage.css";
 import "./components/Searchbar/searchbar.css";
 import "./components/FullScreenResult/fullscreenresults.css";
 import "./components/SearchResults/searchresults.css";
+import "./components/Watchlist/watchlist.css";
 import App from "./App";
 import { AppProvider } from "./context";
 

@@ -54,13 +54,9 @@ const SearchResults = () => {
         getAllTrending();
     }, []);
 
-    if (
-        searchResults.movie.length === 0 &&
-        searchResults.tv.length === 0 &&
-        searchResults.people.length === 0
-    ) {
-        switch (trendingData.type) {
-            case "movie":
+    switch (trendingData.type) {
+        case "movie":
+            if (searchResults.movie.length === 0) {
                 return (
                     <div className="trending-movie-container">
                         <h2>Trending Movies</h2>
@@ -82,7 +78,30 @@ const SearchResults = () => {
                         </div>
                     </div>
                 );
-            case "tv":
+            } else {
+                return (
+                    <div className="search-results-container">
+                        {searchResults.movie.map((movie) => {
+                            return (
+                                <MovieTVResultData
+                                    key={movie.id}
+                                    id={movie.id}
+                                    found={isMovieInWatchlist(movie.id)}
+                                    linkTo={`/result/movie/${movie.id}`}
+                                    img={movie.poster_path}
+                                    title={movie.title}
+                                    release={movie.release_date}
+                                    overview={movie.overview}
+                                    type={"movie"}
+                                    vote={movie.vote_average}
+                                />
+                            );
+                        })}
+                    </div>
+                );
+            }
+        case "tv":
+            if (searchResults.tv.length === 0) {
                 return (
                     <div className="trending-movie-container">
                         <h2>Trending TV Shows</h2>
@@ -104,7 +123,30 @@ const SearchResults = () => {
                         </div>
                     </div>
                 );
-            case "people":
+            } else {
+                return (
+                    <div className="search-results-container">
+                        {searchResults.tv.map((tvshow) => {
+                            return (
+                                <MovieTVResultData
+                                    key={tvshow.id}
+                                    id={tvshow.id}
+                                    found={isTvShowInWatchlist(tvshow.id)}
+                                    linkTo={`/result/tv/${tvshow.id}`}
+                                    img={tvshow.poster_path}
+                                    title={tvshow.name}
+                                    release={tvshow.first_air_date}
+                                    overview={tvshow.overview}
+                                    type={"tv"}
+                                    vote={tvshow.vote_average}
+                                />
+                            );
+                        })}
+                    </div>
+                );
+            }
+        case "people":
+            if (searchResults.people.length === 0) {
                 return (
                     <div className="trending-movie-container">
                         <h2>Trending People</h2>
@@ -126,54 +168,7 @@ const SearchResults = () => {
                         </div>
                     </div>
                 );
-            default:
-                break;
-        }
-    } else {
-        switch (searchResults.category) {
-            case "movie":
-                return (
-                    <div className="search-results-container">
-                        {searchResults.movie.map((movie) => {
-                            return (
-                                <MovieTVResultData
-                                    key={movie.id}
-                                    id={movie.id}
-                                    found={isMovieInWatchlist(movie.id)}
-                                    linkTo={`/result/movie/${movie.id}`}
-                                    img={movie.poster_path}
-                                    title={movie.title}
-                                    release={movie.release_date}
-                                    overview={movie.overview}
-                                    type={"movie"}
-                                    vote={movie.vote_average}
-                                />
-                            );
-                        })}
-                    </div>
-                );
-            case "tv":
-                return (
-                    <div className="search-results-container">
-                        {searchResults.tv.map((tvshow) => {
-                            return (
-                                <MovieTVResultData
-                                    key={tvshow.id}
-                                    id={tvshow.id}
-                                    found={isTvShowInWatchlist(tvshow.id)}
-                                    linkTo={`/result/tv/${tvshow.id}`}
-                                    img={tvshow.poster_path}
-                                    title={tvshow.name}
-                                    release={tvshow.first_air_date}
-                                    overview={tvshow.overview}
-                                    type={"tv"}
-                                    vote={tvshow.vote_average}
-                                />
-                            );
-                        })}
-                    </div>
-                );
-            case "people":
+            } else {
                 return (
                     <div className="people-search-results-container">
                         {searchResults.people.map((item, index) => {
@@ -187,10 +182,9 @@ const SearchResults = () => {
                         })}
                     </div>
                 );
-
-            default:
-                break;
-        }
+            }
+        default:
+            break;
     }
 };
 
