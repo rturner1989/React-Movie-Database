@@ -1,4 +1,12 @@
 /* Trending Data */
+.trending-movie-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
 .trending-data-container {
     width: 65vw;
     height: 300px;
@@ -95,6 +103,7 @@
     padding: 0 0.3rem;
     background-color: blue;
     color: white;
+    text-decoration: none;
 }
 .search-release-overview-container {
     width: 100%;

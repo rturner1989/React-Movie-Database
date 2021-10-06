@@ -62,59 +62,68 @@ const SearchResults = () => {
         switch (trendingData.type) {
             case "movie":
                 return (
-                    <div
-                        className="trending-data-container"
-                        ref={movieTrendingRef}
-                    >
-                        {trendingData.movie.map((film) => {
-                            return (
-                                <TrendingData
-                                    key={film.id}
-                                    id={film.id}
-                                    title={film.title}
-                                    img={film.poster_path}
-                                    link={"movie"}
-                                />
-                            );
-                        })}
+                    <div className="trending-movie-container">
+                        <h2>Trending Movies</h2>
+                        <div
+                            className="trending-data-container"
+                            ref={movieTrendingRef}
+                        >
+                            {trendingData.movie.map((film) => {
+                                return (
+                                    <TrendingData
+                                        key={film.id}
+                                        id={film.id}
+                                        title={film.title}
+                                        img={film.poster_path}
+                                        link={"movie"}
+                                    />
+                                );
+                            })}
+                        </div>
                     </div>
                 );
             case "tv":
                 return (
-                    <div
-                        className="trending-data-container"
-                        ref={tvTrendingRef}
-                    >
-                        {trendingData.tv.map((show) => {
-                            return (
-                                <TrendingData
-                                    key={show.id}
-                                    id={show.id}
-                                    title={show.name}
-                                    img={show.poster_path}
-                                    link={"tv"}
-                                />
-                            );
-                        })}
+                    <div className="trending-movie-container">
+                        <h2>Trending TV Shows</h2>
+                        <div
+                            className="trending-data-container"
+                            ref={tvTrendingRef}
+                        >
+                            {trendingData.tv.map((show) => {
+                                return (
+                                    <TrendingData
+                                        key={show.id}
+                                        id={show.id}
+                                        title={show.name}
+                                        img={show.poster_path}
+                                        link={"tv"}
+                                    />
+                                );
+                            })}
+                        </div>
                     </div>
                 );
             case "people":
                 return (
-                    <div
-                        className="trending-data-container"
-                        ref={peopleTrendingRef}
-                    >
-                        {trendingData.person.map((peep) => {
-                            return (
-                                <TrendingData
-                                    key={peep.id}
-                                    id={peep.id}
-                                    title={peep.name}
-                                    img={peep.profile_path}
-                                    link={"people"}
-                                />
-                            );
-                        })}
+                    <div className="trending-movie-container">
+                        <h2>Trending People</h2>
+                        <div
+                            className="trending-data-container"
+                            ref={peopleTrendingRef}
+                        >
+                            {trendingData.person.map((peep) => {
+                                return (
+                                    <TrendingData
+                                        key={peep.id}
+                                        id={peep.id}
+                                        title={peep.name}
+                                        img={peep.profile_path}
+                                        link={"people"}
+                                    />
+                                );
+                            })}
+                        </div>
                     </div>
                 );
             default:
