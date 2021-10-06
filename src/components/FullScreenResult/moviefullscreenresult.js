@@ -207,23 +207,21 @@ const MovieFullScreenResult = () => {
                                             key={cast.id}
                                             className="cast-credit"
                                         >
-                                            <div className="cast-img-container">
-                                                {cast.profile_path === null ? (
-                                                    <div className="cast-btn-icon-container">
-                                                        <AiOutlineFileImage
-                                                            className="cast-btn-icon"
-                                                            aria-hidden={true}
-                                                            focusable={false}
-                                                        />
-                                                    </div>
-                                                ) : (
-                                                    <img
-                                                        className="cast-img"
-                                                        src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                                                        alt=""
+                                            {cast.profile_path === null ? (
+                                                <div className="cast-btn-icon-container">
+                                                    <AiOutlineFileImage
+                                                        className="cast-btn-icon"
+                                                        aria-hidden={true}
+                                                        focusable={false}
                                                     />
-                                                )}
-                                            </div>
+                                                </div>
+                                            ) : (
+                                                <img
+                                                    className="cast-img"
+                                                    src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+                                                    alt=""
+                                                />
+                                            )}
 
                                             <Link
                                                 to={`/result/people/${cast.id}`}

@@ -145,16 +145,13 @@
 }
 /* reviews */
 .fullscreen-reviews {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     padding: 1rem;
+    width: 100%;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 0.5rem;
 }
 .fullscreen-review {
     width: 100%;
@@ -178,7 +175,7 @@
 .fullscreen-cast {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1rem;
     padding: 1rem;
     width: 100%;
     height: 100%;
@@ -196,16 +193,9 @@
     height: 100%;
     scroll-snap-align: center;
 }
-.cast-img-container {
-    position: relative;
-    width: 100%;
-    height: fit-content;
-    flex: 1 0 60%;
-}
 .cast-img {
-    display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -225,13 +215,14 @@
     height: 50%;
 }
 .cast-role {
+    position: absolute;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    max-height: 2rem;
+    height: fit-content;
     margin: 0;
     text-align: center;
     background-color: blue;
@@ -253,6 +244,7 @@
     width: 100%;
     color: transparent;
     text-decoration: none;
+    z-index: 200;
 }
 .cast-name:hover {
     font-size: 1.6rem;
@@ -305,16 +297,16 @@
     padding: 0.5rem;
     scrollbar-width: thin;
 }
+/* Person Movie Cast */
 .person-fullscreen-cast {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 3rem;
-    padding: 0 0.5rem;
+    gap: 2rem;
+    padding: 0.5rem;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    scrollbar-width: thin;
     scroll-snap-type: y mandatory;
 }
 .person-credit {
@@ -327,27 +319,20 @@
     height: 100%;
     scroll-snap-align: center;
 }
-.person-cast-img-container {
-    position: relative;
-    width: 100%;
-    height: fit-content;
-    flex: 1 0 60%;
-}
 .person-credit-img {
-    display: block;
-    width: 100%;
     height: 100%;
-    object-fit: cover;
+    width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 .person-cast-role {
+    position: absolute;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    max-height: 1.8rem;
+    height: fit-content;
     margin: 0;
     text-align: center;
     background-color: blue;
@@ -355,13 +340,13 @@
     font-size: 1rem;
     font-weight: 600;
 }
+
 /* Person Images Tab */
 .person-fullscreen-images-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    padding: 0.5rem;
+    gap: 3rem;
     width: 100%;
     height: 100%;
     overflow-x: hidden;

@@ -1,7 +1,8 @@
 /* Trending Data */
 .trending-movie-container {
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    margin: 0.8rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +16,6 @@
     flex-direction: row;
     overflow-y: hidden;
     overflow-x: auto;
-    margin: 10px 0px;
 }
 .trending-tile {
     position: relative;
@@ -98,7 +98,7 @@
     scrollbar-width: thin;
 }
 .search-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     padding: 0 0.3rem;
     background-color: blue;
@@ -108,6 +108,7 @@
 .search-release-overview-container {
     width: 100%;
     height: 100%;
+    padding: 0.3rem;
 }
 .search-overview {
     display: -webkit-box;
