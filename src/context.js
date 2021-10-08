@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import Watchlist from "./components/Watchlist/watchlist";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const AppContext = React.createContext();
