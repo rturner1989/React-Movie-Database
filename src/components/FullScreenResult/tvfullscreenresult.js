@@ -4,7 +4,7 @@ import FullScreenReview from "./fullscreenreview/fullscreenreview";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
-import { AiFillStar, AiOutlineFileImage } from "react-icons/ai";
+import { AiFillStar, AiOutlineFileImage, AiOutlineClose } from "react-icons/ai";
 
 const TvFullScreenResult = () => {
     const { id } = useParams();
@@ -17,6 +17,10 @@ const TvFullScreenResult = () => {
         removeFromWatchList,
         isTvShowInWatchlist,
         convertDate,
+        expandBiography,
+        setExpandBiography,
+        modalContent,
+        setModalContent,
     } = useGlobalContext();
 
     const getTvData = async () => {
@@ -141,7 +145,19 @@ const TvFullScreenResult = () => {
                         </h4>
                         <div className="fullscreen-overview">
                             <h3>Overview</h3>
-                            <p>{tvData.overview}</p>
+                            <p className="fullscreen-overview-content">
+                                {tvData.overview}
+                            </p>
+                        </div>
+                        <div className="expand-btn-container">
+                            <button
+                                onClick={() => {
+                                    setExpandBiography(!expandBiography);
+                                    setModalContent(tvData.overview);
+                                }}
+                            >
+                                expand
+                            </button>
                         </div>
                     </section>
                     <section className="review-cast-btn-container">
@@ -236,6 +252,25 @@ const TvFullScreenResult = () => {
                         <div></div>
                     )}
                 </section>
+            </div>
+            <div
+                className={
+                    expandBiography
+                        ? "modal-biography-active"
+                        : "modal-biography-hidden"
+                }
+            >
+                <button
+                    className="model-exit-btn"
+                    onClick={() => setExpandBiography(false)}
+                >
+                    <AiOutlineClose
+                        className="model-btn-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
+                </button>
+                <p className="modal-biography">{modalContent}</p>
             </div>
         </div>
     );

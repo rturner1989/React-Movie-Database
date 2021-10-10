@@ -7,6 +7,7 @@
 }
 .fullscreen {
     overflow: hidden;
+    position: relative;
     width: 100%;
     height: 100%;
 }
@@ -20,7 +21,6 @@
     max-width: 1440px;
     height: 100%;
     max-height: 700px;
-    /* border: rgb(211, 211, 211) solid 1px; */
 }
 .fullscreen-img {
     height: 100%;
@@ -31,6 +31,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    border-right: solid 1px blue;
+    border-bottom: solid 1px blue;
 }
 .fullscreen-info {
     width: 100%;
@@ -96,6 +98,12 @@
 .fullscreen-overview {
     padding: 0.5rem;
 }
+.fullscreen-overview-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 .company-name {
     font-size: var(--paragraph-font-size);
     margin: 0.3rem;
@@ -149,11 +157,15 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     padding: 0 1.1rem;
-
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+}
+.fullscreen-reviews div {
+    width: inherit;
+    height: inherit;
+    position: relative;
 }
 .fullscreen-review {
     width: 100%;
@@ -284,7 +296,7 @@
 .person-biography {
     position: relative;
     display: flex;
-    height: 30vh;
+    /* height: 30vh; */
     width: 100%;
     flex-direction: column;
     padding-left: 0.5rem;
@@ -297,15 +309,17 @@
 .person-bio-content {
     width: 100%;
     height: 100%;
-    overflow-y: auto;
-    padding: 0.5rem;
-    scrollbar-width: thin;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
+
 /* Person Movie Cast */
 .person-fullscreen-cast {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 0.8rem;
     padding: 0 1.1rem;
     width: 100%;
     height: 100%;
@@ -362,4 +376,48 @@
     width: auto;
     height: 100%;
     scroll-snap-align: center;
+}
+
+/* Modal Fullscreen */
+.modal-biography-hidden {
+    z-index: 250;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.modal-biography-active {
+    z-index: 250;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 44, 44, 0.9);
+    backdrop-filter: blur(50px);
+    padding: 0 20rem;
+    color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.modal-biography {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.model-exit-btn {
+    width: 5rem;
+    background: unset;
+    border: unset;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+.model-btn-icon {
+    display: block;
+    font-size: 2.5rem;
+    color: red;
+}
+.review-modal-expand-btn {
+    position: absolute;
+    right: 0;
+    top: 75%;
+    z-index: 200;
 }

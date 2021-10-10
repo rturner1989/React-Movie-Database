@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
-import { AiOutlineFileImage } from "react-icons/ai";
+import { AiOutlineFileImage, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const PeopleFullScreenResult = () => {
@@ -11,7 +11,13 @@ const PeopleFullScreenResult = () => {
     const [peopleImageData, setPeopleImageData] = useState({});
     const [toggle, setToggle] = useState({ category: "credit" });
 
-    const { convertDate } = useGlobalContext();
+    const {
+        convertDate,
+        expandBiography,
+        setExpandBiography,
+        modalContent,
+        setModalContent,
+    } = useGlobalContext();
 
     const getPeopleData = async () => {
         const response = await fetch(
@@ -64,7 +70,7 @@ const PeopleFullScreenResult = () => {
                 <section className="person-fullscreen-section">
                     <section className="fullscreen-info">
                         <h1 className="fullscreen-title">{peopleData.name}</h1>
-                        <section className="person-info">
+                        <div className="person-info">
                             <div className="person-info-div">
                                 <h4 className="person-info-title">
                                     Birthdate:
@@ -89,13 +95,23 @@ const PeopleFullScreenResult = () => {
                                     {peopleData.known_for_department}
                                 </p>
                             </div>
-                        </section>
-                        <section className="person-biography">
+                        </div>
+                        <div className="person-biography">
                             <h3>Biography</h3>
                             <p className="person-bio-content">
                                 {peopleData.biography}
                             </p>
-                        </section>
+                        </div>
+                        <div className="expand-btn-container">
+                            <button
+                                onClick={() => {
+                                    setExpandBiography(!expandBiography);
+                                    setModalContent(peopleData.biography);
+                                }}
+                            >
+                                expand
+                            </button>
+                        </div>
                     </section>
                     <section className="review-cast-btn-container">
                         <div className="review-cast-toggle-button">
@@ -187,6 +203,25 @@ const PeopleFullScreenResult = () => {
                         <div></div>
                     )}
                 </section>
+            </div>
+            <div
+                className={
+                    expandBiography
+                        ? "modal-biography-active"
+                        : "modal-biography-hidden"
+                }
+            >
+                <button
+                    className="model-exit-btn"
+                    onClick={() => setExpandBiography(false)}
+                >
+                    <AiOutlineClose
+                        className="model-btn-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
+                </button>
+                <p className="modal-biography">{modalContent}</p>
             </div>
         </div>
     );

@@ -4,7 +4,12 @@ import { GoSearch } from "react-icons/go";
 import { useGlobalContext } from "../../context";
 
 const Navbar = () => {
-    const { watchListAlert, setSearchResults } = useGlobalContext();
+    const {
+        watchListAlert,
+        setSearchResults,
+        setExpandBiography,
+        setModalContent,
+    } = useGlobalContext();
     return (
         <div>
             <nav id="navbar">
@@ -20,18 +25,34 @@ const Navbar = () => {
                                     tv: [],
                                     people: [],
                                 });
+                                setExpandBiography(false);
+                                setModalContent("");
                             }}
                         >
                             Home
                         </Link>
                     </li>
                     <li>
-                        <Link className="nav-link" to="/watchlist">
+                        <Link
+                            className="nav-link"
+                            to="/watchlist"
+                            onClick={() => {
+                                setExpandBiography(false);
+                                setModalContent("");
+                            }}
+                        >
                             Watchlist
                         </Link>
                     </li>
                     <li>
-                        <Link className="nav-link" to="/search">
+                        <Link
+                            className="nav-link"
+                            to="/search"
+                            onClick={() => {
+                                setExpandBiography(false);
+                                setModalContent("");
+                            }}
+                        >
                             <GoSearch className="link-icon" />
                         </Link>
                     </li>

@@ -26,6 +26,8 @@ const AppProvider = ({ children }) => {
         isRemoved: false,
         title: "",
     });
+    const [expandBiography, setExpandBiography] = useState(false);
+    const [modalContent, setModalContent] = useState("");
     const [movieCount, setMovieCount] = useState(0);
     const [tvCount, setTvCount] = useState(0);
 
@@ -193,6 +195,10 @@ const AppProvider = ({ children }) => {
                 watchListAlert,
                 movieCount,
                 tvCount,
+                expandBiography,
+                setExpandBiography,
+                modalContent,
+                setModalContent,
             }}
         >
             {children}

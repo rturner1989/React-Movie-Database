@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
-import { AiFillStar, AiOutlineFileImage } from "react-icons/ai";
+import { AiFillStar, AiOutlineFileImage, AiOutlineClose } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import FullScreenReview from "./fullscreenreview/fullscreenreview";
@@ -17,6 +17,10 @@ const MovieFullScreenResult = () => {
         removeFromWatchList,
         isMovieInWatchlist,
         convertDate,
+        expandBiography,
+        setExpandBiography,
+        modalContent,
+        setModalContent,
     } = useGlobalContext();
 
     const getMovieData = async () => {
@@ -146,7 +150,19 @@ const MovieFullScreenResult = () => {
                         </h4>
                         <div className="fullscreen-overview">
                             <h3>Overview</h3>
-                            <p>{movieData.overview}</p>
+                            <p className="fullscreen-overview-content">
+                                {movieData.overview}
+                            </p>
+                        </div>
+                        <div className="expand-btn-container">
+                            <button
+                                onClick={() => {
+                                    setExpandBiography(!expandBiography);
+                                    setModalContent(movieData.overview);
+                                }}
+                            >
+                                expand
+                            </button>
                         </div>
                     </section>
                     <section className="review-cast-btn-container">
@@ -183,14 +199,29 @@ const MovieFullScreenResult = () => {
                                 {movieReviewData.results.map(
                                     (result, index) => {
                                         return (
-                                            <FullScreenReview
-                                                key={index}
-                                                author={result.author}
-                                                written={convertDate(
-                                                    result.created_at
-                                                )}
-                                                review={result.content}
-                                            />
+                                            <div>
+                                                <FullScreenReview
+                                                    key={index}
+                                                    author={result.author}
+                                                    written={convertDate(
+                                                        result.created_at
+                                                    )}
+                                                    review={result.content}
+                                                />
+                                                <button
+                                                    className="review-modal-expand-btn"
+                                                    onClick={() => {
+                                                        setExpandBiography(
+                                                            !expandBiography
+                                                        );
+                                                        setModalContent(
+                                                            result.content
+                                                        );
+                                                    }}
+                                                >
+                                                    expand
+                                                </button>
+                                            </div>
                                         );
                                     }
                                 )}
@@ -243,6 +274,25 @@ const MovieFullScreenResult = () => {
                         <div></div>
                     )}
                 </section>
+            </div>
+            <div
+                className={
+                    expandBiography
+                        ? "modal-biography-active"
+                        : "modal-biography-hidden"
+                }
+            >
+                <button
+                    className="model-exit-btn"
+                    onClick={() => setExpandBiography(false)}
+                >
+                    <AiOutlineClose
+                        className="model-btn-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
+                </button>
+                <p className="modal-biography">{modalContent}</p>
             </div>
         </div>
     );
