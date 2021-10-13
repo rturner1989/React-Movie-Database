@@ -2,12 +2,20 @@
     width: 100%;
     height: 100%;
 }
-#watchlist-header {
-    width: 100%;
+
+#fullscreen-watchlist {
+    display: flex;
+    flex-direction: column;
+}
+.fullscreen-watchlist-container {
+    display: flex;
+    flex-direction: column;
+}
+.fullscreen-watchlist-map {
+    display: flex;
+    flex-direction: row;
+}
+.fullscreen-watchlist-head {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-}
-#watchlist {
-    display: flex;
 }

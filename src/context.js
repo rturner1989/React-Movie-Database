@@ -103,6 +103,7 @@ const AppProvider = ({ children }) => {
                 title: item.title,
                 poster_path: item.poster_path,
                 vote_average: item.vote_average,
+                date_added: Date.now(),
             };
             setWatchList({
                 ...watchList,
@@ -119,6 +120,7 @@ const AppProvider = ({ children }) => {
                 name: item.name,
                 poster_path: item.poster_path,
                 vote_average: item.vote_average,
+                date_added: Date.now(),
             };
             setWatchList({
                 ...watchList,
@@ -163,6 +165,13 @@ const AppProvider = ({ children }) => {
         return watchList.tv.find((item) => item.id === id);
     };
 
+    const toggleWatchlistCategory = () => {
+        setWatchList({
+            ...watchList,
+            category: watchList.category === "movie" ? "tv" : "movie",
+        });
+    };
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setWatchListAlert({ isAdded: false, isRemoved: false, title: "" });
@@ -199,6 +208,7 @@ const AppProvider = ({ children }) => {
                 setExpandBiography,
                 modalContent,
                 setModalContent,
+                toggleWatchlistCategory,
             }}
         >
             {children}

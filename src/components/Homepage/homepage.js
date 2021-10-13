@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
-import ToggleButton from "./ToggleButton/toggleButton";
+import ToggleButton from "../ToggleButton/toggleButton";
 import RenderedCard from "./RenderedCard/renderedCard";
 
 const Homepage = () => {
-    const { watchList, setWatchList, isMovieInWatchlist, isTvShowInWatchlist } =
-        useGlobalContext();
+    const {
+        watchList,
+        setWatchList,
+        isMovieInWatchlist,
+        isTvShowInWatchlist,
+        toggleWatchlistCategory,
+    } = useGlobalContext();
     const [popularData, setPopularData] = useState({
         category: "movie",
         movie: [],
@@ -73,13 +78,6 @@ const Homepage = () => {
         setTopRatedData({
             ...topRatedData,
             category: topRatedData.category === "movie" ? "tv" : "movie",
-        });
-    };
-
-    const toggleWatchlistCategory = () => {
-        setWatchList({
-            ...watchList,
-            category: watchList.category === "movie" ? "tv" : "movie",
         });
     };
 
