@@ -18,17 +18,17 @@ const WatchlistCard = ({
     const { addToWatchList, removeFromWatchList } = useGlobalContext();
 
     return (
-        <div className="render-card">
+        <div className="watchlist-card">
             <img
                 src={`https://image.tmdb.org/t/p/w500/${imgSrc}`}
                 alt=""
-                className="render-img"
+                className="watchlist-img"
             />
-            <Link to={linkTo} className="render-card-link">
+            <Link to={linkTo} className="watchlist-card-link">
                 <h3>{title}</h3>
             </Link>
-            <p className="render-vote">
-                <AiFillStar className="render-icon" />
+            <p className="watchlist-vote">
+                <AiFillStar className="watchlist-icon" />
                 {vote}
             </p>
             <button

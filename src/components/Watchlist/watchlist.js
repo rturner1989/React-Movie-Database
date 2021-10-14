@@ -1,5 +1,6 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import { useGlobalContext } from "../../context";
+import { HiViewGrid, HiViewList } from "react-icons/hi";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
 import WatchlistCard from "./WatchlistCard/watchlistcard";
 
@@ -14,6 +15,10 @@ const Watchlist = () => {
 
     const [movieWatchlist, setMovieWatchlist] = useState(watchList.movie);
     const [tvWatchlist, setTvWatchlist] = useState(watchList.tv);
+    const [valueSelect, setValueSelect] = useState({
+        ascending: "",
+        descending: "",
+    });
 
     const movWatchScrollRef = useHorizontalScroll(false);
     const tvWatchScrollRef = useHorizontalScroll(false);
@@ -25,14 +30,17 @@ const Watchlist = () => {
         const sortedMovieWatchlist = [...movieWatchlist];
         const sortedTvWatchlist = [...tvWatchlist];
         if (sortingTypeRef.current.value === "alphabetical") {
+            setValueSelect({ ascending: "A-Z", descending: "Z-A" });
             sortedMovieWatchlist.sort(compareMovieName);
             sortedTvWatchlist.sort(compareTvName);
         }
         if (sortingTypeRef.current.value === "rating") {
+            setValueSelect({ ascending: "Low-High", descending: "High-Low" });
             sortedMovieWatchlist.sort(compareRating);
             sortedTvWatchlist.sort(compareRating);
         }
         if (sortingTypeRef.current.value === "date-added") {
+            setValueSelect({ ascending: "New-Old", descending: "Old-New" });
             sortedMovieWatchlist.sort(compareDate);
             sortedTvWatchlist.sort(compareDate);
         }
@@ -77,13 +85,14 @@ const Watchlist = () => {
     }, []);
 
     return (
-        <section id="watchlist-container">
-            <div>
-                <div>
+        <div id="fullscreen-watchlist-container">
+            <nav className="sorting-selection">
+                <div className="date-rating-alpha-sorting">
                     <select
                         name="type"
                         ref={sortingTypeRef}
                         onChange={sortWatchlist}
+                        className="date-rating-alpha-selection"
                     >
                         <option value="date-added">Date Added</option>
                         <option value="rating">Rating</option>
@@ -93,16 +102,34 @@ const Watchlist = () => {
                         name="direction"
                         ref={sortingDirectionRef}
                         onChange={sortWatchlist}
+                        className="date-rating-alpha-selection"
                     >
-                        <option value="ascending">Ascending</option>
-                        <option value="descending">Descending</option>
+                        <option value="ascending">
+                            {valueSelect.ascending}
+                        </option>
+                        <option value="descending">
+                            {valueSelect.descending}
+                        </option>
                     </select>
                 </div>
-                <div>view</div>
-            </div>
+                <div className="view-selection">
+                    <p>View:</p>
+                    <div className="view-btn-container">
+                        <button className="view-btn">
+                            <HiViewGrid className="view-btn-icon" />
+                        </button>
+                        <button className="view-btn">
+                            <HiViewList className="view-btn-icon" />
+                        </button>
+                    </div>
+                </div>
+            </nav>
             <h2>Your Watchlist</h2>
-            <div id="fullscreen-watchlist" ref={movWatchScrollRef}>
-                <div className="fullscreen-watchlist-container">
+            <div id="fullscreen-watchlist">
+                <section
+                    className="fullscreen-watchlist-container"
+                    ref={movWatchScrollRef}
+                >
                     <div className="fullscreen-watchlist-head">
                         <h3>Movie</h3>
                         <p>movie count {movieCount}</p>
@@ -126,8 +153,8 @@ const Watchlist = () => {
                             );
                         })}
                     </div>
-                </div>
-                <div
+                </section>
+                <section
                     className="fullscreen-watchlist-container"
                     ref={tvWatchScrollRef}
                 >
@@ -154,9 +181,9 @@ const Watchlist = () => {
                             );
                         })}
                     </div>
-                </div>
+                </section>
             </div>
-        </section>
+        </div>
     );
 };
 
