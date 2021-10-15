@@ -19,6 +19,7 @@ const Watchlist = () => {
         ascending: "",
         descending: "",
     });
+    const [watchlistView, setWatchlistView] = useState("card");
 
     const movWatchScrollRef = useHorizontalScroll(false);
     const tvWatchScrollRef = useHorizontalScroll(false);
@@ -85,7 +86,7 @@ const Watchlist = () => {
     }, []);
 
     return (
-        <div id="fullscreen-watchlist-container">
+        <div id="fullscreen-watchlist-root-container">
             <nav className="sorting-selection">
                 <div className="date-rating-alpha-sorting">
                     <select
@@ -115,10 +116,16 @@ const Watchlist = () => {
                 <div className="view-selection">
                     <p>View:</p>
                     <div className="view-btn-container">
-                        <button className="view-btn">
+                        <button
+                            className="view-btn"
+                            onClick={() => setWatchlistView("card")}
+                        >
                             <HiViewGrid className="view-btn-icon" />
                         </button>
-                        <button className="view-btn">
+                        <button
+                            className="view-btn"
+                            onClick={() => setWatchlistView("list")}
+                        >
                             <HiViewList className="view-btn-icon" />
                         </button>
                     </div>
@@ -144,11 +151,13 @@ const Watchlist = () => {
                                     imgSrc={item.poster_path}
                                     linkTo={`/result/movie/${item.id}`}
                                     title={item.title}
+                                    overview={item.overview}
                                     vote={item.vote_average}
                                     removeCat={"movie"}
                                     removeID={item.id}
                                     addCat={"movie"}
                                     addID={item}
+                                    watchlistView={watchlistView}
                                 />
                             );
                         })}
@@ -172,11 +181,13 @@ const Watchlist = () => {
                                     imgSrc={item.poster_path}
                                     linkTo={`/result/tv/${item.id}`}
                                     title={item.name}
+                                    overview={item.overview}
                                     vote={item.vote_average}
                                     removeCat={"tv"}
                                     removeID={item.id}
                                     addCat={"tv"}
                                     addID={item}
+                                    watchlistView={watchlistView}
                                 />
                             );
                         })}

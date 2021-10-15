@@ -104,6 +104,7 @@ const AppProvider = ({ children }) => {
                 poster_path: item.poster_path,
                 vote_average: item.vote_average,
                 date_added: Date.now(),
+                overview: item.overview,
             };
             setWatchList({
                 ...watchList,
@@ -121,6 +122,7 @@ const AppProvider = ({ children }) => {
                 poster_path: item.poster_path,
                 vote_average: item.vote_average,
                 date_added: Date.now(),
+                overview: item.overview,
             };
             setWatchList({
                 ...watchList,

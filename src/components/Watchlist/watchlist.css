@@ -1,8 +1,9 @@
-#fullscreen-watchlist-container {
+#fullscreen-watchlist-root-container {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 #fullscreen-watchlist {
     display: flex;
@@ -12,7 +13,7 @@
 .fullscreen-watchlist-container {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 70%;
 }
 .fullscreen-watchlist-map {
     display: flex;
@@ -28,7 +29,6 @@
 /* Sorting bar */
 
 .sorting-selection {
-    align-self: center;
     display: flex;
     width: 40rem;
     border: black solid 1px;
@@ -72,7 +72,8 @@
 
 /* Watchlist Card */
 
-.watchlist-card {
+/* Card Style */
+.card-active {
     visibility: visible;
     display: flex;
     flex-direction: column;
@@ -81,6 +82,13 @@
     border-top-right-radius: 10px;
     position: relative;
     box-shadow: 1px 1px 10px black;
+}
+/* .card-active:hover {
+    width: 30%;
+} */
+.watchlist-card-info {
+    width: 100%;
+    height: 100%;
 }
 .watchlist-card-link {
     position: absolute;
@@ -105,13 +113,20 @@
     color: white;
     background-color: rgba(37, 37, 37, 0.65);
 }
-.watchlist-img {
+.watchlist-card-img {
     min-height: 90%;
     max-height: 90%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.watchlist-vote {
+.watchlist-card-overview-vote-container {
+    width: 100%;
+    height: 100%;
+}
+.watchlist-card-overview {
+    display: none;
+}
+.watchlist-card-vote {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -122,8 +137,56 @@
     font-weight: 600;
     background-color: blue;
 }
-.watchlist-icon {
+.watchlist-card-icon {
     display: block;
+    font-size: 1.2rem;
+    color: gold;
+    margin: 0px 5px;
+}
+
+/* List Style */
+
+.list-active {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 150px;
+    border: grey solid 1px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    position: relative;
+}
+.watchlist-list-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 100%;
+    width: auto;
+}
+.watchlist-list-info {
+    width: 100%;
+    height: 100%;
+}
+.watchlist-list-link h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 0.3rem;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+}
+.watchlist-list-vote {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.watchlist-list-overview {
+    display: unset;
+}
+.watchlist-list-icon {
+    display: inline-block;
     font-size: 1.2rem;
     color: gold;
     margin: 0px 5px;

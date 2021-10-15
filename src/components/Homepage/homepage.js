@@ -7,7 +7,6 @@ import RenderedCard from "./RenderedCard/renderedCard";
 const Homepage = () => {
     const {
         watchList,
-        setWatchList,
         isMovieInWatchlist,
         isTvShowInWatchlist,
         toggleWatchlistCategory,
