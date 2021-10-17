@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import { HiViewGrid, HiViewList } from "react-icons/hi";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
@@ -84,6 +84,11 @@ const Watchlist = () => {
     useLayoutEffect(() => {
         sortWatchlist();
     }, []);
+
+    useEffect(() => {
+        setMovieWatchlist(watchList.movie);
+        setTvWatchlist(watchList.tv);
+    }, [watchList]);
 
     return (
         <div id="fullscreen-watchlist-root-container">
