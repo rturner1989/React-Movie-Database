@@ -23,6 +23,8 @@ const MovieTVResultData = ({
         title: title,
         poster_path: img,
         vote_average: vote,
+        date_added: Date.now(),
+        overview: overview,
     };
 
     return (

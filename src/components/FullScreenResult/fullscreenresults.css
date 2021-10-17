@@ -376,6 +376,7 @@
     width: auto;
     height: 100%;
     scroll-snap-align: center;
+    cursor: pointer;
 }
 
 /* Modal Fullscreen */
@@ -401,6 +402,9 @@
 .modal-biography {
     font-size: 1.4rem;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .model-exit-btn {
     width: 5rem;

@@ -97,9 +97,9 @@ const Watchlist = () => {
                         }
                         className="date-rating-alpha-selection"
                     >
+                        <option value="alphabetical">Alphabetical</option>
                         <option value="date-added">Date Added</option>
                         <option value="rating">Rating</option>
-                        <option value="alphabetical">Alphabetical</option>
                     </select>
                     <select
                         name="direction"

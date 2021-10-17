@@ -27,7 +27,7 @@ const AppProvider = ({ children }) => {
         title: "",
     });
     const [expandBiography, setExpandBiography] = useState(false);
-    const [modalContent, setModalContent] = useState("");
+    const [modalContent, setModalContent] = useState(null);
     const [movieCount, setMovieCount] = useState(0);
     const [tvCount, setTvCount] = useState(0);
 

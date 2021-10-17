@@ -189,9 +189,21 @@ const PeopleFullScreenResult = () => {
                                 peopleImageData.profiles.map((img, index) => {
                                     return (
                                         <img
+                                            key={index}
                                             className="person-img"
                                             src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
                                             alt=""
+                                            onClick={() => {
+                                                setExpandBiography(true);
+                                                setModalContent(
+                                                    <img
+                                                        key={index}
+                                                        className="model-person-img"
+                                                        src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                                        alt=""
+                                                    />
+                                                );
+                                            }}
                                         />
                                     );
                                 })
