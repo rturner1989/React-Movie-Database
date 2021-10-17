@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import { useGlobalContext } from "../../context";
 import { HiViewGrid, HiViewList } from "react-icons/hi";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
@@ -27,9 +27,9 @@ const Watchlist = () => {
     const sortingTypeRef = useRef();
     const sortingDirectionRef = useRef();
 
-    const sortWatchlist = () => {
-        const sortedMovieWatchlist = [...movieWatchlist];
-        const sortedTvWatchlist = [...tvWatchlist];
+    const sortWatchlist = (a, b) => {
+        const sortedMovieWatchlist = [...a];
+        const sortedTvWatchlist = [...b];
         if (sortingTypeRef.current.value === "alphabetical") {
             setValueSelect({ ascending: "A-Z", descending: "Z-A" });
             sortedMovieWatchlist.sort(compareMovieName);
@@ -82,12 +82,7 @@ const Watchlist = () => {
     };
 
     useLayoutEffect(() => {
-        sortWatchlist();
-    }, []);
-
-    useEffect(() => {
-        setMovieWatchlist(watchList.movie);
-        setTvWatchlist(watchList.tv);
+        sortWatchlist(watchList.movie, watchList.tv);
     }, [watchList]);
 
     return (
@@ -97,7 +92,9 @@ const Watchlist = () => {
                     <select
                         name="type"
                         ref={sortingTypeRef}
-                        onChange={sortWatchlist}
+                        onChange={() =>
+                            sortWatchlist(watchList.movie, watchList.tv)
+                        }
                         className="date-rating-alpha-selection"
                     >
                         <option value="date-added">Date Added</option>
@@ -107,7 +104,9 @@ const Watchlist = () => {
                     <select
                         name="direction"
                         ref={sortingDirectionRef}
-                        onChange={sortWatchlist}
+                        onChange={() =>
+                            sortWatchlist(watchList.movie, watchList.tv)
+                        }
                         className="date-rating-alpha-selection"
                     >
                         <option value="ascending">
