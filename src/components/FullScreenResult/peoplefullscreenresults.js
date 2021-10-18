@@ -197,14 +197,14 @@ const PeopleFullScreenResult = () => {
                                             alt=""
                                             onClick={() => {
                                                 setExpandImg(!expandImg);
-                                                // setImgModal(
-                                                //     <img
-                                                //         key={index}
-                                                //         className="model-person-img"
-                                                //         src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
-                                                //         alt=""
-                                                //     />
-                                                // );
+                                                setImgModal(
+                                                    <img
+                                                        key={index}
+                                                        className="model-person-img"
+                                                        src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                                        alt=""
+                                                    />
+                                                );
                                             }}
                                         />
                                     );
@@ -250,9 +250,8 @@ const PeopleFullScreenResult = () => {
                         focusable={false}
                     />
                 </button>
-                {/* <div className="modal-img">{imgModal}</div> */}
                 <div className="modal-img">
-                    {peopleImageData.profiles !== null ? (
+                    {peopleImageData.profiles !== undefined ? (
                         peopleImageData.profiles.map((img, index) => {
                             return (
                                 <img
