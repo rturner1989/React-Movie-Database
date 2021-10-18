@@ -21,9 +21,6 @@ const Watchlist = () => {
     });
     const [watchlistView, setWatchlistView] = useState("card");
 
-    const movWatchScrollRef = useHorizontalScroll(false);
-    const tvWatchScrollRef = useHorizontalScroll(false);
-
     const sortingTypeRef = useRef();
     const sortingDirectionRef = useRef();
 
@@ -137,10 +134,7 @@ const Watchlist = () => {
             </nav>
             <h2>Your Watchlist</h2>
             <div id="fullscreen-watchlist">
-                <section
-                    className="fullscreen-watchlist-container"
-                    ref={movWatchScrollRef}
-                >
+                <section className="fullscreen-watchlist-container">
                     <div className="fullscreen-watchlist-head">
                         <h3>Movie</h3>
                         <p>movie count {movieCount}</p>
@@ -167,10 +161,7 @@ const Watchlist = () => {
                         })}
                     </div>
                 </section>
-                <section
-                    className="fullscreen-watchlist-container"
-                    ref={tvWatchScrollRef}
-                >
+                <section className="fullscreen-watchlist-container">
                     <div className="fullscreen-watchlist-head">
                         <h3>TV Show</h3>
                         <p>tv count {tvCount}</p>

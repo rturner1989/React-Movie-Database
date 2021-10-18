@@ -10,6 +10,8 @@ const PeopleFullScreenResult = () => {
     const [peopleCreditData, setPeopleCreditData] = useState({});
     const [peopleImageData, setPeopleImageData] = useState({});
     const [toggle, setToggle] = useState({ category: "credit" });
+    const [expandImg, setExpandImg] = useState(false);
+    const [imgModal, setImgModal] = useState(null);
 
     const {
         convertDate,
@@ -194,15 +196,15 @@ const PeopleFullScreenResult = () => {
                                             src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
                                             alt=""
                                             onClick={() => {
-                                                setExpandBiography(true);
-                                                setModalContent(
-                                                    <img
-                                                        key={index}
-                                                        className="model-person-img"
-                                                        src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
-                                                        alt=""
-                                                    />
-                                                );
+                                                setExpandImg(!expandImg);
+                                                // setImgModal(
+                                                //     <img
+                                                //         key={index}
+                                                //         className="model-person-img"
+                                                //         src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                                //         alt=""
+                                                //     />
+                                                // );
                                             }}
                                         />
                                     );
@@ -234,6 +236,37 @@ const PeopleFullScreenResult = () => {
                     />
                 </button>
                 <p className="modal-biography">{modalContent}</p>
+            </div>
+            <div
+                className={expandImg ? "modal-img-active" : "modal-img-hidden"}
+            >
+                <button
+                    className="model-img-exit-btn"
+                    onClick={() => setExpandImg(!expandImg)}
+                >
+                    <AiOutlineClose
+                        className="model-btn-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
+                </button>
+                {/* <div className="modal-img">{imgModal}</div> */}
+                <div className="modal-img">
+                    {peopleImageData.profiles !== null ? (
+                        peopleImageData.profiles.map((img, index) => {
+                            return (
+                                <img
+                                    key={index}
+                                    className="modal-person-img"
+                                    src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                    alt=""
+                                />
+                            );
+                        })
+                    ) : (
+                        <div></div>
+                    )}
+                </div>
             </div>
         </div>
     );
