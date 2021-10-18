@@ -156,7 +156,10 @@
     border-radius: 5px;
     position: relative;
 }
-
+.watchlist-list-img-link {
+    height: 100%;
+    width: auto;
+}
 .watchlist-list-img {
     display: flex;
     justify-content: center;

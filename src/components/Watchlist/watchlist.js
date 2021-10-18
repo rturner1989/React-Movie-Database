@@ -1,8 +1,8 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import { useGlobalContext } from "../../context";
 import { HiViewGrid, HiViewList } from "react-icons/hi";
-import useHorizontalScroll from "../../hooks/useHorizontalScroll";
 import WatchlistCard from "./WatchlistCard/watchlistcard";
+import WatchlistList from "./WatchlistCard/watchlistList";
 
 const Watchlist = () => {
     const {
@@ -141,23 +141,41 @@ const Watchlist = () => {
                     </div>
                     <div className="fullscreen-watchlist-map">
                         {movieWatchlist.map((item) => {
-                            return (
-                                <WatchlistCard
-                                    key={item.id}
-                                    id={item.id}
-                                    found={isMovieInWatchlist(item.id)}
-                                    imgSrc={item.poster_path}
-                                    linkTo={`/result/movie/${item.id}`}
-                                    title={item.title}
-                                    overview={item.overview}
-                                    vote={item.vote_average}
-                                    removeCat={"movie"}
-                                    removeID={item.id}
-                                    addCat={"movie"}
-                                    addID={item}
-                                    watchlistView={watchlistView}
-                                />
-                            );
+                            if (watchlistView === "card") {
+                                return (
+                                    <WatchlistCard
+                                        key={item.id}
+                                        id={item.id}
+                                        found={isMovieInWatchlist(item.id)}
+                                        imgSrc={item.poster_path}
+                                        linkTo={`/result/movie/${item.id}`}
+                                        title={item.title}
+                                        overview={item.overview}
+                                        vote={item.vote_average}
+                                        removeCat={"movie"}
+                                        removeID={item.id}
+                                        addCat={"movie"}
+                                        addID={item}
+                                    />
+                                );
+                            } else {
+                                return (
+                                    <WatchlistList
+                                        key={item.id}
+                                        id={item.id}
+                                        found={isMovieInWatchlist(item.id)}
+                                        imgSrc={item.poster_path}
+                                        linkTo={`/result/movie/${item.id}`}
+                                        title={item.title}
+                                        overview={item.overview}
+                                        vote={item.vote_average}
+                                        removeCat={"movie"}
+                                        removeID={item.id}
+                                        addCat={"movie"}
+                                        addID={item}
+                                    />
+                                );
+                            }
                         })}
                     </div>
                 </section>
@@ -168,23 +186,41 @@ const Watchlist = () => {
                     </div>
                     <div className="fullscreen-watchlist-map">
                         {tvWatchlist.map((item) => {
-                            return (
-                                <WatchlistCard
-                                    key={item.id}
-                                    id={item.id}
-                                    found={isTvShowInWatchlist(item.id)}
-                                    imgSrc={item.poster_path}
-                                    linkTo={`/result/tv/${item.id}`}
-                                    title={item.name}
-                                    overview={item.overview}
-                                    vote={item.vote_average}
-                                    removeCat={"tv"}
-                                    removeID={item.id}
-                                    addCat={"tv"}
-                                    addID={item}
-                                    watchlistView={watchlistView}
-                                />
-                            );
+                            if (watchlistView === "card") {
+                                return (
+                                    <WatchlistCard
+                                        key={item.id}
+                                        id={item.id}
+                                        found={isTvShowInWatchlist(item.id)}
+                                        imgSrc={item.poster_path}
+                                        linkTo={`/result/tv/${item.id}`}
+                                        title={item.name}
+                                        overview={item.overview}
+                                        vote={item.vote_average}
+                                        removeCat={"tv"}
+                                        removeID={item.id}
+                                        addCat={"tv"}
+                                        addID={item}
+                                    />
+                                );
+                            } else {
+                                return (
+                                    <WatchlistList
+                                        key={item.id}
+                                        id={item.id}
+                                        found={isTvShowInWatchlist(item.id)}
+                                        imgSrc={item.poster_path}
+                                        linkTo={`/result/tv/${item.id}`}
+                                        title={item.name}
+                                        overview={item.overview}
+                                        vote={item.vote_average}
+                                        removeCat={"tv"}
+                                        removeID={item.id}
+                                        addCat={"tv"}
+                                        addID={item}
+                                    />
+                                );
+                            }
                         })}
                     </div>
                 </section>

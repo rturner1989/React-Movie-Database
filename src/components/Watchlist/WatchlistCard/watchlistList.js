@@ -4,7 +4,7 @@ import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../../../context";
 
-const WatchlistCard = ({
+const WatchlistList = ({
     found,
     imgSrc,
     linkTo,
@@ -19,22 +19,24 @@ const WatchlistCard = ({
     const { addToWatchList, removeFromWatchList } = useGlobalContext();
 
     return (
-        <div className="card-active">
-            <img
-                src={`https://image.tmdb.org/t/p/w500/${imgSrc}`}
-                alt=""
-                className="watchlist-card-img"
-            />
-            <div className="watchlist-card-info">
-                <Link to={linkTo} className="watchlist-card-link">
+        <div className="list-active">
+            <Link to={linkTo} className="watchlist-list-img-link">
+                <img
+                    src={`https://image.tmdb.org/t/p/w500/${imgSrc}`}
+                    alt=""
+                    className="watchlist-list-img"
+                />
+            </Link>
+            <div className="watchlist-list-info">
+                <Link to={linkTo} className="watchlist-list-link">
                     <h3>{title}</h3>
                 </Link>
-                <div className="watchlist-card-overview-vote-container">
-                    <p className="watchlist-card-vote">
-                        <AiFillStar className="watchlist-card-icon" />
+                <div className="watchlist-list-overview-vote-container">
+                    <p className="watchlist-list-vote">
+                        <AiFillStar className="watchlist-list-icon" />
                         {vote}
                     </p>
-                    <p className="watchlist-card-overview">{overview}</p>
+                    <p className="watchlist-list-overview">{overview}</p>
                 </div>
             </div>
             <button
@@ -63,4 +65,4 @@ const WatchlistCard = ({
     );
 };
 
-export default WatchlistCard;
+export default WatchlistList;
