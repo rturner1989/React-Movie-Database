@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import FullScreenReview from "./fullscreenreview/fullscreenreview";
-import { useParams } from "react-router-dom";
-import { useGlobalContext } from "../../context";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
 import { AiFillStar, AiOutlineFileImage, AiOutlineClose } from "react-icons/ai";
+import { useParams } from "react-router-dom";
+import { useGlobalContext } from "../../context";
+import FullScreenReview from "./fullscreenreview/fullscreenreview";
 
 const TvFullScreenResult = () => {
     const { id } = useParams();
@@ -193,14 +193,29 @@ const TvFullScreenResult = () => {
                             <div className="fullscreen-reviews">
                                 {tvResultData.results.map((result, index) => {
                                     return (
-                                        <FullScreenReview
-                                            key={index}
-                                            author={result.author}
-                                            written={convertDate(
-                                                result.created_at
-                                            )}
-                                            review={result.content}
-                                        />
+                                        <div>
+                                            <FullScreenReview
+                                                key={index}
+                                                author={result.author}
+                                                written={convertDate(
+                                                    result.created_at
+                                                )}
+                                                review={result.content}
+                                            />
+                                            <button
+                                                className="review-modal-expand-btn"
+                                                onClick={() => {
+                                                    setExpandBiography(
+                                                        !expandBiography
+                                                    );
+                                                    setModalContent(
+                                                        result.content
+                                                    );
+                                                }}
+                                            >
+                                                expand
+                                            </button>
+                                        </div>
                                     );
                                 })}
                             </div>
