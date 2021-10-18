@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import { AiOutlineFileImage, AiOutlineClose } from "react-icons/ai";
+import { GiExpand } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 const PeopleFullScreenResult = () => {
@@ -190,23 +191,34 @@ const PeopleFullScreenResult = () => {
                             {peopleImageData.profiles !== null ? (
                                 peopleImageData.profiles.map((img, index) => {
                                     return (
-                                        <img
-                                            key={index}
-                                            className="person-img"
-                                            src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
-                                            alt=""
-                                            onClick={() => {
-                                                setExpandImg(!expandImg);
-                                                setImgModal(
-                                                    <img
-                                                        key={index}
-                                                        className="model-person-img"
-                                                        src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
-                                                        alt=""
-                                                    />
-                                                );
-                                            }}
-                                        />
+                                        <div className="person-img-container">
+                                            <img
+                                                key={index}
+                                                className="person-img"
+                                                src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                                alt=""
+                                            />
+                                            <div
+                                                className="person-img-hover"
+                                                onClick={() => {
+                                                    setExpandImg(!expandImg);
+                                                    setImgModal(
+                                                        <img
+                                                            key={index}
+                                                            className="model-person-img"
+                                                            src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                                            alt=""
+                                                        />
+                                                    );
+                                                }}
+                                            >
+                                                <GiExpand
+                                                    className="person-expand-btn-icon"
+                                                    aria-hidden={true}
+                                                    focusable={false}
+                                                />
+                                            </div>
+                                        </div>
                                     );
                                 })
                             ) : (
@@ -250,22 +262,7 @@ const PeopleFullScreenResult = () => {
                         focusable={false}
                     />
                 </button>
-                <div className="modal-img">
-                    {peopleImageData.profiles !== undefined ? (
-                        peopleImageData.profiles.map((img, index) => {
-                            return (
-                                <img
-                                    key={index}
-                                    className="modal-person-img"
-                                    src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
-                                    alt=""
-                                />
-                            );
-                        })
-                    ) : (
-                        <div></div>
-                    )}
-                </div>
+                <div className="modal-img">{imgModal}</div>
             </div>
         </div>
     );

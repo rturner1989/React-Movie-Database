@@ -371,14 +371,36 @@
     overflow-y: auto;
     scroll-snap-type: y mandatory;
 }
-.person-img {
-    display: block;
-    width: auto;
+.person-img-container {
+    position: relative;
+    width: 23%;
     height: 100%;
     scroll-snap-align: center;
     cursor: pointer;
 }
-
+.person-img {
+    width: auto;
+    height: 100%;
+}
+.person-img-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+}
+.person-img-hover:hover {
+    color: white;
+    background-color: rgba(37, 37, 37, 0.65);
+}
+.person-expand-btn-icon {
+    font-size: 5rem;
+}
 /* Modal Fullscreen */
 .modal-biography-hidden {
     z-index: 250;
