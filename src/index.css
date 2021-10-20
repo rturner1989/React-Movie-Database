@@ -1,6 +1,11 @@
 /* Variables */
 :root {
     --variable: black;
+    --dark-theme: #1b2634;
+    --less-dark-theme: #253240;
+    --lighter-dark-theme: #3b4856;
+    --text-colour-selected: #20e28c;
+    --text-color-not-selected: #6e7782;
 }
 /* Root */
 * {
