@@ -90,7 +90,9 @@ const Homepage = () => {
     return (
         <div id="homepage">
             <section id="popular" className="section">
-                <h2>What's Popular</h2>
+                <div className="section-title-container">
+                    <h2 className="section-title">What's Popular</h2>
+                </div>
                 <ToggleButton
                     handleClick={togglePopularCategory}
                     active={popularData.category}
@@ -142,7 +144,9 @@ const Homepage = () => {
                 </div>
             </section>
             <section id="rated" className="section">
-                <h2>Top Rated</h2>
+                <div className="section-title-container">
+                    <h2 className="section-title">Top Rated</h2>
+                </div>
                 <ToggleButton
                     handleClick={toggleTopRatedCategory}
                     active={topRatedData.category}
@@ -194,7 +198,9 @@ const Homepage = () => {
                 </div>
             </section>
             <section id="watchlist" className="section">
-                <h2>Watchlist</h2>
+                <div className="section-title-container">
+                    <h2 className="section-title">Watchlist</h2>
+                </div>
                 <ToggleButton
                     handleClick={toggleWatchlistCategory}
                     active={watchList.category}

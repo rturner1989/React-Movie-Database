@@ -46,7 +46,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <Link
-                            className="nav-link"
+                            className="nav-link search-icon-link"
                             to="/search"
                             onClick={() => {
                                 setExpandBiography(false);
