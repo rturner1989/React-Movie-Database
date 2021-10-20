@@ -59,7 +59,11 @@ const SearchResults = () => {
             if (searchResults.movie.length === 0) {
                 return (
                     <div className="trending-movie-container">
-                        <h2>Trending Movies</h2>
+                        <div className="search-trending-title-container">
+                            <h2 className="search-trending-title">
+                                Trending Movies
+                            </h2>
+                        </div>
                         <div
                             className="trending-data-container"
                             ref={movieTrendingRef}
@@ -104,7 +108,11 @@ const SearchResults = () => {
             if (searchResults.tv.length === 0) {
                 return (
                     <div className="trending-movie-container">
-                        <h2>Trending TV Shows</h2>
+                        <div className="search-trending-title-container">
+                            <h2 className="search-trending-title">
+                                Trending TV Shows
+                            </h2>
+                        </div>
                         <div
                             className="trending-data-container"
                             ref={tvTrendingRef}
@@ -149,7 +157,11 @@ const SearchResults = () => {
             if (searchResults.people.length === 0) {
                 return (
                     <div className="trending-movie-container">
-                        <h2>Trending People</h2>
+                        <div className="search-trending-title-container">
+                            <h2 className="search-trending-title">
+                                Trending People
+                            </h2>
+                        </div>
                         <div
                             className="trending-data-container"
                             ref={peopleTrendingRef}
