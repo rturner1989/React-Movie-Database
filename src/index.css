@@ -6,6 +6,8 @@
     --lighter-dark-theme: #3b4856;
     --text-colour-selected: #20e28c;
     --text-color-not-selected: #6e7782;
+
+    --card-title-font-size: 1.2rem;
 }
 /* Root */
 * {
@@ -31,6 +33,8 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+    gap: 1rem;
+    background-color: var(--less-dark-theme);
 }
 /*  Fullscreen information */
 .fullscreen {

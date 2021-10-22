@@ -40,7 +40,7 @@ const Searchbar = () => {
                             } else {
                                 e.preventDefault();
                                 search(category, searchTitle);
-                                // setSearchTitle("");
+                                setSearchTitle("");
                             }
                         }}
                     >
