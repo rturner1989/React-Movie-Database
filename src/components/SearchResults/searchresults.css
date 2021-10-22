@@ -156,12 +156,12 @@
 .search-title {
     font-size: var(--card-title-font-size);
     font-weight: 600;
-    padding: 0 0.3rem;
+    padding: 0 1rem;
     background-color: var(--dark-theme);
     color: white;
     text-decoration: none;
 }
-.search-title:hover {
+.search-title:focus {
     background-color: var(--text-colour-selected);
     color: var(--dark-theme);
 }
@@ -183,29 +183,63 @@
 /* Person Result */
 
 .people-search-results-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 0 30rem;
     width: 100%;
     height: 100%;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.people-search-results-border {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 55vw;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.person-border {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.person-border:hover {
+    background-color: var(--lighter-dark-theme);
+    box-shadow: 1px 1px 5px black;
 }
 .person-search-results {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin: 0.5rem;
+    width: 98%;
+    height: 97%;
+    border: var(--dark-theme) solid 1px;
     border-radius: 5px;
-    border: grey solid 1px;
+    position: relative;
+    background-color: var(--lighter-dark-theme);
+    color: white;
+    box-shadow: 1px 1px 5px black;
 }
 .person-image-container {
-    width: 100%;
-    height: 100%;
+    min-width: 200px;
+    max-width: 200px;
+    background-color: grey;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-decoration: none;
 }
 .person-search-img {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     height: 100%;
     width: 100%;
 }
@@ -214,13 +248,33 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+    color: White;
 }
 .person-name {
     font-size: 1.4rem;
     font-weight: 600;
-    padding: 0 0.3rem;
+    padding: 0 1rem;
     width: 100%;
-    background-color: blue;
+    background-color: var(--dark-theme);
     color: white;
+    border-top-right-radius: 5px;
     text-decoration: none;
+}
+.person-name:focus {
+    background-color: var(--text-colour-selected);
+    color: var(--dark-theme);
+}
+.person-known-role-container {
+    padding: 1rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+.person-known-for {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.known-for-role {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 0.4rem;
 }

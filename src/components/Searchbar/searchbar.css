@@ -23,7 +23,6 @@
     display: flex;
     width: 50%;
     height: 42%;
-    gap: 3px;
     box-shadow: 1px 1px 5px black;
     border-radius: 5px;
     background-color: var(--less-dark-theme);
@@ -39,6 +38,7 @@
 }
 #title-input:focus {
     outline: var(--text-color-not-selected) solid 3px;
+    z-index: 200;
 }
 #search-btn {
     border: unset;
@@ -64,6 +64,7 @@
     display: flex;
     border-radius: 5px;
     box-shadow: 1px 1px 5px black;
+    background-color: var(--text-color-not-selected);
 }
 .category-btn {
     width: 100%;
@@ -74,14 +75,15 @@
     border: unset;
     cursor: pointer;
 }
+.category-btn:focus {
+    outline: var(--focus-outline-light) solid 3px;
+    z-index: 200;
+}
 #category-movie-btn {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-#category-tv-btn {
-    border-left: 1px solid var(--dark-theme);
-    border-right: 1px solid var(--dark-theme);
-}
+
 #category-people-btn {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -102,12 +104,13 @@
     background-color: red;
     border: black solid 1px;
     border-radius: 5px;
-    width: 3rem;
+    width: 4rem;
     height: 42%;
     color: white;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
     box-shadow: 1px 1px 3px rgb(15, 15, 15);
+    cursor: pointer;
 }
 #clear-search-btn:hover {
     background-color: rgb(156, 0, 0);

@@ -183,15 +183,17 @@ const SearchResults = () => {
             } else {
                 return (
                     <div className="people-search-results-container">
-                        {searchResults.people.map((item, index) => {
-                            return (
-                                <PeopleResultData
-                                    key={item.id}
-                                    index={index}
-                                    person={item}
-                                />
-                            );
-                        })}
+                        <div className="people-search-results-border">
+                            {searchResults.people.map((item, index) => {
+                                return (
+                                    <PeopleResultData
+                                        key={item.id}
+                                        index={index}
+                                        person={item}
+                                    />
+                                );
+                            })}
+                        </div>
                     </div>
                 );
             }

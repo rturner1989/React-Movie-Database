@@ -197,7 +197,7 @@
 .movie-toggle {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    border-right: 1px white solid;
+    border-right: 1px black solid;
     cursor: pointer;
 }
 .tv-toggle {
