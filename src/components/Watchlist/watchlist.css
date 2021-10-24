@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     gap: 2rem;
 }
 .fullscreen-watchlist-container {
@@ -32,16 +33,14 @@
     gap: 1rem;
     padding: 1rem;
 }
-/* #movie-watchlist-fullscreen:hover {
-    background: var(--lighter-dark-theme);
-    box-shadow: 1px 1px 5px black;
-    border-radius: 5px;
+.empty-watchlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: white;
 }
-#tv-watchlist-fullscreen:hover {
-    background: var(--lighter-dark-theme);
-    box-shadow: 1px 1px 5px black;
-    border-radius: 5px;
-} */
 .fullscreen-watchlist-map {
     display: flex;
     flex-direction: row;

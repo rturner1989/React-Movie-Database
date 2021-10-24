@@ -150,43 +150,53 @@ const Watchlist = () => {
                             <p>Total Added - {movieCount}</p>
                         </div>
                         <div className="fullscreen-watchlist-map">
-                            {movieWatchlist.map((item) => {
-                                if (watchlistView === "card") {
-                                    return (
-                                        <WatchlistCard
-                                            key={item.id}
-                                            id={item.id}
-                                            found={isMovieInWatchlist(item.id)}
-                                            imgSrc={item.poster_path}
-                                            linkTo={`/result/movie/${item.id}`}
-                                            title={item.title}
-                                            overview={item.overview}
-                                            vote={item.vote_average}
-                                            removeCat={"movie"}
-                                            removeID={item.id}
-                                            addCat={"movie"}
-                                            addID={item}
-                                        />
-                                    );
-                                } else {
-                                    return (
-                                        <WatchlistList
-                                            key={item.id}
-                                            id={item.id}
-                                            found={isMovieInWatchlist(item.id)}
-                                            imgSrc={item.poster_path}
-                                            linkTo={`/result/movie/${item.id}`}
-                                            title={item.title}
-                                            overview={item.overview}
-                                            vote={item.vote_average}
-                                            removeCat={"movie"}
-                                            removeID={item.id}
-                                            addCat={"movie"}
-                                            addID={item}
-                                        />
-                                    );
-                                }
-                            })}
+                            {movieWatchlist.length === 0 ? (
+                                <div className="empty-watchlist">
+                                    <h1>Your Watchlist is Empty...</h1>
+                                </div>
+                            ) : (
+                                movieWatchlist.map((item) => {
+                                    if (watchlistView === "card") {
+                                        return (
+                                            <WatchlistCard
+                                                key={item.id}
+                                                id={item.id}
+                                                found={isMovieInWatchlist(
+                                                    item.id
+                                                )}
+                                                imgSrc={item.poster_path}
+                                                linkTo={`/result/movie/${item.id}`}
+                                                title={item.title}
+                                                overview={item.overview}
+                                                vote={item.vote_average}
+                                                removeCat={"movie"}
+                                                removeID={item.id}
+                                                addCat={"movie"}
+                                                addID={item}
+                                            />
+                                        );
+                                    } else {
+                                        return (
+                                            <WatchlistList
+                                                key={item.id}
+                                                id={item.id}
+                                                found={isMovieInWatchlist(
+                                                    item.id
+                                                )}
+                                                imgSrc={item.poster_path}
+                                                linkTo={`/result/movie/${item.id}`}
+                                                title={item.title}
+                                                overview={item.overview}
+                                                vote={item.vote_average}
+                                                removeCat={"movie"}
+                                                removeID={item.id}
+                                                addCat={"movie"}
+                                                addID={item}
+                                            />
+                                        );
+                                    }
+                                })
+                            )}
                         </div>
                     </section>
                     <section
@@ -198,43 +208,53 @@ const Watchlist = () => {
                             <p>Total Added - {tvCount}</p>
                         </div>
                         <div className="fullscreen-watchlist-map">
-                            {tvWatchlist.map((item) => {
-                                if (watchlistView === "card") {
-                                    return (
-                                        <WatchlistCard
-                                            key={item.id}
-                                            id={item.id}
-                                            found={isTvShowInWatchlist(item.id)}
-                                            imgSrc={item.poster_path}
-                                            linkTo={`/result/tv/${item.id}`}
-                                            title={item.name}
-                                            overview={item.overview}
-                                            vote={item.vote_average}
-                                            removeCat={"tv"}
-                                            removeID={item.id}
-                                            addCat={"tv"}
-                                            addID={item}
-                                        />
-                                    );
-                                } else {
-                                    return (
-                                        <WatchlistList
-                                            key={item.id}
-                                            id={item.id}
-                                            found={isTvShowInWatchlist(item.id)}
-                                            imgSrc={item.poster_path}
-                                            linkTo={`/result/tv/${item.id}`}
-                                            title={item.name}
-                                            overview={item.overview}
-                                            vote={item.vote_average}
-                                            removeCat={"tv"}
-                                            removeID={item.id}
-                                            addCat={"tv"}
-                                            addID={item}
-                                        />
-                                    );
-                                }
-                            })}
+                            {tvWatchlist.length === 0 ? (
+                                <div className="empty-watchlist">
+                                    <h1>Your Watchlist is Empty...</h1>
+                                </div>
+                            ) : (
+                                tvWatchlist.map((item) => {
+                                    if (watchlistView === "card") {
+                                        return (
+                                            <WatchlistCard
+                                                key={item.id}
+                                                id={item.id}
+                                                found={isTvShowInWatchlist(
+                                                    item.id
+                                                )}
+                                                imgSrc={item.poster_path}
+                                                linkTo={`/result/tv/${item.id}`}
+                                                title={item.name}
+                                                overview={item.overview}
+                                                vote={item.vote_average}
+                                                removeCat={"tv"}
+                                                removeID={item.id}
+                                                addCat={"tv"}
+                                                addID={item}
+                                            />
+                                        );
+                                    } else {
+                                        return (
+                                            <WatchlistList
+                                                key={item.id}
+                                                id={item.id}
+                                                found={isTvShowInWatchlist(
+                                                    item.id
+                                                )}
+                                                imgSrc={item.poster_path}
+                                                linkTo={`/result/tv/${item.id}`}
+                                                title={item.name}
+                                                overview={item.overview}
+                                                vote={item.vote_average}
+                                                removeCat={"tv"}
+                                                removeID={item.id}
+                                                addCat={"tv"}
+                                                addID={item}
+                                            />
+                                        );
+                                    }
+                                })
+                            )}
                         </div>
                     </section>
                 </div>
