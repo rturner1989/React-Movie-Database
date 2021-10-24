@@ -141,7 +141,10 @@ const Watchlist = () => {
                     <h2 className="section-title">Your Watchlist</h2>
                 </div>
                 <div id="fullscreen-watchlist">
-                    <section className="fullscreen-watchlist-container">
+                    <section
+                        className="fullscreen-watchlist-container"
+                        id="movie-watchlist-fullscreen"
+                    >
                         <div className="fullscreen-watchlist-head">
                             <h3>Movie Watchlist</h3>
                             <p>Total Added - {movieCount}</p>
@@ -186,7 +189,10 @@ const Watchlist = () => {
                             })}
                         </div>
                     </section>
-                    <section className="fullscreen-watchlist-container">
+                    <section
+                        className="fullscreen-watchlist-container"
+                        id="tv-watchlist-fullscreen"
+                    >
                         <div className="fullscreen-watchlist-head">
                             <h3>TV Show Watchlist</h3>
                             <p>Total Added - {tvCount}</p>

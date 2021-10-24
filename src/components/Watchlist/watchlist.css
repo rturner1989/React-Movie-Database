@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     overflow: hidden;
 }
 #fullscreen-watchlist-flex-container {
@@ -30,12 +30,23 @@
     justify-content: center;
     width: 70%;
     gap: 1rem;
+    padding: 1rem;
 }
+/* #movie-watchlist-fullscreen:hover {
+    background: var(--lighter-dark-theme);
+    box-shadow: 1px 1px 5px black;
+    border-radius: 5px;
+}
+#tv-watchlist-fullscreen:hover {
+    background: var(--lighter-dark-theme);
+    box-shadow: 1px 1px 5px black;
+    border-radius: 5px;
+} */
 .fullscreen-watchlist-map {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
 }
 .fullscreen-watchlist-head {
     display: flex;
@@ -209,7 +220,7 @@
     flex-direction: row;
     width: 65vw;
     min-width: 1225px;
-    height: 95%;
+    height: 100%;
     min-height: 225px;
     border-radius: 5px;
     position: relative;
@@ -218,8 +229,8 @@
     box-shadow: 1px 1px 5px black;
 }
 .watchlist-list-img-link {
-    min-width: 160px;
-    max-width: 160px;
+    min-width: 180px;
+    max-width: 180px;
     height: 100%;
     background-color: grey;
     border-top-left-radius: 5px;
