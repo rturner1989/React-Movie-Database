@@ -83,6 +83,7 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     display: flex;
+    gap: 3px;
     background-color: white;
 }
 .date-rating-alpha-selection {
@@ -98,9 +99,19 @@
     border-bottom-left-radius: 5px;
     color: white;
 }
+#date-rating-alpha:focus {
+    outline: 3px var(--focus-outline-light) solid;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    z-index: 200;
+}
 #ascending-descending:hover {
     background-color: var(--text-color-not-selected);
     color: white;
+}
+#ascending-descending:focus {
+    outline: 3px var(--focus-outline-light) solid;
+    z-index: 200;
 }
 .view-selection {
     display: flex;
