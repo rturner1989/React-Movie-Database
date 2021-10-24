@@ -36,7 +36,8 @@
     border: unset;
     text-align: center;
 }
-#title-input:focus {
+#title-input:focus,
+#title-input:focus + #search-btn {
     outline: var(--text-color-not-selected) solid 3px;
     z-index: 200;
 }

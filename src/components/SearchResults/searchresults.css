@@ -56,14 +56,13 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: auto;
-    margin: 0 0.2rem;
+    min-width: 190px;
     border-radius: 5px;
     box-shadow: 1px 1px 5px black;
 }
 .trending-img {
-    max-height: 100%;
-    width: auto;
+    height: 100%;
+    width: 100%;
     border-radius: 5px;
 }
 .trending-link {
@@ -82,7 +81,7 @@
     border-radius: 5px;
     color: white;
     font-size: 1.4rem;
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(37, 37, 37, 0.65);
 }
 
 /* Search Results */
@@ -97,6 +96,11 @@
     background-color: var(--less-dark-theme);
     overflow-y: auto;
 }
+.showing-results-for {
+    color: white;
+    font-size: 1.4rem;
+}
+
 /* Search Result Card */
 .search-results-border {
     background-color: transparent;
@@ -154,7 +158,7 @@
     scrollbar-width: thin;
 }
 .search-title {
-    font-size: var(--card-title-font-size);
+    font-size: 1.3rem;
     font-weight: 600;
     padding: 0 1rem;
     background-color: var(--dark-theme);
@@ -188,38 +192,27 @@
     padding: 1rem;
     overflow-y: auto;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
 }
-.people-search-results-border {
+.people-search-results {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1.5rem;
+    padding: 1rem;
     width: 55vw;
-    overflow: hidden;
-    border-radius: 5px;
 }
-.person-border {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-}
-.person-border:hover {
-    background-color: var(--lighter-dark-theme);
-    box-shadow: 1px 1px 5px black;
-}
-.person-search-results {
+.person-search-results-card {
     display: flex;
     flex-direction: row;
-    width: 98%;
-    height: 97%;
-    border: var(--dark-theme) solid 1px;
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    max-width: 500px;
     border-radius: 5px;
     position: relative;
     background-color: var(--lighter-dark-theme);
@@ -249,6 +242,8 @@
     width: 100%;
     height: 100%;
     color: White;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .person-name {
     font-size: 1.4rem;
@@ -257,12 +252,12 @@
     width: 100%;
     background-color: var(--dark-theme);
     color: white;
-    border-top-right-radius: 5px;
     text-decoration: none;
 }
-.person-name:focus {
+.person-name:hover {
     background-color: var(--text-colour-selected);
     color: var(--dark-theme);
+    border-top-right-radius: 5px;
 }
 .person-known-role-container {
     padding: 1rem;

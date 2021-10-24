@@ -102,6 +102,7 @@ const Searchbar = () => {
                             movie: [],
                             tv: [],
                             people: [],
+                            query: {},
                         });
                     }}
                 >

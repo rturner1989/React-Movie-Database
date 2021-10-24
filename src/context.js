@@ -9,6 +9,7 @@ const AppProvider = ({ children }) => {
         movie: [],
         tv: [],
         people: [],
+        query: {},
     });
     const [watchList, setWatchList] = useLocalStorage("Watchlist", {
         category: "movie",
@@ -40,6 +41,7 @@ const AppProvider = ({ children }) => {
             ...searchResults,
             category: "movie",
             movie: data.results,
+            query: { ...searchResults.query, movie: query },
         });
     };
 
@@ -52,6 +54,7 @@ const AppProvider = ({ children }) => {
             ...searchResults,
             category: "tv",
             tv: data.results,
+            query: { ...searchResults.query, tv: query },
         });
     };
 
@@ -64,6 +67,7 @@ const AppProvider = ({ children }) => {
             ...searchResults,
             category: "people",
             people: data.results,
+            query: { ...searchResults.query, person: query },
         });
     };
 
@@ -78,7 +82,6 @@ const AppProvider = ({ children }) => {
             case "people":
                 searchPeople(query);
                 break;
-
             default:
                 break;
         }

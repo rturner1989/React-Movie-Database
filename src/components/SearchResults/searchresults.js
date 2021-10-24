@@ -85,6 +85,10 @@ const SearchResults = () => {
             } else {
                 return (
                     <div className="search-results-container">
+                        <h3 className="showing-results-for">
+                            Showing results for "
+                            {searchResults.query.movie.toUpperCase()}"
+                        </h3>
                         {searchResults.movie.map((movie) => {
                             return (
                                 <MovieTVResultData
@@ -134,6 +138,10 @@ const SearchResults = () => {
             } else {
                 return (
                     <div className="search-results-container">
+                        <h3 className="showing-results-for">
+                            Showing results for "
+                            {searchResults.query.tv.toUpperCase()}"
+                        </h3>
                         {searchResults.tv.map((tvshow) => {
                             return (
                                 <MovieTVResultData
@@ -183,7 +191,11 @@ const SearchResults = () => {
             } else {
                 return (
                     <div className="people-search-results-container">
-                        <div className="people-search-results-border">
+                        <h3 className="showing-results-for">
+                            Showing results for "
+                            {searchResults.query.person.toUpperCase()}"
+                        </h3>
+                        <div className="people-search-results">
                             {searchResults.people.map((item, index) => {
                                 return (
                                     <PeopleResultData
