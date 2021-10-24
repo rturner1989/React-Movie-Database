@@ -78,8 +78,9 @@
 /* homepage rendered card */
 .render-card {
     visibility: visible;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 9fr 1fr;
     min-width: 220px;
     min-height: 330px;
     max-width: 220px;
@@ -113,7 +114,7 @@
     border-top-right-radius: 5px;
 }
 .render-card-link:hover {
-    height: 91%;
+    height: 90%;
     font-size: 1.4rem;
     text-align: center;
     color: white;

@@ -1,19 +1,35 @@
 #fullscreen-watchlist-root-container {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+#fullscreen-watchlist-flex-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    overflow-y: auto;
 }
 #fullscreen-watchlist {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
 }
 .fullscreen-watchlist-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 70%;
+    gap: 1rem;
 }
 .fullscreen-watchlist-map {
     display: flex;
@@ -24,18 +40,41 @@
 .fullscreen-watchlist-head {
     display: flex;
     align-items: center;
+    gap: 1rem;
+    color: white;
 }
-
+.watchlist-title-container {
+    width: 75%;
+}
 /* Sorting bar */
 
 .sorting-selection {
+    width: 50%;
+    min-height: 100px;
     display: flex;
-    width: 40rem;
-    border: black solid 1px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lighter-dark-theme);
+    border-radius: 10px;
+    padding: 0 5rem;
+}
+.sorting-options-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+    background-color: var(--lighter-dark-theme);
+    box-shadow: 1px 1px 5px black;
 }
 .date-rating-alpha-sorting {
-    width: 70%;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     display: flex;
+    background-color: white;
 }
 .date-rating-alpha-selection {
     width: 100%;
@@ -44,11 +83,25 @@
     border: unset;
     text-align: center;
 }
+#date-rating-alpha:hover {
+    background-color: var(--text-color-not-selected);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: white;
+}
+#ascending-descending:hover {
+    background-color: var(--text-color-not-selected);
+    color: white;
+}
 .view-selection {
     display: flex;
     justify-content: center;
     justify-content: space-evenly;
-    width: 30%;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .view-selection p {
     font-size: 1.2rem;
@@ -60,10 +113,10 @@
 .view-btn {
     background: unset;
     border: unset;
+    color: var(--less-dark-theme);
+    cursor: pointer;
 }
-.view-btn:hover {
-    color: blue;
-}
+
 .view-btn-icon {
     width: 100%;
     height: 100%;
@@ -75,17 +128,24 @@
 /* Card Style */
 .card-active {
     visibility: visible;
-    display: flex;
-    flex-direction: column;
-    width: 15%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 9fr 1fr;
+    min-width: 220px;
+    min-height: 330px;
+    max-width: 220px;
+    max-height: 330px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     position: relative;
     box-shadow: 1px 1px 10px black;
+    background-color: var(--lighter-dark-theme);
+    color: white;
 }
-/* .card-active:hover {
-    width: 30%;
-} */
+.card-active:hover {
+    background-color: var(--text-colour-selected);
+    color: var(--dark-theme);
+}
 .watchlist-card-info {
     width: 100%;
     height: 100%;
@@ -104,20 +164,21 @@
     width: 100%;
     color: transparent;
     text-decoration: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .watchlist-card-link:hover {
+    height: 90%;
     font-size: 1.4rem;
     text-align: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     color: white;
     background-color: rgba(37, 37, 37, 0.65);
 }
 .watchlist-card-img {
-    min-height: 90%;
-    max-height: 90%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .watchlist-card-overview-vote-container {
     width: 100%;
@@ -127,15 +188,12 @@
     display: none;
 }
 .watchlist-card-vote {
-    margin: 0;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     font-weight: 600;
-    background-color: blue;
 }
 .watchlist-card-icon {
     display: block;
@@ -149,16 +207,24 @@
 .list-active {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 150px;
-    border: grey solid 1px;
-    margin: 10px 5px;
+    width: 65vw;
+    min-width: 1225px;
+    height: 95%;
+    min-height: 225px;
     border-radius: 5px;
     position: relative;
+    background-color: var(--lighter-dark-theme);
+    color: white;
+    box-shadow: 1px 1px 5px black;
 }
 .watchlist-list-img-link {
+    min-width: 160px;
+    max-width: 160px;
     height: 100%;
-    width: auto;
+    background-color: grey;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-decoration: none;
 }
 .watchlist-list-img {
     display: flex;
@@ -167,27 +233,44 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     height: 100%;
-    width: auto;
+    width: 100%;
 }
 .watchlist-list-info {
-    width: 100%;
     height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    scrollbar-width: thin;
+}
+.watchlist-list-link {
+    text-decoration: none;
 }
 .watchlist-list-link h3 {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    padding: 0 0.3rem;
-    background-color: blue;
+    padding: 0 1rem;
+    background-color: var(--dark-theme);
     color: white;
-    text-decoration: none;
+}
+.watchlist-list-link h3:hover {
+    background-color: var(--text-colour-selected);
+    color: var(--dark-theme);
 }
 .watchlist-list-vote {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
 }
+.watchlist-list-overview-vote-container {
+    padding: 1rem;
+    font-size: 1.2rem;
+}
 .watchlist-list-overview {
-    display: unset;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .watchlist-list-icon {
     display: inline-block;
