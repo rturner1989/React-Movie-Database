@@ -43,9 +43,12 @@
 .homepage-render-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 0.7rem;
     width: 100%;
     height: 100%;
-    padding: 0.7rem 0;
     overflow-x: auto;
     overflow-y: hidden;
     visibility: hidden;
@@ -77,8 +80,10 @@
     visibility: visible;
     display: flex;
     flex-direction: column;
-    margin: 0px 0.7rem;
-    width: 15%;
+    min-width: 220px;
+    min-height: 330px;
+    max-width: 220px;
+    max-height: 330px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     position: relative;
@@ -104,13 +109,13 @@
     width: 100%;
     color: transparent;
     text-decoration: none;
-}
-.render-card-link:hover {
-    padding: 0.3rem;
-    font-size: 1.4rem;
-    text-align: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+}
+.render-card-link:hover {
+    height: 91%;
+    font-size: 1.4rem;
+    text-align: center;
     color: white;
     background-color: rgba(37, 37, 37, 0.65);
 }
@@ -118,13 +123,12 @@
     font-size: 1.8rem;
 }
 .render-img {
-    min-height: 90%;
-    max-height: 90%;
+    height: 100%;
+    width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 .render-vote {
-    margin: 0;
     width: 100%;
     height: 100%;
     display: flex;

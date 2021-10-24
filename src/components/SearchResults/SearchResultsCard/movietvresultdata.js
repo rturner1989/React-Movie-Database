@@ -28,60 +28,58 @@ const MovieTVResultData = ({
     };
 
     return (
-        <div className="search-results-border">
-            <div className="search-results">
-                <Link to={linkTo} className="image-link-container">
-                    {img === null ? (
-                        <div className="search-img">
-                            <AiOutlineFileImage
-                                className="btn-icon"
-                                aria-hidden={true}
-                                focusable={false}
-                            />
-                        </div>
+        <div className="search-results">
+            <Link to={linkTo} className="image-link-container">
+                {img === null ? (
+                    <div className="search-img">
+                        <AiOutlineFileImage
+                            className="btn-icon"
+                            aria-hidden={true}
+                            focusable={false}
+                        />
+                    </div>
+                ) : (
+                    <img
+                        className="search-img"
+                        src={`https://image.tmdb.org/t/p/w500/${img}`}
+                        alt=""
+                    />
+                )}
+            </Link>
+            <div className="search-info">
+                <Link to={linkTo} className="search-title">
+                    {title}
+                </Link>
+                <div className="search-release-overview-container">
+                    <p className="search-release-date">
+                        {convertDate(release)}
+                    </p>
+                    <p className="search-overview">{overview}</p>
+                </div>
+            </div>
+            <div>
+                <button
+                    className="remove-from-wishlist"
+                    onClick={() => {
+                        found
+                            ? removeFromWatchList(type, id)
+                            : addToWatchList(type, obj);
+                    }}
+                >
+                    {found ? (
+                        <IoMdRemoveCircleOutline
+                            className="remove-icon"
+                            aria-hidden={true}
+                            focusable={false}
+                        />
                     ) : (
-                        <img
-                            className="search-img"
-                            src={`https://image.tmdb.org/t/p/w500/${img}`}
-                            alt=""
+                        <IoMdAddCircleOutline
+                            className="add-icon"
+                            aria-hidden={true}
+                            focusable={false}
                         />
                     )}
-                </Link>
-                <div className="search-info">
-                    <Link to={linkTo} className="search-title">
-                        {title}
-                    </Link>
-                    <div className="search-release-overview-container">
-                        <p className="search-release-date">
-                            {convertDate(release)}
-                        </p>
-                        <p className="search-overview">{overview}</p>
-                    </div>
-                </div>
-                <div>
-                    <button
-                        className="remove-from-wishlist"
-                        onClick={() => {
-                            found
-                                ? removeFromWatchList(type, id)
-                                : addToWatchList(type, obj);
-                        }}
-                    >
-                        {found ? (
-                            <IoMdRemoveCircleOutline
-                                className="remove-icon"
-                                aria-hidden={true}
-                                focusable={false}
-                            />
-                        ) : (
-                            <IoMdAddCircleOutline
-                                className="add-icon"
-                                aria-hidden={true}
-                                focusable={false}
-                            />
-                        )}
-                    </button>
-                </div>
+                </button>
             </div>
         </div>
     );
