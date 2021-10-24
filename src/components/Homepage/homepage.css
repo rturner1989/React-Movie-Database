@@ -12,7 +12,7 @@
     background-color: var(--less-dark-theme);
 }
 .section {
-    width: 65%;
+    width: 75%;
     height: 100%;
     gap: 1rem;
     display: flex;
