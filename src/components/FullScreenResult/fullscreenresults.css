@@ -11,6 +11,7 @@
     width: 100%;
     height: 100%;
 }
+
 /* Movie/TV Fullscreen */
 .fullscreen-card {
     display: flex;
@@ -26,6 +27,11 @@
 .fullscreen-img {
     height: 100%;
     width: auto;
+    min-width: 32.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: grey;
 }
 .fullscreen-section {
     width: 100%;
@@ -92,15 +98,14 @@
 .fullscreen-vote {
     margin: 0px 0.2rem;
 }
-.add-remove-button {
-    margin: 0px 0.2rem;
-}
 .fullscreen-production {
     display: flex;
     width: fit-content;
 }
 .fullscreen-overview {
     padding: 0.5rem;
+    font-size: 1.2rem;
+    position: relative;
 }
 .fullscreen-overview-content {
     display: -webkit-box;
@@ -116,6 +121,7 @@
     display: block;
     background-color: unset;
     border: unset;
+    margin: 0px 0.2rem;
 }
 /* review cast button */
 .review-cast-btn-container {
@@ -182,6 +188,7 @@
 }
 .fullscreen-review {
     width: 100%;
+    height: fit-content;
 }
 .review-content {
     display: -webkit-box;
@@ -190,10 +197,13 @@
     overflow: hidden;
 }
 .fullscreen-review p {
-    font-size: var(--paragraph-font-size);
+    font-size: 1rem;
 }
 .fullscreen-review h5 {
     font-weight: unset;
+}
+.fullscreen-review h4 {
+    font-size: 1.2rem;
 }
 
 /* cast and crew */
@@ -202,7 +212,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    padding: 0 1.2rem;
+    padding: 0.3rem 1.2rem;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -216,8 +226,8 @@
     flex-direction: column;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
     scroll-snap-align: center;
     box-shadow: 1px 1px 5px black;
 }
@@ -312,12 +322,10 @@
 .person-biography {
     position: relative;
     display: flex;
-    /* height: 30vh; */
     width: 100%;
     flex-direction: column;
-    padding-left: 0.5rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
 }
 .person-credits {
     padding: 0 0.5rem;
@@ -336,9 +344,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.1rem;
-    padding: 0 1.5rem;
+    padding: 0.3rem 1.5rem;
     width: 100%;
     height: 100%;
+    min-height: 335px;
     overflow-x: hidden;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
@@ -350,8 +359,8 @@
     flex-direction: column;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
     scroll-snap-align: center;
     box-shadow: 1px 1px 5px black;
 }
@@ -380,26 +389,27 @@
 
 /* Person Images Tab */
 .person-fullscreen-images-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.1rem;
+    padding: 0.3rem 1.5rem;
     width: 100%;
     height: 100%;
+    min-height: 335px;
     overflow-x: hidden;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
+    background-color: var(--lighter-dark-theme);
 }
 .person-img-container {
     position: relative;
-    width: 22%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
     scroll-snap-align: center;
     cursor: pointer;
 }
 .person-img {
-    width: auto;
+    width: 100%;
     height: 100%;
 }
 .person-img-hover {
@@ -413,6 +423,8 @@
     align-items: center;
     justify-content: center;
     color: transparent;
+    width: 100%;
+    height: 100%;
 }
 .person-img-hover:hover {
     color: white;
@@ -463,12 +475,6 @@
     font-size: 2.5rem;
     color: red;
 }
-.review-modal-expand-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 200;
-}
 /* img Modal Fullscreen */
 .modal-img-hidden {
     z-index: 250;
@@ -508,7 +514,30 @@
 }
 .review-modal-expand-btn {
     position: absolute;
-    right: 0;
-    top: 75%;
+    right: -1rem;
+    bottom: -1rem;
     z-index: 200;
+    background: unset;
+    border: unset;
+    cursor: pointer;
+}
+.person-bio-expand-btn {
+    position: absolute;
+    right: 1rem;
+    bottom: -2rem;
+    z-index: 200;
+    background: unset;
+    border: unset;
+    cursor: pointer;
+}
+.expand-btn {
+    position: absolute;
+    border: unset;
+    background: unset;
+    cursor: pointer;
+    right: 1rem;
+}
+.expand-icon {
+    font-size: 2rem;
+    color: white;
 }

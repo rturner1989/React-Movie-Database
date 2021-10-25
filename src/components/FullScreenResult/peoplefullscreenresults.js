@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
-import { AiOutlineFileImage, AiOutlineClose } from "react-icons/ai";
+import {
+    AiOutlineFileImage,
+    AiOutlineClose,
+    AiOutlineExpandAlt,
+} from "react-icons/ai";
 import { GiExpand } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
@@ -104,15 +108,18 @@ const PeopleFullScreenResult = () => {
                             <p className="person-bio-content">
                                 {peopleData.biography}
                             </p>
-                        </div>
-                        <div className="expand-btn-container">
                             <button
+                                className="person-bio-expand-btn"
                                 onClick={() => {
                                     setExpandBiography(!expandBiography);
                                     setModalContent(peopleData.biography);
                                 }}
                             >
-                                expand
+                                <AiOutlineExpandAlt
+                                    className="expand-icon"
+                                    aria-hidden={true}
+                                    focusable={false}
+                                />
                             </button>
                         </div>
                     </section>

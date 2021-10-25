@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
-import { AiFillStar, AiOutlineFileImage, AiOutlineClose } from "react-icons/ai";
+import {
+    AiFillStar,
+    AiOutlineFileImage,
+    AiOutlineClose,
+    AiOutlineExpandAlt,
+} from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import FullScreenReview from "./fullscreenreview/fullscreenreview";
@@ -56,17 +61,7 @@ const MovieFullScreenResult = () => {
     const found = isMovieInWatchlist(movieData.id);
 
     return (
-        <div
-            className="fullscreen"
-            // style={{
-            //     backgroundImage:
-            //         "url(" +
-            //         `http://image.tmdb.org/t/p/w500/${movieData.backdrop_path}` +
-            //         ")",
-            //     backgroundSize: "cover",
-            //     backgroundPosition: "center",
-            // }}
-        >
+        <div className="fullscreen">
             <div className="fullscreen-card">
                 <img
                     className="fullscreen-img"
@@ -153,15 +148,18 @@ const MovieFullScreenResult = () => {
                             <p className="fullscreen-overview-content">
                                 {movieData.overview}
                             </p>
-                        </div>
-                        <div className="expand-btn-container">
                             <button
+                                className="expand-btn"
                                 onClick={() => {
                                     setExpandBiography(!expandBiography);
                                     setModalContent(movieData.overview);
                                 }}
                             >
-                                expand
+                                <AiOutlineExpandAlt
+                                    className="expand-icon"
+                                    aria-hidden={true}
+                                    focusable={false}
+                                />
                             </button>
                         </div>
                     </section>
@@ -219,7 +217,11 @@ const MovieFullScreenResult = () => {
                                                         );
                                                     }}
                                                 >
-                                                    expand
+                                                    <AiOutlineExpandAlt
+                                                        className="expand-icon"
+                                                        aria-hidden={true}
+                                                        focusable={false}
+                                                    />
                                                 </button>
                                             </div>
                                         );
