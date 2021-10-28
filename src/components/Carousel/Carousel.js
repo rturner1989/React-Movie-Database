@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 const Carousel = ({ children }) => {
     const [activeCardIndex, setActiveCardIndex] = useState(0);
@@ -46,10 +47,18 @@ const Carousel = ({ children }) => {
             onTouchEnd={handleTouchEnd}
         >
             <button className="previous-btn" onClick={handlePreviousClick}>
-                Prev
+                <BiLeftArrow
+                    className="previous-next-icon"
+                    aria-hidden={true}
+                    focusable={false}
+                />
             </button>
             <button className="next-btn" onClick={handleNextClick}>
-                Next
+                <BiRightArrow
+                    className="previous-next-icon"
+                    aria-hidden={true}
+                    focusable={false}
+                />
             </button>
             {children.map((child, index) => {
                 return (

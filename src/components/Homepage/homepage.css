@@ -101,12 +101,20 @@
     left: -10px;
     top: 150px;
     z-index: 300;
+    background-color: unset;
+    border: unset;
 }
 .next-btn {
     position: absolute;
     right: -10px;
     top: 150px;
     z-index: 300;
+    background-color: unset;
+    border: unset;
+}
+.previous-next-icon {
+    color: white;
+    font-size: 2rem;
 }
 /* homepage rendered card */
 .render-card {
