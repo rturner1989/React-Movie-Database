@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoMdRemoveCircleOutline, IoMdAddCircleOutline } from "react-icons/io";
-import { RiBookmark3Fill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../../../context";
 
@@ -15,11 +14,16 @@ const RenderedCard = ({
     removeID,
     addCat,
     addID,
+    index,
+    position = "",
 }) => {
     const { addToWatchList, removeFromWatchList } = useGlobalContext();
 
     return (
-        <div className="render-card">
+        <div
+            // className="render-card"
+            className={`render-card ${position}`}
+        >
             <img
                 src={`https://image.tmdb.org/t/p/w500/${imgSrc}`}
                 alt=""

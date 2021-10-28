@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
 import ToggleButton from "../ToggleButton/toggleButton";
 import RenderedCard from "./RenderedCard/renderedCard";
+import Carousel from "../Carousel/Carousel";
 
 const Homepage = () => {
     const {
@@ -25,6 +27,8 @@ const Homepage = () => {
     const popScrollRef = useHorizontalScroll(false);
     const topScrollRef = useHorizontalScroll(false);
     const watchScrollRef = useHorizontalScroll(false);
+
+    const [windowDimensions] = useWindowDimensions();
 
     const getPopularMovieData = async () => {
         const response = await fetch(
@@ -87,6 +91,118 @@ const Homepage = () => {
         getTopRatedTVData();
     }, []);
 
+    const getPopularArray = () => {
+        switch (popularData.category) {
+            case "movie":
+                return popularData.movie.map((movie) => {
+                    return (
+                        <RenderedCard
+                            key={movie.id}
+                            id={movie.id}
+                            found={isMovieInWatchlist(movie.id)}
+                            imgSrc={movie.poster_path}
+                            linkTo={`/result/movie/${movie.id}`}
+                            title={movie.title}
+                            vote={movie.vote_average}
+                            removeCat={"movie"}
+                            removeID={movie.id}
+                            addCat={"movie"}
+                            addID={movie}
+                        />
+                    );
+                });
+            case "tv":
+                popularData.tv.map((tv) => {
+                    return (
+                        <RenderedCard
+                            key={tv.id}
+                            id={tv.id}
+                            found={isTvShowInWatchlist(tv.id)}
+                            imgSrc={tv.poster_path}
+                            linkTo={`/result/tv/${tv.id}`}
+                            title={tv.name}
+                            vote={tv.vote_average}
+                            removeCat={"tv"}
+                            removeID={tv.id}
+                            addCat={"tv"}
+                            addID={tv}
+                        />
+                    );
+                });
+            default:
+                break;
+        }
+    };
+    const getTopRatedArray = () => {
+        switch (topRatedData.category) {
+            case "movie":
+                return topRatedData.movie.map((movie) => {
+                    return (
+                        <RenderedCard
+                            key={movie.id}
+                            id={movie.id}
+                            found={isMovieInWatchlist(movie.id)}
+                            imgSrc={movie.poster_path}
+                            linkTo={`/result/movie/${movie.id}`}
+                            title={movie.title}
+                            vote={movie.vote_average}
+                            removeCat={"movie"}
+                            removeID={movie.id}
+                            addCat={"movie"}
+                            addID={movie}
+                        />
+                    );
+                });
+            case "tv":
+                topRatedData.tv.map((tv) => {
+                    return (
+                        <RenderedCard
+                            key={tv.id}
+                            id={tv.id}
+                            found={isTvShowInWatchlist(tv.id)}
+                            imgSrc={tv.poster_path}
+                            linkTo={`/result/tv/${tv.id}`}
+                            title={tv.name}
+                            vote={tv.vote_average}
+                            removeCat={"tv"}
+                            removeID={tv.id}
+                            addCat={"tv"}
+                            addID={tv}
+                        />
+                    );
+                });
+            default:
+                break;
+        }
+    };
+
+    if (windowDimensions.width <= 900) {
+        return (
+            <div id="homepage">
+                <section id="popular" className="section">
+                    <div className="section-title-container">
+                        <h2 className="section-title">What's Popular</h2>
+                    </div>
+                    <ToggleButton
+                        handleClick={togglePopularCategory}
+                        active={popularData.category}
+                    />
+                    <Carousel>{getPopularArray()}</Carousel>
+                </section>
+                <section id="rated" className="section">
+                    <div className="section-title-container">
+                        <h2 className="section-title">Top Rated</h2>
+                    </div>
+                    <ToggleButton
+                        handleClick={toggleTopRatedCategory}
+                        active={topRatedData.category}
+                    />
+                    <Carousel>{getTopRatedArray()}</Carousel>
+                </section>
+            </div>
+        );
+    }
+
     return (
         <div id="homepage">
             <section id="popular" className="section">
@@ -102,45 +218,7 @@ const Homepage = () => {
                     className="homepage-render-container"
                     ref={popScrollRef}
                 >
-                    {popularData.category === "movie" ? (
-                        popularData.movie.map((movie) => {
-                            return (
-                                <RenderedCard
-                                    key={movie.id}
-                                    id={movie.id}
-                                    found={isMovieInWatchlist(movie.id)}
-                                    imgSrc={movie.poster_path}
-                                    linkTo={`/result/movie/${movie.id}`}
-                                    title={movie.title}
-                                    vote={movie.vote_average}
-                                    removeCat={"movie"}
-                                    removeID={movie.id}
-                                    addCat={"movie"}
-                                    addID={movie}
-                                />
-                            );
-                        })
-                    ) : popularData.category === "tv" ? (
-                        popularData.tv.map((tv) => {
-                            return (
-                                <RenderedCard
-                                    key={tv.id}
-                                    id={tv.id}
-                                    found={isTvShowInWatchlist(tv.id)}
-                                    imgSrc={tv.poster_path}
-                                    linkTo={`/result/tv/${tv.id}`}
-                                    title={tv.name}
-                                    vote={tv.vote_average}
-                                    removeCat={"tv"}
-                                    removeID={tv.id}
-                                    addCat={"tv"}
-                                    addID={tv}
-                                />
-                            );
-                        })
-                    ) : (
-                        <div></div>
-                    )}
+                    {getPopularArray()}
                 </div>
             </section>
             <section id="rated" className="section">
@@ -156,45 +234,7 @@ const Homepage = () => {
                     className="homepage-render-container"
                     ref={topScrollRef}
                 >
-                    {topRatedData.category === "movie" ? (
-                        topRatedData.movie.map((movie) => {
-                            return (
-                                <RenderedCard
-                                    key={movie.id}
-                                    id={movie.id}
-                                    found={isMovieInWatchlist(movie.id)}
-                                    imgSrc={movie.poster_path}
-                                    linkTo={`/result/movie/${movie.id}`}
-                                    title={movie.title}
-                                    vote={movie.vote_average}
-                                    removeCat={"movie"}
-                                    removeID={movie.id}
-                                    addCat={"movie"}
-                                    addID={movie}
-                                />
-                            );
-                        })
-                    ) : topRatedData.category === "tv" ? (
-                        topRatedData.tv.map((tv) => {
-                            return (
-                                <RenderedCard
-                                    key={tv.id}
-                                    id={tv.id}
-                                    found={isTvShowInWatchlist(tv.id)}
-                                    imgSrc={tv.poster_path}
-                                    linkTo={`/result/tv/${tv.id}`}
-                                    title={tv.name}
-                                    vote={tv.vote_average}
-                                    removeCat={"tv"}
-                                    removeID={tv.id}
-                                    addCat={"tv"}
-                                    addID={tv}
-                                />
-                            );
-                        })
-                    ) : (
-                        <div></div>
-                    )}
+                    {getTopRatedArray()}
                 </div>
             </section>
             <section id="watchlist" className="section">
