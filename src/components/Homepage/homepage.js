@@ -112,7 +112,7 @@ const Homepage = () => {
                     );
                 });
             case "tv":
-                popularData.tv.map((tv) => {
+                return popularData.tv.map((tv) => {
                     return (
                         <RenderedCard
                             key={tv.id}
@@ -154,7 +154,7 @@ const Homepage = () => {
                     );
                 });
             case "tv":
-                topRatedData.tv.map((tv) => {
+                return topRatedData.tv.map((tv) => {
                     return (
                         <RenderedCard
                             key={tv.id}
@@ -168,6 +168,48 @@ const Homepage = () => {
                             removeID={tv.id}
                             addCat={"tv"}
                             addID={tv}
+                        />
+                    );
+                });
+            default:
+                break;
+        }
+    };
+    const getWatchlistArray = () => {
+        switch (watchList.category) {
+            case "movie":
+                return watchList.movie.map((item) => {
+                    return (
+                        <RenderedCard
+                            key={item.id}
+                            id={item.id}
+                            found={isMovieInWatchlist(item.id)}
+                            imgSrc={item.poster_path}
+                            linkTo={`/result/movie/${item.id}`}
+                            title={item.title}
+                            vote={item.vote_average}
+                            removeCat={"movie"}
+                            removeID={item.id}
+                            addCat={"movie"}
+                            addID={item}
+                        />
+                    );
+                });
+            case "tv":
+                return watchList.tv.map((item) => {
+                    return (
+                        <RenderedCard
+                            key={item.id}
+                            id={item.id}
+                            found={isTvShowInWatchlist(item.id)}
+                            imgSrc={item.poster_path}
+                            linkTo={`/result/tv/${item.id}`}
+                            title={item.name}
+                            vote={item.vote_average}
+                            removeCat={"tv"}
+                            removeID={item.id}
+                            addCat={"tv"}
+                            addID={item}
                         />
                     );
                 });
@@ -198,6 +240,16 @@ const Homepage = () => {
                         active={topRatedData.category}
                     />
                     <Carousel>{getTopRatedArray()}</Carousel>
+                </section>
+                <section id="watchlist" className="section">
+                    <div className="section-title-container">
+                        <h2 className="section-title">Watchlist</h2>
+                    </div>
+                    <ToggleButton
+                        handleClick={toggleWatchlistCategory}
+                        active={watchList.category}
+                    />
+                    <Carousel>{getWatchlistArray()}</Carousel>
                 </section>
             </div>
         );
