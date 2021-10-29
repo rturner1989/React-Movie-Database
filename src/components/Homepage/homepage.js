@@ -218,7 +218,7 @@ const Homepage = () => {
         }
     };
 
-    if (windowDimensions.width <= 900) {
+    if (windowDimensions.width <= 450) {
         return (
             <div id="homepage">
                 <section id="popular" className="section">

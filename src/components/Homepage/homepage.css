@@ -259,7 +259,7 @@
     background-color: var(--text-colour-selected);
     color: var(--lighter-dark-theme);
 }
-
+/* Iphone 5 portrait */
 @media screen and (max-width: 320px) and (orientation: portrait) {
     #app-container {
         gap: 0;
@@ -271,13 +271,14 @@
         padding: 1rem;
         overflow-y: auto;
         justify-content: flex-start;
+        scroll-snap-type: y mandatory;
     }
-    /* section containers */
     .section {
         width: 100%;
         height: 100%;
         min-height: 150px;
         padding: 0;
+        scroll-snap-align: center;
     }
     #popular,
     #rated,
@@ -290,5 +291,442 @@
     }
     .toggle-btn {
         font-size: 1rem;
+    }
+    .render-card {
+        min-width: 220px;
+        max-width: 220px;
+        min-height: 330px;
+        max-height: 330px;
+    }
+    .render-img {
+        height: 297px;
+    }
+    .render-vote {
+        height: 33px;
+    }
+    .render-card-link:hover {
+        display: none;
+    }
+}
+/* Iphone 5 landscape */
+@media screen and (max-width: 568px) and (orientation: landscape) {
+    #app-container {
+        gap: 0;
+    }
+    #homepage {
+        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 0.5rem;
+        overflow-y: auto;
+        justify-content: flex-start;
+        scroll-snap-type: y mandatory;
+    }
+    .section {
+        width: 100%;
+        height: 100%;
+        gap: 0.4rem;
+        padding: 0;
+        scroll-snap-align: center;
+    }
+    #popular,
+    #rated,
+    #watchlist {
+        margin: 0;
+    }
+    .section-title-container {
+        height: 1.7rem;
+    }
+    .section-title {
+        font-size: 1.4rem;
+    }
+    .homepage-render-container {
+        padding: 0;
+        gap: 0.7rem;
+    }
+    .toggle-button-group {
+        width: 7rem;
+        align-self: center;
+    }
+    .toggle-btn {
+        font-size: 1rem;
+    }
+    .render-card {
+        min-width: 110px;
+        max-width: 110px;
+        min-height: 175px;
+        max-height: 175px;
+    }
+    .render-img {
+        height: 150px;
+    }
+    .render-vote {
+        height: 25px;
+    }
+    .render-card-link:hover {
+        display: none;
+    }
+    #popular-container:hover {
+        display: none;
+    }
+    #top-rated-container:hover {
+        display: none;
+    }
+    #watchlist-container:hover {
+        display: none;
+    }
+}
+/* Iphone 6 */
+@media screen and (min-width: 321px) and (max-width: 375px) and (orientation: portrait) {
+    #app-container {
+        gap: 0;
+    }
+    #homepage {
+        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        justify-content: flex-start;
+    }
+    .section {
+        width: 100%;
+        height: 100%;
+        min-height: 150px;
+        scroll-snap-align: center;
+        padding: 0;
+    }
+    #popular,
+    #rated,
+    #watchlist {
+        margin: 0;
+    }
+    .toggle-button-group {
+        width: 10rem;
+        align-self: center;
+    }
+    .toggle-btn {
+        font-size: 1.4rem;
+    }
+    .carousel-container {
+        margin-top: 1.4rem;
+    }
+    .render-card {
+        min-width: 275px;
+        max-width: 275px;
+        min-height: 420px;
+        max-height: 420px;
+    }
+    .render-img {
+        height: 378px;
+    }
+    .render-vote {
+        height: 42px;
+    }
+    .render-card-link:hover {
+        display: none;
+    }
+}
+/* Iphone 6 landscape */
+@media screen and (min-width: 569px) and (max-width: 667px) and (orientation: landscape) {
+    #app-container {
+        gap: 0;
+    }
+    #homepage {
+        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 0.5rem;
+        overflow-y: auto;
+        justify-content: flex-start;
+        scroll-snap-type: y mandatory;
+    }
+    .section {
+        width: 100%;
+        height: 100%;
+        gap: 0.4rem;
+        padding: 0;
+        scroll-snap-align: center;
+    }
+    #popular,
+    #rated,
+    #watchlist {
+        margin: 0;
+    }
+    .section-title-container {
+        height: 1.7rem;
+    }
+    .section-title {
+        font-size: 1.4rem;
+    }
+    .homepage-render-container {
+        padding: 0;
+        gap: 0.7rem;
+    }
+    .toggle-button-group {
+        width: 7rem;
+        align-self: center;
+    }
+    .toggle-btn {
+        font-size: 1rem;
+    }
+    .render-card {
+        min-width: 140px;
+        max-width: 140px;
+        min-height: 240px;
+        max-height: 240px;
+    }
+    .render-img {
+        height: 213px;
+    }
+    .render-vote {
+        height: 27px;
+    }
+    .render-card-link:hover {
+        display: none;
+    }
+    #popular-container:hover {
+        display: none;
+    }
+    #top-rated-container:hover {
+        display: none;
+    }
+    #watchlist-container:hover {
+        display: none;
+    }
+}
+/* Iphone 6+ */
+@media screen and (min-width: 376px) and (max-width: 414px) and (orientation: portrait) {
+    #homepage {
+        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        justify-content: flex-start;
+    }
+    .section {
+        width: 100%;
+        height: 100%;
+        min-height: 150px;
+        scroll-snap-align: center;
+        padding: 0;
+    }
+    #popular,
+    #rated,
+    #watchlist {
+        margin: 0;
+    }
+    .toggle-button-group {
+        width: 10rem;
+        align-self: center;
+    }
+    .toggle-btn {
+        font-size: 1.4rem;
+    }
+    .carousel-container {
+        margin-top: 1.4rem;
+    }
+    .render-card {
+        min-width: 275px;
+        max-width: 275px;
+        min-height: 420px;
+        max-height: 420px;
+    }
+    .render-img {
+        height: 378px;
+    }
+    .render-vote {
+        height: 42px;
+    }
+    .render-card-link:hover {
+        display: none;
+    }
+}
+/* Iphone 6+ landscape */
+@media screen and (min-width: 668px) and (max-width: 736px) and (orientation: landscape) {
+    #app-container {
+        gap: 0;
+    }
+    #homepage {
+        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 0.5rem;
+        overflow-y: auto;
+        justify-content: flex-start;
+        scroll-snap-type: y mandatory;
+    }
+    .section {
+        width: 100%;
+        height: 100%;
+        gap: 0.4rem;
+        padding: 0;
+        scroll-snap-align: center;
+    }
+    #popular,
+    #rated,
+    #watchlist {
+        margin: 0;
+    }
+    .section-title-container {
+        height: 1.7rem;
+    }
+    .section-title {
+        font-size: 1.4rem;
+    }
+    .homepage-render-container {
+        padding: 0;
+        gap: 0.7rem;
+    }
+    .toggle-button-group {
+        width: 7rem;
+        align-self: center;
+    }
+    .toggle-btn {
+        font-size: 1rem;
+    }
+    .render-card {
+        min-width: 160px;
+        max-width: 160px;
+        min-height: 250px;
+        max-height: 250px;
+    }
+    .render-img {
+        height: 223px;
+    }
+    .render-vote {
+        height: 27px;
+    }
+    .render-card-link:hover {
+        display: none;
+    }
+    #popular-container:hover {
+        display: none;
+    }
+    #top-rated-container:hover {
+        display: none;
+    }
+    #watchlist-container:hover {
+        display: none;
+    }
+}
+/* Iphone X/XR */
+@media screen and (min-width: 415px) and (max-width: 428px) and (orientation: portrait) {
+    #homepage {
+        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        justify-content: flex-start;
+    }
+    .section {
+        width: 100%;
+        height: 100%;
+        min-height: 150px;
+        scroll-snap-align: center;
+        padding: 0;
+    }
+    #popular,
+    #rated,
+    #watchlist {
+        margin: 0;
+    }
+    .toggle-button-group {
+        width: 10rem;
+        align-self: center;
+    }
+    .toggle-btn {
+        font-size: 1.4rem;
+    }
+    .carousel-container {
+        margin-top: 1.4rem;
+    }
+    .render-card {
+        min-width: 275px;
+        max-width: 275px;
+        min-height: 420px;
+        max-height: 420px;
+    }
+    .render-img {
+        height: 378px;
+    }
+    .render-vote {
+        height: 42px;
+    }
+    .render-card-link:hover {
+        display: none;
+    }
+}
+/* Iphone X/XR landscape */
+@media screen and (min-width: 737px) and (max-width: 926px) and (orientation: landscape) {
+    #app-container {
+        gap: 0;
+    }
+    #homepage {
+        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 0.5rem;
+        overflow-y: auto;
+        justify-content: flex-start;
+        scroll-snap-type: y mandatory;
+    }
+    .section {
+        width: 100%;
+        height: 100%;
+        gap: 0.4rem;
+        padding: 0;
+        scroll-snap-align: center;
+    }
+    #popular,
+    #rated,
+    #watchlist {
+        margin: 0;
+    }
+    .section-title-container {
+        height: 1.7rem;
+    }
+    .section-title {
+        font-size: 1.4rem;
+    }
+    .homepage-render-container {
+        padding: 0;
+        gap: 0.7rem;
+    }
+    .toggle-button-group {
+        width: 7rem;
+        align-self: center;
+    }
+    .toggle-btn {
+        font-size: 1rem;
+    }
+    .render-card {
+        min-width: 160px;
+        max-width: 160px;
+        min-height: 250px;
+        max-height: 250px;
+    }
+    .render-img {
+        height: 223px;
+    }
+    .render-vote {
+        height: 27px;
+    }
+    .render-card-link:hover {
+        display: none;
+    }
+    #popular-container:hover {
+        display: none;
+    }
+    #top-rated-container:hover {
+        display: none;
+    }
+    #watchlist-container:hover {
+        display: none;
     }
 }
