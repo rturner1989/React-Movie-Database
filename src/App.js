@@ -8,7 +8,6 @@ import MovieFullScreenResult from "./components/FullScreenResult/moviefullscreen
 import TvFullScreenResult from "./components/FullScreenResult/tvfullscreenresult";
 import PeopleFullScreenResult from "./components/FullScreenResult/peoplefullscreenresults";
 import Watchlist from "./components/Watchlist/watchlist";
-// import Footer from "./components/Navbar/footer";
 
 export default function App() {
     return (
