@@ -668,6 +668,7 @@
     }
     .render-card {
         min-width: 20%;
+        max-width: 171px;
         height: 95%;
     }
     .render-card-link:hover {
