@@ -214,6 +214,8 @@
     color: green;
 }
 #watchlist-empty {
+    color: white;
+    visibility: visible;
     display: flex;
     align-items: center;
     justify-content: center;

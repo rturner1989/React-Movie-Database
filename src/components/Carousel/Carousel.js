@@ -38,7 +38,6 @@ const Carousel = ({ children }) => {
         setTouchStart(0);
         setTouchEnd(0);
     };
-
     return (
         <section
             className="carousel-container"
@@ -46,20 +45,24 @@ const Carousel = ({ children }) => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
         >
-            <button className="previous-btn" onClick={handlePreviousClick}>
-                <BiLeftArrow
-                    className="previous-next-icon"
-                    aria-hidden={true}
-                    focusable={false}
-                />
-            </button>
-            <button className="next-btn" onClick={handleNextClick}>
-                <BiRightArrow
-                    className="previous-next-icon"
-                    aria-hidden={true}
-                    focusable={false}
-                />
-            </button>
+            {children.length > 1 && (
+                <button className="previous-btn" onClick={handlePreviousClick}>
+                    <BiLeftArrow
+                        className="previous-next-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
+                </button>
+            )}
+            {children.length > 1 && (
+                <button className="next-btn" onClick={handleNextClick}>
+                    <BiRightArrow
+                        className="previous-next-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
+                </button>
+            )}
             {children.map((child, index) => {
                 return (
                     <div
