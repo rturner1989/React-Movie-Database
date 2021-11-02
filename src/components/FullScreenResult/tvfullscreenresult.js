@@ -44,7 +44,7 @@ const TvFullScreenResult = () => {
         setTvResultData(data);
     };
 
-    const getMovieCredit = async () => {
+    const getTvCredit = async () => {
         const response = await fetch(
             `https://api.themoviedb.org/3/tv/${id}/credits?api_key=9ddeebbe780fac8f3f13322ce56a87af&language=en-GB`
         );
@@ -55,7 +55,7 @@ const TvFullScreenResult = () => {
     useEffect(() => {
         getTvData();
         getTvReview();
-        getMovieCredit();
+        getTvCredit();
     }, []);
 
     const found = isTvShowInWatchlist(tvData.id);
