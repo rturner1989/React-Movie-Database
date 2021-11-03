@@ -116,3 +116,62 @@
 #clear-search-btn:hover {
     background-color: rgb(156, 0, 0);
 }
+/* mobile portrait */
+@media screen and (max-width: 450px) and (orientation: portrait) {
+    #title-searchbar {
+        padding: 0.5rem;
+    }
+    .title-bar {
+        width: 100%;
+        height: 100%;
+        min-height: 80px;
+        min-width: 308px;
+        padding: 0.3rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .search-input-container {
+        width: 100%;
+        max-width: 375px;
+        min-width: 295px;
+    }
+    .category-btn-container {
+        width: 60%;
+        max-width: 200px;
+        min-width: 160px;
+    }
+    .category-btn {
+        font-size: 1rem;
+    }
+    #clear-search-btn {
+        font-size: 1rem;
+    }
+}
+/* mobile landscape */
+@media screen and (max-width: 926px) and (orientation: landscape) {
+    #title-searchbar {
+        padding: 0.5rem 0;
+        height: 60px;
+        min-height: 60px;
+    }
+    .title-bar {
+        width: 90%;
+        min-width: 511px;
+        max-width: 680px;
+        height: 50px;
+        padding: 0.5rem;
+    }
+    .search-input-container {
+        height: 100%;
+    }
+    .category-btn-container {
+        height: 100%;
+    }
+    .category-btn {
+        font-size: 1rem;
+    }
+    #clear-search-btn {
+        font-size: 1rem;
+        height: 100%;
+    }
+}
