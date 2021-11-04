@@ -284,6 +284,9 @@
         width: 80%;
         max-width: unset;
     }
+    .trending-carousel-container {
+        height: 100%;
+    }
 }
 /* mobile landscape */
 @media screen and (max-width: 926px) and (orientation: landscape) {
