@@ -7,12 +7,14 @@ import TvFullScreenResult from "./components/FullScreenResult/tvfullscreenresult
 import PeopleFullScreenResult from "./components/FullScreenResult/peoplefullscreenresults";
 import Watchlist from "./components/Watchlist/watchlist";
 import Search from "./components/Search/Search";
+import Addremovewatchlist from "./components/Navbar/addremovewatchlist";
 
 export default function App() {
     return (
         <Router>
             <div id="app-container">
                 <Navbar />
+                <Addremovewatchlist />
                 <Switch>
                     <Route path="/search">
                         <Search />

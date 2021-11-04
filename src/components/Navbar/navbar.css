@@ -63,16 +63,16 @@
     font-size: 1.4rem;
 }
 /* added or removed from watchlist */
-#display {
-    width: 100%;
-    position: relative;
-}
+
 #watchlist-alert {
     position: absolute;
     z-index: 200;
+    top: 9px;
+    right: 1rem;
     display: flex;
     justify-content: center;
-    width: 100%;
+    flex-wrap: wrap;
+    width: 35%;
     color: white;
     font-size: 1.1rem;
 }
