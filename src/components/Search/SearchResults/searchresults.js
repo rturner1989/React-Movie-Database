@@ -91,6 +91,7 @@ const SearchResults = () => {
                                 Showing results for "
                                 {searchResults.query.movie.toUpperCase()}"
                             </h3>
+
                             {searchResults.movie.map((movie) => {
                                 return (
                                     <MovieTVResultData
