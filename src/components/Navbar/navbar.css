@@ -1,6 +1,7 @@
 #navbar {
     width: 100vw;
     background-color: var(--dark-theme);
+    z-index: 200;
 }
 #navbar-list {
     display: flex;
@@ -82,3 +83,13 @@
 #watchlist-alert.removed {
     background-color: rgb(231, 112, 112);
 }
+/* mobile landscape */
+/* @media screen and (max-width: 926px) and (orientation: landscape) {
+    #watchlist-alert {
+        align-items: center;
+        top: 0;
+        width: 100%;
+        right: 0;
+        height: 3rem;
+    }
+} */
