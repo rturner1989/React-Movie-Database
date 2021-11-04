@@ -40,11 +40,8 @@
 #search-container {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 5% 95%;
-    justify-items: center;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 /*  Fullscreen information */
@@ -57,13 +54,19 @@
 }
 @media screen and (max-width: 450px) and (orientation: portrait) {
     #search-container {
+        display: grid;
+        grid-template-columns: 1fr;
         grid-template-rows: 15% 85%;
+        justify-items: center;
     }
 }
 @media screen and (max-width: 926px) and (orientation: landscape) {
     #search-container {
         grid-template-rows: 15% 85%;
         gap: 0.1rem;
-        /* padding: 0 0.5rem; */
+        padding: 0.5rem 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
     }
 }
