@@ -33,10 +33,20 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    gap: 1rem;
     background-color: var(--less-dark-theme);
     overflow: hidden;
 }
+/* Search Container */
+#search-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5% 95%;
+    justify-items: center;
+    gap: 1rem;
+}
+
 /*  Fullscreen information */
 .fullscreen {
     display: flex;
@@ -44,4 +54,16 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
+}
+@media screen and (max-width: 450px) and (orientation: portrait) {
+    #search-container {
+        grid-template-rows: 15% 85%;
+    }
+}
+@media screen and (max-width: 926px) and (orientation: landscape) {
+    #search-container {
+        grid-template-rows: 15% 85%;
+        gap: 0.1rem;
+        /* padding: 0 0.5rem; */
+    }
 }

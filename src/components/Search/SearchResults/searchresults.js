@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useGlobalContext } from "../../context";
+import { useGlobalContext } from "../../../context";
 import MovieTVResultData from "./SearchResultsCard/movietvresultdata";
 import PeopleResultData from "./SearchResultsCard/peopleresultdata";
-import useHorizontalScroll from "../../hooks/useHorizontalScroll";
+import useHorizontalScroll from "../../../hooks/useHorizontalScroll";
 import TrendingData from "./SearchTrending/trendingdata";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
-import Carousel from "../Carousel/Carousel";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import Carousel from "../../Carousel/Carousel";
 
 const SearchResults = () => {
     const {

@@ -85,11 +85,12 @@
 }
 /* Carousel Trending */
 .trending-carousel-container {
-    width: 90%;
+    width: 95%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 /* Search Results */
 .search-results-container {
@@ -281,7 +282,7 @@
         width: 100%;
     }
     .trending-tile {
-        width: 80%;
+        width: 70%;
         max-width: unset;
     }
     .trending-carousel-container {
@@ -301,7 +302,8 @@
     }
     .trending-data-container {
         width: 95%;
-        height: 80%;
+        height: 83%;
+        padding: 0;
     }
     .trending-tile {
         min-width: 20%;

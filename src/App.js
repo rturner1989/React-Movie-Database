@@ -2,12 +2,11 @@ import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
 import Homepage from "./components/Homepage/homepage";
-import Searchbar from "./components/Searchbar/searchbar";
-import SearchResults from "./components/SearchResults/searchresults";
 import MovieFullScreenResult from "./components/FullScreenResult/moviefullscreenresult";
 import TvFullScreenResult from "./components/FullScreenResult/tvfullscreenresult";
 import PeopleFullScreenResult from "./components/FullScreenResult/peoplefullscreenresults";
 import Watchlist from "./components/Watchlist/watchlist";
+import Search from "./components/Search/Search";
 
 export default function App() {
     return (
@@ -16,8 +15,7 @@ export default function App() {
                 <Navbar />
                 <Switch>
                     <Route path="/search">
-                        <Searchbar />
-                        <SearchResults />
+                        <Search />
                     </Route>
                     <Route path="/result/movie/:id">
                         <MovieFullScreenResult />
