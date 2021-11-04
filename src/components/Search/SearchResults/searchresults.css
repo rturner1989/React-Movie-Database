@@ -306,6 +306,8 @@
         padding: 0;
     }
     .trending-tile {
+        width: 100%;
         min-width: 20%;
+        height: 90%;
     }
 }
