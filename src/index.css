@@ -39,9 +39,9 @@
 /* Search Container */
 #search-container {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 /*  Fullscreen information */
@@ -58,15 +58,14 @@
         grid-template-columns: 1fr;
         grid-template-rows: 15% 85%;
         justify-items: center;
+        height: 100%;
+        padding: 0.5rem 0;
     }
 }
 @media screen and (max-width: 926px) and (orientation: landscape) {
     #search-container {
-        grid-template-rows: 15% 85%;
-        gap: 0.1rem;
-        padding: 0.5rem 0;
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow-y: auto;
     }
 }

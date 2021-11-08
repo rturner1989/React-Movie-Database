@@ -99,12 +99,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
     width: 100%;
     padding: 1rem;
     gap: 1rem;
     background-color: var(--less-dark-theme);
-    overflow-y: auto;
 }
 .showing-results-for {
     color: white;
@@ -297,7 +295,7 @@
     }
     /* Search Results */
     .search-results-container {
-        padding: 0.5rem;
+        padding: 1rem;
         gap: 0.5rem;
     }
     .showing-results-for {
