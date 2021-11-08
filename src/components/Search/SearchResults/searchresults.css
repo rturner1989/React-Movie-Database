@@ -1,7 +1,6 @@
 /* Trending Data */
 .trending-movie-container {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +36,6 @@
 .trending-data-container {
     width: 65vw;
     min-width: 1100px;
-    height: 300px;
     padding: 0.6rem;
     gap: 0.6rem;
     display: flex;
@@ -296,7 +294,7 @@
     /* Search Results */
     .search-results-container {
         padding: 1rem;
-        gap: 0.5rem;
+        gap: 1rem;
     }
     .showing-results-for {
         font-size: 1.4rem;
@@ -329,11 +327,12 @@
         font-size: 1.4rem;
     }
     .trending-movie-container {
+        /* height: 100%; */
         padding: 0rem;
+        overflow: hidden;
     }
     .trending-data-container {
         width: 95%;
-        height: 83%;
         padding: 0;
         min-width: 0;
     }
@@ -344,7 +343,6 @@
     .trending-tile {
         width: 100%;
         min-width: 20%;
-        height: 90%;
     }
     /* Search Results */
     .search-results-container {
