@@ -1,7 +1,9 @@
-#navbar {
+.navbar {
     width: 100vw;
     background-color: var(--dark-theme);
     z-index: 200;
+    height: 3rem;
+    transition: ease 0.3s;
 }
 #navbar-list {
     display: flex;
@@ -16,15 +18,12 @@
     list-style: none;
     font-size: 1.2rem;
     font-weight: 800;
-    height: 32px;
 }
 .nav-link {
-    display: block;
     position: relative;
-    height: 100%;
-    width: 100%;
     text-decoration: none;
     color: white;
+    transition: ease 0.3s;
 }
 .nav-link::after {
     content: "";
@@ -47,7 +46,6 @@
     transform: scale(0);
     transform-origin: center;
 }
-
 .nav-link:hover::after,
 .nav-link:focus::after {
     transform: scale(1);
@@ -62,6 +60,22 @@
 .link-icon {
     display: block;
     font-size: 1.4rem;
+}
+.hidden-navbar {
+    height: 1rem;
+    border-bottom: white 1px solid;
+    width: 100%;
+}
+.navbar:hover {
+    height: 3rem;
+}
+.hidden-link {
+    transform: translateY(-100px);
+    color: transparent;
+}
+#visible-link {
+    transform: translateY(0);
+    color: white;
 }
 /* added or removed from watchlist */
 

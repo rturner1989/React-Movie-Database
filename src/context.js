@@ -31,6 +31,7 @@ const AppProvider = ({ children }) => {
     const [modalContent, setModalContent] = useState(null);
     const [movieCount, setMovieCount] = useState(0);
     const [tvCount, setTvCount] = useState(0);
+    const [isScroll, setIsScroll] = useState(false);
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -214,6 +215,8 @@ const AppProvider = ({ children }) => {
                 modalContent,
                 setModalContent,
                 toggleWatchlistCategory,
+                isScroll,
+                setIsScroll,
             }}
         >
             {children}

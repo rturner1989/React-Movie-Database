@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 import { useGlobalContext } from "../../context";
 
 const Navbar = () => {
-    const { setSearchResults, setExpandBiography, setModalContent } =
+    const { setSearchResults, setExpandBiography, setModalContent, isScroll } =
         useGlobalContext();
 
+    const [isHover, setIsHover] = useState(false);
+    const toggleHover = () => setIsHover(!isHover);
+
     return (
-        <nav id="navbar">
+        <nav
+            className={isScroll ? "navbar hidden-navbar" : "navbar"}
+            onMouseEnter={toggleHover}
+            onMouseLeave={toggleHover}
+        >
             <ul id="navbar-list">
                 <li>
                     <Link
-                        className="nav-link"
+                        // className="nav-link"
+                        className={
+                            isScroll ? "nav-link hidden-link" : "nav-link"
+                        }
+                        id={isHover ? "visible-link" : ""}
                         to="/"
                         onClick={() => {
                             setSearchResults({
@@ -30,7 +41,11 @@ const Navbar = () => {
                 </li>
                 <li>
                     <Link
-                        className="nav-link"
+                        // className="nav-link"
+                        className={
+                            isScroll ? "nav-link hidden-link" : "nav-link"
+                        }
+                        id={isHover ? "visible-link" : ""}
                         to="/watchlist"
                         onClick={() => {
                             setExpandBiography(false);
@@ -42,7 +57,13 @@ const Navbar = () => {
                 </li>
                 <li>
                     <Link
-                        className="nav-link search-icon-link"
+                        // className="nav-link search-icon-link"
+                        className={
+                            isScroll
+                                ? "nav-link search-icon-link hidden-link"
+                                : "nav-link search-icon-link"
+                        }
+                        id={isHover ? "visible-link" : ""}
                         to="/search"
                         onClick={() => {
                             setExpandBiography(false);

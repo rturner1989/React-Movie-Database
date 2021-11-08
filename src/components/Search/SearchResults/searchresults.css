@@ -327,7 +327,6 @@
         font-size: 1.4rem;
     }
     .trending-movie-container {
-        /* height: 100%; */
         padding: 0rem;
         overflow: hidden;
     }
@@ -342,7 +341,7 @@
     }
     .trending-tile {
         width: 100%;
-        min-width: 20%;
+        min-width: 19%;
     }
     /* Search Results */
     .search-results-container {
