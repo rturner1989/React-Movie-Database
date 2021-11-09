@@ -35,6 +35,7 @@
     height: 100vh;
     background-color: var(--less-dark-theme);
     overflow: hidden;
+    position: relative;
 }
 /* Search Container */
 #search-container {
@@ -68,5 +69,22 @@
         flex-direction: row;
         flex-wrap: wrap;
         overflow-y: auto;
+    }
+    /* return to top button */
+    .return-to-top {
+        position: absolute;
+        color: white;
+        width: 100%;
+        bottom: 0;
+        background-color: rgba(56, 56, 56, 0.75);
+        border: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .up-icon {
+        color: white;
+        font-size: 1.5rem;
     }
 }

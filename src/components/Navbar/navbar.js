@@ -4,8 +4,13 @@ import { GoSearch } from "react-icons/go";
 import { useGlobalContext } from "../../context";
 
 const Navbar = () => {
-    const { setSearchResults, setExpandBiography, setModalContent, isScroll } =
-        useGlobalContext();
+    const {
+        setSearchResults,
+        setExpandBiography,
+        setModalContent,
+        isScroll,
+        setIsScroll,
+    } = useGlobalContext();
 
     const [isHover, setIsHover] = useState(false);
     const toggleHover = () => setIsHover(!isHover);
@@ -34,6 +39,7 @@ const Navbar = () => {
                             });
                             setExpandBiography(false);
                             setModalContent("");
+                            setIsScroll(false);
                         }}
                     >
                         Home
@@ -50,6 +56,7 @@ const Navbar = () => {
                         onClick={() => {
                             setExpandBiography(false);
                             setModalContent("");
+                            setIsScroll(false);
                         }}
                     >
                         Watchlist
@@ -68,6 +75,7 @@ const Navbar = () => {
                         onClick={() => {
                             setExpandBiography(false);
                             setModalContent("");
+                            setIsScroll(false);
                         }}
                     >
                         <GoSearch className="link-icon" />

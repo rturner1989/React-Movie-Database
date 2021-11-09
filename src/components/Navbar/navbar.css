@@ -24,6 +24,7 @@
     text-decoration: none;
     color: white;
     transition: ease 0.3s;
+    display: flex;
 }
 .nav-link::after {
     content: "";
