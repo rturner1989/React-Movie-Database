@@ -129,6 +129,7 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     text-decoration: none;
+    display: flex;
 }
 .search-img {
     display: flex;
@@ -184,14 +185,11 @@
 
 .people-search-results-container {
     width: 100%;
-    height: 100%;
     padding: 1rem;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    overflow-y: auto;
 }
 .people-search-results {
     display: grid;
@@ -300,6 +298,7 @@
         font-size: 1.4rem;
     }
     .search-results {
+        height: unset;
         width: 100%;
         min-width: 0;
     }
@@ -314,6 +313,71 @@
     }
     .search-overview {
         height: 100%;
+    }
+    .search-info {
+        flex-grow: 2;
+    }
+    .image-link-container {
+        height: unset;
+        min-width: 33%;
+    }
+    .search-img {
+        height: unset;
+    }
+    /* People Results */
+    .people-search-results-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        justify-content: center;
+    }
+    .people-search-results {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.5rem;
+        gap: 1rem;
+        min-width: unset;
+    }
+    .person-search-results-card {
+        height: unset;
+        min-height: unset;
+        max-height: 267px;
+        min-width: unset;
+        max-width: unset;
+        width: 95%;
+    }
+    .person-image-container {
+        min-width: 33%;
+        max-width: 50%;
+    }
+    .person-search-info {
+        flex-grow: 2;
+    }
+    .person-name {
+        overflow: hidden;
+        font-size: 1rem;
+        padding: 0 0.3rem;
+    }
+    .person-known-role-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        padding: 0.3rem;
+        overflow: hidden;
+    }
+    .person-known-for {
+        font-size: 1.1rem;
+    }
+    .known-for-role {
+        font-size: 1rem;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+    .known-for-date {
+        display: none;
     }
 }
 /* mobile landscape */
@@ -366,5 +430,58 @@
     }
     .search-overview {
         height: 100%;
+    }
+    /* People Results */
+    .people-search-results-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        justify-content: center;
+    }
+    .people-search-results {
+        width: 100%;
+        padding: 0 0.5rem;
+        gap: 1rem 0rem;
+        min-width: unset;
+    }
+    .person-search-results-card {
+        height: unset;
+        min-height: unset;
+        max-height: 267px;
+        min-width: unset;
+        max-width: unset;
+        width: 95%;
+    }
+    .person-image-container {
+        min-width: 33%;
+        max-width: 50%;
+    }
+
+    .person-search-info {
+        flex-grow: 2;
+    }
+    .person-name {
+        font-size: 1.2rem;
+        padding: 0 0.3rem;
+    }
+    .person-known-role-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        padding: 0.3rem;
+        overflow: hidden;
+    }
+    .person-known-for {
+        font-size: 1.1rem;
+    }
+    .known-for-role {
+        font-size: 1rem;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+    .known-for-date {
+        display: none;
     }
 }

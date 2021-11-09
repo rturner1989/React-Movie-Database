@@ -11,11 +11,18 @@ const Search = () => {
 
     const [windowDimensions] = useWindowDimensions();
 
+    const scrollToTop = () => {
+        scrollRef.current.scrollTop = 0;
+    };
+
     const returnToTop = () => {
-        if (windowDimensions.width <= 950) {
+        if (windowDimensions.width < 926) {
             if (isScroll) {
                 return (
-                    <button className="return-to-top">
+                    <button
+                        className="return-to-top"
+                        onTouchStart={() => scrollToTop()}
+                    >
                         <BiUpArrow className="up-icon" />
                     </button>
                 );
@@ -27,6 +34,7 @@ const Search = () => {
     return (
         <div
             ref={scrollRef}
+            className={windowDimensions.width < 926 ? "mobile-scroll" : ""}
             id="search-container"
             onScroll={() => {
                 if (scrollRef.current.scrollTop <= 0) {

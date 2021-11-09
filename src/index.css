@@ -45,7 +45,30 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-
+.mobile-scroll {
+    scroll-behavior: smooth;
+}
+/* return to top button */
+.return-to-top {
+    position: absolute;
+    color: white;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    bottom: 5%;
+    right: 40%;
+    background-color: rgba(66, 66, 66, 0.85);
+    border: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 200;
+}
+.up-icon {
+    color: white;
+    font-size: 1.5rem;
+}
 /*  Fullscreen information */
 .fullscreen {
     display: flex;
@@ -69,22 +92,5 @@
         flex-direction: row;
         flex-wrap: wrap;
         overflow-y: auto;
-    }
-    /* return to top button */
-    .return-to-top {
-        position: absolute;
-        color: white;
-        width: 100%;
-        bottom: 0;
-        background-color: rgba(56, 56, 56, 0.75);
-        border: unset;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-    .up-icon {
-        color: white;
-        font-size: 1.5rem;
     }
 }
