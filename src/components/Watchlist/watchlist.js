@@ -20,9 +20,31 @@ const Watchlist = () => {
         descending: "",
     });
     const [watchlistView, setWatchlistView] = useState("card");
+    const [isShown, setIsShown] = useState(true);
 
     const sortingTypeRef = useRef();
     const sortingDirectionRef = useRef();
+    const movieWatchlistRef = useRef();
+    const tvWatchlistRef = useRef();
+
+    const adjustMovieWatchlistHeight = () => {
+        if (isShown) {
+            movieWatchlistRef.current.style.display = "none";
+            setIsShown(!isShown);
+        } else {
+            movieWatchlistRef.current.style.display = "flex";
+            setIsShown(!isShown);
+        }
+    };
+    const adjustTVWatchlistHeight = () => {
+        if (isShown) {
+            tvWatchlistRef.current.style.display = "none";
+            setIsShown(!isShown);
+        } else {
+            tvWatchlistRef.current.style.display = "flex";
+            setIsShown(!isShown);
+        }
+    };
 
     const sortWatchlist = (a, b) => {
         const sortedMovieWatchlist = [...a];
@@ -145,11 +167,17 @@ const Watchlist = () => {
                         className="fullscreen-watchlist-container"
                         id="movie-watchlist-fullscreen"
                     >
-                        <div className="fullscreen-watchlist-head">
+                        <div
+                            className="fullscreen-watchlist-head"
+                            onClick={() => adjustMovieWatchlistHeight()}
+                        >
                             <h3>Movie Watchlist</h3>
                             <p>Total Added - {movieCount}</p>
                         </div>
-                        <div className="fullscreen-watchlist-map">
+                        <div
+                            className="fullscreen-watchlist-map"
+                            ref={movieWatchlistRef}
+                        >
                             {movieWatchlist.length === 0 ? (
                                 <div className="empty-watchlist">
                                     <h1>Your Watchlist is Empty...</h1>
@@ -203,11 +231,17 @@ const Watchlist = () => {
                         className="fullscreen-watchlist-container"
                         id="tv-watchlist-fullscreen"
                     >
-                        <div className="fullscreen-watchlist-head">
+                        <div
+                            className="fullscreen-watchlist-head"
+                            onClick={() => adjustTVWatchlistHeight()}
+                        >
                             <h3>TV Show Watchlist</h3>
                             <p>Total Added - {tvCount}</p>
                         </div>
-                        <div className="fullscreen-watchlist-map">
+                        <div
+                            className="fullscreen-watchlist-map"
+                            ref={tvWatchlistRef}
+                        >
                             {tvWatchlist.length === 0 ? (
                                 <div className="empty-watchlist">
                                     <h1>Your Watchlist is Empty...</h1>

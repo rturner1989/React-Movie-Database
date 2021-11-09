@@ -14,6 +14,19 @@ const Searchbar = () => {
         searchResults,
     } = useGlobalContext();
 
+    const placeHolderSearchText = () => {
+        switch (category) {
+            case "movie":
+                return "Search for a Movie";
+            case "tv":
+                return "Search for a TV Show";
+            case "people":
+                return "Search for a Person";
+            default:
+                break;
+        }
+    };
+
     useEffect(() => {
         setTrendingData({ ...trendingData, type: category });
     }, [category]);
@@ -26,7 +39,7 @@ const Searchbar = () => {
                         id="title-input"
                         type="text"
                         value={searchTitle}
-                        placeholder="Search for a Title"
+                        placeholder={placeHolderSearchText()}
                         onChange={(e) => {
                             setSearchTitle(e.target.value);
                         }}
@@ -36,7 +49,22 @@ const Searchbar = () => {
                         type="submit"
                         onClick={(e) => {
                             if (searchTitle === "") {
-                                alert("Please Enter Title");
+                                switch (category) {
+                                    case "movie":
+                                        return alert(
+                                            "Please Enter Movie Title"
+                                        );
+                                    case "tv":
+                                        return alert(
+                                            "Please Enter TV Show Title"
+                                        );
+                                    case "people":
+                                        return alert(
+                                            "Please Enter Person Name"
+                                        );
+                                    default:
+                                        break;
+                                }
                             } else {
                                 e.preventDefault();
                                 search(category, searchTitle);
