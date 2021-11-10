@@ -393,11 +393,11 @@
     .trending-movie-container {
         padding: 0rem;
         overflow: hidden;
+        height: 100%;
     }
     .trending-data-container {
-        width: 95%;
-        padding: 0;
-        min-width: 0;
+        width: 100%;
+        min-width: unset;
     }
     .trending-data-container:hover {
         box-shadow: 1px 1px 5px transparent;
@@ -405,18 +405,18 @@
     }
     .trending-tile {
         width: 100%;
-        min-width: 19%;
+        min-width: 18%;
     }
     /* Search Results */
     .search-results-container {
-        padding: 0.5rem;
+        padding: 0 1rem;
         gap: 1rem;
     }
     .showing-results-for {
         font-size: 1.4rem;
     }
     .search-results {
-        width: 95%;
+        width: 100%;
         min-width: 0;
     }
     .search-title {
@@ -425,7 +425,7 @@
     }
     .search-release-overview-container {
         padding: 0.2rem;
-        font-size: 1rem;
+        font-size: 0.9rem;
         gap: 0;
     }
     .search-overview {

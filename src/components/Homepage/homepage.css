@@ -268,8 +268,8 @@
     background-color: var(--text-colour-selected);
     color: var(--lighter-dark-theme);
 }
-/* Iphone 5 portrait */
-@media screen and (max-width: 320px) and (orientation: portrait) {
+/* mobile portrait */
+@media screen and (max-width: 450px) and (orientation: portrait) {
     #app-container {
         gap: 0;
     }
@@ -296,11 +296,11 @@
     }
     .next-btn {
         top: 40%;
-        right: 1%;
+        right: -3%;
     }
     .previous-btn {
         top: 40%;
-        left: 1%;
+        left: -3%;
     }
     .toggle-button-group {
         width: 7rem;
@@ -309,17 +309,21 @@
     .toggle-btn {
         font-size: 1rem;
     }
+    .carousel-card {
+        height: unset;
+    }
     .render-card {
-        max-width: 75%;
-        height: auto;
+        width: 80%;
+        max-width: unset;
+        height: unset;
     }
     .render-card-link:hover {
         color: transparent;
         background-color: transparent;
     }
 }
-/* Iphone 5 landscape */
-@media screen and (max-width: 568px) and (orientation: landscape) {
+/* Mobile Landscape */
+@media screen and (max-width: 926px) and (orientation: landscape) {
     #app-container {
         gap: 0;
     }
@@ -368,346 +372,21 @@
         font-size: 1rem;
     }
     .render-card {
-        min-width: 20%;
-        max-width: 114px;
-        height: 95%;
-    }
-    .render-card-link:hover {
-        color: transparent;
-        background-color: transparent;
-    }
-}
-/* Iphone 6 */
-@media screen and (min-width: 321px) and (max-width: 375px) and (orientation: portrait) {
-    #app-container {
-        gap: 0;
-    }
-    #homepage {
-        gap: 0.5rem;
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 1rem;
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-        justify-content: flex-start;
-    }
-    .section {
-        width: 100%;
-        height: 100%;
-        min-height: 150px;
-        scroll-snap-align: center;
-        padding: 0;
-    }
-    #popular,
-    #rated,
-    #watchlist {
-        margin: 0;
-    }
-    .next-btn {
-        top: 40%;
-        right: 1%;
-    }
-    .previous-btn {
-        top: 40%;
-        left: 1%;
-    }
-    .toggle-button-group {
-        width: 10rem;
-        align-self: center;
-    }
-    .toggle-btn {
-        font-size: 1.4rem;
-    }
-    .carousel-container {
-        max-height: 507px;
-    }
-    .render-card {
-        max-width: 75%;
-        height: auto;
+        height: unset;
+        min-width: 18%;
+        max-width: 145px;
     }
     .render-card-link:hover {
         color: transparent;
         background-color: transparent;
     }
-}
-/* Iphone 6 landscape */
-@media screen and (min-width: 569px) and (max-width: 667px) and (orientation: landscape) {
-    #app-container {
-        gap: 0;
+    .render-img {
+        height: unset;
     }
-    #homepage {
-        gap: 0.5rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 0 0.5rem;
-        overflow-y: auto;
-        justify-content: flex-start;
-    }
-    .section {
-        width: 100%;
-        height: 100%;
-        gap: 0.4rem;
-        padding: 0;
-    }
-    #popular,
-    #rated,
-    #watchlist {
-        margin: 0;
-    }
-    #popular-container:hover,
-    #top-rated-container:hover,
-    #watchlist-container:hover {
-        visibility: visible;
-        box-shadow: 2px 2px 5px transparent;
-        border-radius: 5px;
-        background-color: transparent;
-    }
-    .section-title-container {
-        height: 1.7rem;
-    }
-    .section-title {
-        font-size: 1.4rem;
-    }
-    .homepage-render-container {
-        padding: 0.5rem;
-        gap: 0.7rem;
-    }
-    .toggle-button-group {
-        width: 7rem;
-        align-self: center;
-    }
-    .toggle-btn {
-        font-size: 1rem;
-    }
-    .render-card {
-        min-width: 22%;
-        max-width: 114px;
-        height: 95%;
-    }
-    .render-card-link:hover {
-        color: transparent;
-        background-color: transparent;
-    }
-}
-/* Iphone 6+ */
-@media screen and (min-width: 376px) and (max-width: 414px) and (orientation: portrait) {
-    #homepage {
-        gap: 0.5rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 1rem;
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-        justify-content: flex-start;
-    }
-    .section {
-        width: 100%;
-        height: 100%;
-        min-height: 150px;
-        scroll-snap-align: center;
-        padding: 0;
-    }
-    #popular,
-    #rated,
-    #watchlist {
-        margin: 0;
-    }
-    .toggle-button-group {
-        width: 10rem;
-        margin: 1rem;
-        margin-top: 0;
-        align-self: center;
-    }
-    .toggle-btn {
-        font-size: 1.4rem;
-    }
-    .next-btn {
-        top: 35%;
-        right: 1%;
-    }
-    .previous-btn {
-        top: 35%;
-        left: 1%;
-    }
-    .carousel-container {
-        max-height: 507px;
-    }
-    .carousel-card {
-        align-items: flex-start;
-    }
-    .render-card {
-        max-width: 75%;
-        height: auto;
-    }
-    .render-card-link:hover {
-        color: transparent;
-        background-color: transparent;
-    }
-}
-/* Iphone 6+ landscape */
-@media screen and (min-width: 668px) and (max-width: 736px) and (orientation: landscape) {
-    #app-container {
-        gap: 0;
-    }
-    #homepage {
-        gap: 0.5rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 0 0.5rem;
-        overflow-y: auto;
-        justify-content: flex-start;
-    }
-    .section {
-        width: 100%;
-        height: 100%;
-        gap: 0.4rem;
-        padding: 0;
-    }
-    #popular,
-    #rated,
-    #watchlist {
-        margin: 0;
-    }
-    #popular-container:hover,
-    #top-rated-container:hover,
-    #watchlist-container:hover {
-        visibility: visible;
-        box-shadow: 2px 2px 5px transparent;
-        border-radius: 5px;
-        background-color: transparent;
-    }
-    .section-title-container {
-        height: 1.7rem;
-    }
-    .section-title {
-        font-size: 1.4rem;
-    }
-    .homepage-render-container {
-        padding: 0.7rem;
-        gap: 0.7rem;
-    }
-    .toggle-button-group {
-        width: 7rem;
-        align-self: center;
-    }
-    .toggle-btn {
-        font-size: 1rem;
-    }
-    .render-card {
-        min-width: 23%;
-        max-width: 114px;
-        height: 95%;
-    }
-    .render-card-link:hover {
-        color: transparent;
-        background-color: transparent;
-    }
-}
-/* Iphone 12/13 + pro */
-@media screen and (min-width: 415px) and (max-width: 428px) and (orientation: portrait) {
-    #homepage {
-        gap: 0.5rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 1rem;
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-        justify-content: flex-start;
-    }
-    .section {
-        width: 100%;
-        height: 100%;
-        scroll-snap-align: center;
-        padding: 0;
-    }
-    #popular,
-    #rated,
-    #watchlist {
-        margin: 0;
-    }
-    .toggle-button-group {
-        width: 10rem;
-        align-self: center;
-    }
-    .toggle-btn {
-        font-size: 1.4rem;
-    }
-    .next-btn {
-        top: 40%;
-        right: 1%;
-    }
-    .previous-btn {
-        top: 40%;
-        left: 1%;
-    }
-    .carousel-container {
-        max-height: 507px;
-    }
-    .render-card {
-        max-width: 75%;
-        height: auto;
-    }
-    .render-card-link:hover {
-        color: transparent;
-        background-color: transparent;
-    }
-}
-/* Iphone X/XR landscape */
-@media screen and (min-width: 737px) and (max-width: 926px) and (orientation: landscape) {
-    #app-container {
-        gap: 0;
-    }
-    #homepage {
-        gap: 0.5rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 0 0.5rem;
-        overflow-y: auto;
-        justify-content: flex-start;
-    }
-    .section {
-        width: 100%;
-        height: 100%;
-        gap: 0.4rem;
-        padding: 0;
-    }
-    #popular,
-    #rated,
-    #watchlist {
-        margin: 0;
-    }
-    #popular-container:hover,
-    #top-rated-container:hover,
-    #watchlist-container:hover {
-        visibility: visible;
-        box-shadow: 2px 2px 5px transparent;
-        border-radius: 5px;
-        background-color: transparent;
-    }
-    .section-title-container {
-        height: 1.7rem;
-    }
-    .section-title {
-        font-size: 1.4rem;
-    }
-    .homepage-render-container {
-        padding: 0.7rem;
-        gap: 0.7rem;
-    }
-    .toggle-button-group {
-        width: 7rem;
-        align-self: center;
-    }
-    .toggle-btn {
-        font-size: 1rem;
-    }
-    .render-card {
-        min-width: 20%;
-        max-width: 171px;
-        height: 95%;
-    }
-    .render-card-link:hover {
-        color: transparent;
-        background-color: transparent;
+    .render-vote {
+        height: unset;
     }
 }

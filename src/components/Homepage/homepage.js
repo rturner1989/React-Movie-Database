@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useGlobalContext } from "../../context";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
@@ -13,6 +13,7 @@ const Homepage = () => {
         isMovieInWatchlist,
         isTvShowInWatchlist,
         toggleWatchlistCategory,
+        setIsScroll,
     } = useGlobalContext();
 
     const [popularMovieData, popularMovieLoading, popularMovieError] = useFetch(
@@ -31,6 +32,8 @@ const Homepage = () => {
 
     const [popularCategory, setPopularCategory] = useState("movie");
     const [topRatedCategory, setTopRatedCategory] = useState("movie");
+
+    const homeScroll = useRef();
 
     const popScrollRef = useHorizontalScroll(false);
     const topScrollRef = useHorizontalScroll(false);
@@ -91,7 +94,17 @@ const Homepage = () => {
 
     if (windowDimensions.width <= 450) {
         return (
-            <div id="homepage">
+            <div
+                ref={homeScroll}
+                id="homepage"
+                onScroll={() => {
+                    if (homeScroll.current.scrollTop <= 0) {
+                        setIsScroll(false);
+                    } else {
+                        setIsScroll(true);
+                    }
+                }}
+            >
                 <section id="popular" className="section">
                     <div className="section-title-container">
                         <h2 className="section-title">What's Popular</h2>
@@ -168,7 +181,17 @@ const Homepage = () => {
     }
 
     return (
-        <div id="homepage">
+        <div
+            ref={homeScroll}
+            id="homepage"
+            onScroll={() => {
+                if (homeScroll.current.scrollTop <= 0) {
+                    setIsScroll(false);
+                } else {
+                    setIsScroll(true);
+                }
+            }}
+        >
             <section id="popular" className="section">
                 <div className="section-title-container">
                     <h2 className="section-title">What's Popular</h2>

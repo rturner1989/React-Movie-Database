@@ -163,7 +163,7 @@
 @media screen and (max-width: 926px) and (orientation: landscape) {
     #title-searchbar {
         padding: 0;
-        min-height: 0;
+        min-height: 60px;
     }
     .title-bar {
         width: 90%;

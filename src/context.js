@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import useLocalStorage from "./hooks/useLocalStorage";
+import useWindowDimensions from "./hooks/useWindowDimensions";
+import { BiUpArrow } from "react-icons/bi";
 
 const AppContext = React.createContext();
 
@@ -32,6 +34,7 @@ const AppProvider = ({ children }) => {
     const [movieCount, setMovieCount] = useState(0);
     const [tvCount, setTvCount] = useState(0);
     const [isScroll, setIsScroll] = useState(false);
+    const [windowDimensions] = useWindowDimensions();
 
     const searchMovies = async (query) => {
         const response = await fetch(
@@ -178,6 +181,24 @@ const AppProvider = ({ children }) => {
         });
     };
 
+    const returnToTop = (ref) => {
+        if (windowDimensions.width < 926) {
+            if (isScroll) {
+                return (
+                    <button
+                        className="return-to-top"
+                        onTouchStart={() => {
+                            ref.current.scrollTop = 0;
+                        }}
+                    >
+                        <BiUpArrow className="up-icon" />
+                    </button>
+                );
+            }
+            return;
+        }
+    };
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setWatchListAlert({ isAdded: false, isRemoved: false, title: "" });
@@ -217,6 +238,7 @@ const AppProvider = ({ children }) => {
                 toggleWatchlistCategory,
                 isScroll,
                 setIsScroll,
+                returnToTop,
             }}
         >
             {children}
