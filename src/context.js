@@ -182,20 +182,17 @@ const AppProvider = ({ children }) => {
     };
 
     const returnToTop = (ref) => {
-        if (windowDimensions.width < 926) {
-            if (isScroll) {
-                return (
-                    <button
-                        className="return-to-top"
-                        onTouchStart={() => {
-                            ref.current.scrollTop = 0;
-                        }}
-                    >
-                        <BiUpArrow className="up-icon" />
-                    </button>
-                );
-            }
-            return;
+        if (isScroll) {
+            return (
+                <button
+                    className="return-to-top"
+                    onTouchStart={() => {
+                        ref.current.scrollTop = 0;
+                    }}
+                >
+                    <BiUpArrow className="up-icon" />
+                </button>
+            );
         }
     };
 

@@ -25,7 +25,7 @@ const Search = () => {
         >
             <Searchbar />
             <SearchResults />
-            {returnToTop(scrollRef)}
+            {windowDimensions.width < 926 ? returnToTop(scrollRef) : null}
         </div>
     );
 };
