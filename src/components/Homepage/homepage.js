@@ -95,15 +95,15 @@ const Homepage = () => {
     if (windowDimensions.width <= 450) {
         return (
             <div
-                ref={homeScroll}
+                // ref={homeScroll}
                 id="homepage"
-                onScroll={() => {
-                    if (homeScroll.current.scrollTop <= 0) {
-                        setIsScroll(false);
-                    } else {
-                        setIsScroll(true);
-                    }
-                }}
+                // onScroll={() => {
+                //     if (homeScroll.current.scrollTop <= 0) {
+                //         setIsScroll(false);
+                //     } else {
+                //         setIsScroll(true);
+                //     }
+                // }}
             >
                 <section id="popular" className="section">
                     <div className="section-title-container">
@@ -185,10 +185,12 @@ const Homepage = () => {
             ref={homeScroll}
             id="homepage"
             onScroll={() => {
-                if (homeScroll.current.scrollTop <= 0) {
-                    setIsScroll(false);
-                } else {
-                    setIsScroll(true);
+                if (windowDimensions.width > 926) {
+                    if (homeScroll.current.scrollTop <= 0) {
+                        setIsScroll(false);
+                    } else {
+                        setIsScroll(true);
+                    }
                 }
             }}
         >

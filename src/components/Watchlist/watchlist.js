@@ -1,6 +1,7 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import { useGlobalContext } from "../../context";
 import { HiViewGrid, HiViewList } from "react-icons/hi";
+import { BiDownArrow, BiRightArrow } from "react-icons/bi";
 import WatchlistCard from "./WatchlistCard/watchlistcard";
 import WatchlistList from "./WatchlistCard/watchlistList";
 
@@ -20,7 +21,8 @@ const Watchlist = () => {
         descending: "",
     });
     const [watchlistView, setWatchlistView] = useState("card");
-    const [isShown, setIsShown] = useState(true);
+    const [isMovieShown, setIsMovieShown] = useState(true);
+    const [isTVShown, setIsTVShown] = useState(true);
 
     const sortingTypeRef = useRef();
     const sortingDirectionRef = useRef();
@@ -28,21 +30,21 @@ const Watchlist = () => {
     const tvWatchlistRef = useRef();
 
     const adjustMovieWatchlistHeight = () => {
-        if (isShown) {
+        if (isMovieShown) {
             movieWatchlistRef.current.style.display = "none";
-            setIsShown(!isShown);
+            setIsMovieShown(!isMovieShown);
         } else {
             movieWatchlistRef.current.style.display = "flex";
-            setIsShown(!isShown);
+            setIsMovieShown(!isMovieShown);
         }
     };
     const adjustTVWatchlistHeight = () => {
-        if (isShown) {
+        if (isTVShown) {
             tvWatchlistRef.current.style.display = "none";
-            setIsShown(!isShown);
+            setIsTVShown(!isTVShown);
         } else {
             tvWatchlistRef.current.style.display = "flex";
-            setIsShown(!isShown);
+            setIsTVShown(!isTVShown);
         }
     };
 
@@ -173,6 +175,7 @@ const Watchlist = () => {
                         >
                             <h3>Movie Watchlist</h3>
                             <p>Total Added - {movieCount}</p>
+                            {isMovieShown ? <BiDownArrow /> : <BiRightArrow />}
                         </div>
                         <div
                             className="fullscreen-watchlist-map"
@@ -237,6 +240,7 @@ const Watchlist = () => {
                         >
                             <h3>TV Show Watchlist</h3>
                             <p>Total Added - {tvCount}</p>
+                            {isTVShown ? <BiDownArrow /> : <BiRightArrow />}
                         </div>
                         <div
                             className="fullscreen-watchlist-map"
