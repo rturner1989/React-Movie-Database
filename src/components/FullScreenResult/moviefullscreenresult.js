@@ -10,6 +10,7 @@ import {
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import FullScreenReview from "./fullscreenreview/fullscreenreview";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const MovieFullScreenResult = () => {
     const { id } = useParams();
@@ -17,6 +18,7 @@ const MovieFullScreenResult = () => {
     const [movieReviewData, setMovieReviewData] = useState({});
     const [movieCreditData, setMovieCreditData] = useState({});
     const [toggle, setToggle] = useState({ category: "cast" });
+    const [mobileToggle, setMobileToggle] = useState({ category: "overview" });
     const {
         addToWatchList,
         removeFromWatchList,
@@ -27,6 +29,9 @@ const MovieFullScreenResult = () => {
         modalContent,
         setModalContent,
     } = useGlobalContext();
+
+    const [windowDimensions] = useWindowDimensions();
+    const found = isMovieInWatchlist(movieData.id);
 
     const getMovieData = async () => {
         const response = await fetch(
@@ -58,7 +63,195 @@ const MovieFullScreenResult = () => {
         getMovieCredit();
     }, []);
 
-    const found = isMovieInWatchlist(movieData.id);
+    const movieContentToggle = () => {
+        switch (mobileToggle.category) {
+            case "overview":
+                return (
+                    <div className="mobile-fullscreen-overview">
+                        <div className="mobile-fullscreen-list-info">
+                            <p className="mobile-fullscreen-release-date">
+                                {convertDate(movieData.release_date)}
+                            </p>
+                            <div className="ball"></div>
+                            <div className="mobile-fullscreen-genre">
+                                {movieData.genres !== undefined ? (
+                                    movieData.genres.map((type) => {
+                                        return <p key={type.id}>{type.name}</p>;
+                                    })
+                                ) : (
+                                    <p></p>
+                                )}
+                            </div>
+                            <div className="ball"></div>
+                            <p>{movieData.runtime} mins</p>
+                        </div>
+                        <div className="mobile-fullscreen-rating">
+                            <h4 className="mobile-average-score-title">
+                                Average Score:
+                            </h4>
+                            <p className="mobile-fullscreen-vote">
+                                <AiFillStar className="render-icon" />
+                                {movieData.vote_average}
+                            </p>
+                            <button
+                                className="add-remove-button"
+                                onClick={() => {
+                                    found
+                                        ? removeFromWatchList(
+                                              "movie",
+                                              movieData.id
+                                          )
+                                        : addToWatchList("movie", movieData);
+                                }}
+                            >
+                                {found ? (
+                                    <IoMdRemoveCircleOutline
+                                        className="remove-icon"
+                                        aria-hidden={true}
+                                        focusable={false}
+                                    />
+                                ) : (
+                                    <IoMdAddCircleOutline
+                                        className="add-icon"
+                                        aria-hidden={true}
+                                        focusable={false}
+                                    />
+                                )}
+                            </button>
+                        </div>
+                        <div className="mobile-fullscreen-production">
+                            {movieData.production_companies !== undefined ? (
+                                movieData.production_companies.map(
+                                    (company) => {
+                                        return (
+                                            <p
+                                                key={company.id}
+                                                className="mobile-company-name"
+                                            >
+                                                {company.name}
+                                            </p>
+                                        );
+                                    }
+                                )
+                            ) : (
+                                <p></p>
+                            )}
+                        </div>
+                        <h4 className="mobile-fullscreen-tagline">
+                            <i>{movieData.tagline}</i>
+                        </h4>
+                        <div className="mobile-fullscreen-overview-text">
+                            <h3>Overview</h3>
+                            <p className="mobile-fullscreen-overview-content">
+                                {movieData.overview}
+                            </p>
+                            <button
+                                className="mobile-expand-btn"
+                                onClick={() => {
+                                    setExpandBiography(!expandBiography);
+                                    setModalContent(movieData.overview);
+                                }}
+                            >
+                                <AiOutlineExpandAlt
+                                    className="expand-icon"
+                                    aria-hidden={true}
+                                    focusable={false}
+                                />
+                            </button>
+                        </div>
+                    </div>
+                );
+            case "cast":
+                return;
+            case "review":
+                return movieReviewData.results !== undefined ? (
+                    <div className="mobile-fullscreen-reviews">
+                        {movieReviewData.results.map((result, index) => {
+                            return (
+                                <div key={index}>
+                                    <FullScreenReview
+                                        author={result.author}
+                                        written={convertDate(result.created_at)}
+                                        review={result.content}
+                                    />
+                                    <button
+                                        className="review-modal-expand-btn"
+                                        onClick={() => {
+                                            setExpandBiography(
+                                                !expandBiography
+                                            );
+                                            setModalContent(result.content);
+                                        }}
+                                    >
+                                        <AiOutlineExpandAlt
+                                            className="expand-icon"
+                                            aria-hidden={true}
+                                            focusable={false}
+                                        />
+                                    </button>
+                                </div>
+                            );
+                        })}
+                    </div>
+                ) : (
+                    <div></div>
+                );
+
+            default:
+                break;
+        }
+    };
+
+    if (windowDimensions.width <= 950) {
+        return (
+            <div className="mobile-fullscreen">
+                <div className="mobile-fullscreen-card">
+                    <img
+                        className="mobile-fullscreen-img"
+                        src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
+                        alt=""
+                    />
+                    <div className="mobile-fullscreen-section-container">
+                        <h1 className="mobile-fullscreen-title">
+                            {movieData.title}
+                        </h1>
+                        <nav className="mobile-fullscreen-header-container">
+                            <ul className="mobile-fullscreen-header">
+                                <li
+                                    onTouchStart={() =>
+                                        setMobileToggle({
+                                            category: "overview",
+                                        })
+                                    }
+                                >
+                                    Overview
+                                </li>
+                                <li
+                                    onTouchStart={() =>
+                                        setMobileToggle({
+                                            category: "cast",
+                                        })
+                                    }
+                                >
+                                    Cast
+                                </li>
+                                <li
+                                    onTouchStart={() =>
+                                        setMobileToggle({
+                                            category: "review",
+                                        })
+                                    }
+                                >
+                                    Review
+                                </li>
+                            </ul>
+                        </nav>
+                        {movieContentToggle()}
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="fullscreen">
@@ -197,9 +390,8 @@ const MovieFullScreenResult = () => {
                                 {movieReviewData.results.map(
                                     (result, index) => {
                                         return (
-                                            <div>
+                                            <div key={index}>
                                                 <FullScreenReview
-                                                    key={index}
                                                     author={result.author}
                                                     written={convertDate(
                                                         result.created_at
