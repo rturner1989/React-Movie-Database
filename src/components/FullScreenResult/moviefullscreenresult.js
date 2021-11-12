@@ -185,7 +185,6 @@ const MovieFullScreenResult = () => {
                                             alt=""
                                         />
                                     )}
-
                                     <Link
                                         to={`/result/people/${cast.id}`}
                                         className="mobile-cast-name"
@@ -235,7 +234,6 @@ const MovieFullScreenResult = () => {
                 ) : (
                     <div></div>
                 );
-
             default:
                 break;
         }
@@ -257,28 +255,50 @@ const MovieFullScreenResult = () => {
                         <nav className="mobile-fullscreen-header-container">
                             <ul className="mobile-fullscreen-header">
                                 <li
+                                    className={`mobile-toggle-btn mobile-overview-btn ${
+                                        mobileToggle.category === "overview"
+                                            ? "active"
+                                            : ""
+                                    }`}
                                     onTouchStart={() =>
                                         setMobileToggle({
                                             category: "overview",
                                         })
                                     }
+                                    disabled={
+                                        mobileToggle.category === "overview"
+                                    }
                                 >
                                     Overview
                                 </li>
                                 <li
+                                    className={`mobile-toggle-btn mobile-cast-btn ${
+                                        mobileToggle.category === "cast"
+                                            ? "active"
+                                            : ""
+                                    }`}
                                     onTouchStart={() =>
                                         setMobileToggle({
                                             category: "cast",
                                         })
                                     }
+                                    disabled={mobileToggle.category === "cast"}
                                 >
                                     Cast
                                 </li>
                                 <li
+                                    className={`mobile-toggle-btn mobile-review-btn ${
+                                        mobileToggle.category === "review"
+                                            ? "active"
+                                            : ""
+                                    }`}
                                     onTouchStart={() =>
                                         setMobileToggle({
                                             category: "review",
                                         })
+                                    }
+                                    disabled={
+                                        mobileToggle.category === "review"
                                     }
                                 >
                                     Review
@@ -286,6 +306,25 @@ const MovieFullScreenResult = () => {
                             </ul>
                         </nav>
                         {movieContentToggle()}
+                    </div>
+                    <div
+                        className={
+                            expandBiography
+                                ? "modal-biography-active"
+                                : "modal-biography-hidden"
+                        }
+                    >
+                        <button
+                            className="model-exit-btn"
+                            onClick={() => setExpandBiography(false)}
+                        >
+                            <AiOutlineClose
+                                className="model-btn-icon"
+                                aria-hidden={true}
+                                focusable={false}
+                            />
+                        </button>
+                        <p className="modal-biography">{modalContent}</p>
                     </div>
                 </div>
             </div>

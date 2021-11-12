@@ -599,6 +599,9 @@
 }
 .mobile-fullscreen-header-container {
     width: 100%;
+    padding: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 .mobile-fullscreen-header {
     display: flex;
@@ -608,6 +611,10 @@
     width: 100%;
     list-style: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+.mobile-fullscreen-header li {
+    text-align: center;
 }
 .mobile-fullscreen-list-info {
     display: flex;
@@ -669,6 +676,8 @@
     background: unset;
     bottom: -5%;
     right: 0;
+    cursor: pointer;
+    z-index: 200;
 }
 .mobile-fullscreen-cast {
     width: 100%;
@@ -729,9 +738,69 @@
     width: 50%;
     height: 50%;
 }
+/* content select btn */
+.mobile-overview-btn {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.mobile-review-btn {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.mobile-toggle-btn {
+    margin: 0;
+    width: 100%;
+    background-color: var(--text-color-not-selected);
+    font-weight: 600;
+}
+.mobile-overview-btn:not(.active):hover,
+.mobile-cast-btn:not(.active):hover,
+.mobile-review-btn:not(.active):hover {
+    background-color: var(--lighter-dark-theme);
+}
+.mobile-overview-btn.active,
+.mobile-cast-btn.active,
+.mobile-review-btn.active {
+    background-color: var(--text-colour-selected);
+    color: var(--lighter-dark-theme);
+}
 /* mobile portrait */
 @media screen and (max-width: 450px) and (orientation: portrait) {
 }
 /* Mobile Landscape */
 @media screen and (max-width: 926px) and (orientation: landscape) {
+    .mobile-fullscreen-reviews {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 0.5rem;
+        padding-top: 0;
+        gap: 1rem;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        color: white;
+    }
+    .mobile-fullscreen-reviews div {
+        position: relative;
+    }
+    .review-content {
+        -webkit-line-clamp: 3;
+    }
+    .fullscreen-review h4 {
+        font-size: 1rem;
+    }
+    .fullscreen-review p {
+        font-size: 0.8rem;
+    }
+    .review-modal-expand-btn {
+        right: 0;
+        bottom: -1.5rem;
+    }
+    .modal-biography-active {
+        padding: 0.5rem;
+        justify-content: unset;
+    }
+    .modal-biography {
+        font-size: 1.2rem;
+    }
 }
