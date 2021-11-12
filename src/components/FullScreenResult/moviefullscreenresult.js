@@ -162,7 +162,46 @@ const MovieFullScreenResult = () => {
                     </div>
                 );
             case "cast":
-                return;
+                return movieCreditData.cast !== undefined ? (
+                    <div className="mobile-fullscreen-cast">
+                        {movieCreditData.cast.map((cast) => {
+                            return (
+                                <div
+                                    key={cast.id}
+                                    className="mobile-cast-credit"
+                                >
+                                    {cast.profile_path === null ? (
+                                        <div className="mobile-cast-btn-icon-container">
+                                            <AiOutlineFileImage
+                                                className="mobile-cast-btn-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <img
+                                            className="mobile-cast-img"
+                                            src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+                                            alt=""
+                                        />
+                                    )}
+
+                                    <Link
+                                        to={`/result/people/${cast.id}`}
+                                        className="mobile-cast-name"
+                                    >
+                                        {cast.character}
+                                    </Link>
+                                    <p className="mobile-cast-role">
+                                        {cast.name}
+                                    </p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                ) : (
+                    <div></div>
+                );
             case "review":
                 return movieReviewData.results !== undefined ? (
                     <div className="mobile-fullscreen-reviews">
