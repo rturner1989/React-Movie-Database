@@ -1,10 +1,8 @@
 #fullscreen-watchlist-root-container {
     width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
     overflow: hidden;
 }
 #fullscreen-watchlist-flex-container {
@@ -16,6 +14,8 @@
     width: 100vw;
     height: 100vh;
     padding: 1rem;
+    gap: 0.4rem;
+    padding-top: 0;
     overflow-y: auto;
 }
 #fullscreen-watchlist {
@@ -29,7 +29,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 70%;
+    width: 75%;
+    max-width: 1403.25px;
     gap: 0.5rem;
 }
 .empty-watchlist {
@@ -45,7 +46,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1rem;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
 }
 .fullscreen-watchlist-head {
     display: flex;
@@ -58,27 +59,31 @@
 }
 .watchlist-title-container {
     width: 75%;
+    max-width: 1403.25px;
 }
 /* Sorting bar */
 
 .sorting-selection {
-    width: 50%;
-    min-height: 80px;
-    border-radius: 10px;
+    width: 100%;
+    height: 60px;
+    min-height: 60px;
+    background-color: var(--less-dark-theme);
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: var(--lighter-dark-theme);
-    padding: 0 5rem;
+    align-items: center;
+    padding: 0.5rem 0;
 }
 .sorting-options-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
-    align-items: center;
-    width: 100%;
+    width: 90%;
+    height: 50px;
+    min-height: 40px;
+    max-width: 696px;
+    border-radius: 10px;
+    padding: 0.5rem;
     background-color: var(--lighter-dark-theme);
-    box-shadow: 1px 1px 5px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .date-rating-alpha-sorting {
     height: 100%;
@@ -226,13 +231,14 @@
 }
 
 /* List Style */
-
+.list-map {
+    justify-content: center;
+}
 .list-active {
     display: flex;
     flex-direction: row;
-    width: 65vw;
+    width: 75%;
     min-width: 1225px;
-    height: 100%;
     min-height: 225px;
     border-radius: 5px;
     position: relative;
@@ -300,4 +306,168 @@
     font-size: 1.2rem;
     color: gold;
     margin: 0px 5px;
+}
+/* mobile portrait */
+@media screen and (max-width: 450px) and (orientation: portrait) {
+    #fullscreen-watchlist-root-container {
+        padding: 0.5rem;
+    }
+    .sorting-selection {
+        height: unset;
+        min-height: unset;
+        padding: 0;
+    }
+    .sorting-options-grid {
+        width: 100%;
+        height: unset;
+        flex-wrap: wrap;
+    }
+    .date-rating-alpha-sorting {
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 5px;
+    }
+    .view-selection {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 5px;
+    }
+    #fullscreen-watchlist-flex-container {
+        height: unset;
+        width: 100%;
+        padding: 0;
+    }
+    .watchlist-title-container {
+        width: 100%;
+    }
+    #fullscreen-watchlist {
+        width: 100%;
+    }
+    .fullscreen-watchlist-container {
+        width: 100%;
+    }
+    .fullscreen-watchlist-map {
+        padding: 0.5rem 0;
+        justify-content: center;
+    }
+    .card-active {
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        max-width: unset;
+        min-width: unset;
+        height: unset;
+        max-height: unset;
+    }
+    .watchlist-card-img {
+        height: unset;
+    }
+    .watchlist-card-info {
+        height: unset;
+    }
+    .list-active {
+        width: 95%;
+        min-width: unset;
+        height: unset;
+        min-height: unset;
+    }
+    .watchlist-list-img-link {
+        height: unset;
+        width: 100%;
+        min-width: unset;
+        max-width: unset;
+    }
+    .watchlist-list-link h3 {
+        font-size: 1.2rem;
+        padding: 0 0.2rem;
+    }
+    .watchlist-list-overview-vote-container {
+        padding: 0.5rem;
+        font-size: 1.1rem;
+    }
+    .watchlist-list-overview {
+        -webkit-line-clamp: 5;
+    }
+    .watchlist-list-vote {
+        font-size: 1.1rem;
+    }
+    .watchlist-list-icon {
+        margin: 0;
+    }
+    .view-btn {
+        max-width: 32px;
+    }
+}
+/* mobile landscape */
+@media screen and (max-width: 926px) and (orientation: landscape) {
+    .sorting-selection {
+        padding: 0;
+    }
+    #fullscreen-watchlist-root-container {
+        padding: 0.5rem;
+        padding-top: 0;
+    }
+    #fullscreen-watchlist-flex-container {
+        height: unset;
+        width: 100%;
+        padding: 0;
+    }
+    .watchlist-title-container {
+        width: 100%;
+    }
+    #fullscreen-watchlist {
+        width: 100%;
+    }
+    .fullscreen-watchlist-container {
+        width: 100%;
+    }
+    .fullscreen-watchlist-map {
+        padding: 0.5rem 0;
+        justify-content: center;
+    }
+    .card-active {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        max-width: unset;
+        min-width: unset;
+        height: unset;
+        max-height: unset;
+    }
+    .watchlist-card-img {
+        height: unset;
+    }
+    .watchlist-card-info {
+        height: unset;
+    }
+    .list-active {
+        width: 95%;
+        min-width: unset;
+        height: unset;
+        min-height: unset;
+    }
+    .watchlist-list-img-link {
+        height: unset;
+        width: 33%;
+        min-width: 127px;
+        max-width: 170px;
+    }
+    .watchlist-list-link h3 {
+        font-size: 1.2rem;
+        padding: 0 0.2rem;
+    }
+    .watchlist-list-overview-vote-container {
+        padding: 0.5rem;
+        font-size: 1.1rem;
+    }
+    .watchlist-list-overview {
+        -webkit-line-clamp: 5;
+    }
+    .watchlist-list-vote {
+        font-size: 1.1rem;
+    }
+    .watchlist-list-icon {
+        margin: 0;
+    }
+    .view-btn {
+        max-width: 32px;
+    }
 }

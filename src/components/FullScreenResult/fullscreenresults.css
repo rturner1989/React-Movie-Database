@@ -10,6 +10,9 @@
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Movie/TV Fullscreen */
@@ -540,4 +543,17 @@
 .expand-icon {
     font-size: 2rem;
     color: white;
+}
+/* mobile portrait */
+@media screen and (max-width: 450px) and (orientation: portrait) {
+}
+/* Mobile Landscape */
+@media screen and (max-width: 926px) and (orientation: landscape) {
+    .fullscreen {
+        padding: 0.5rem;
+    }
+    .fullscreen-card {
+        max-width: unset;
+        max-height: unset;
+    }
 }

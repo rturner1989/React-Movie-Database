@@ -94,17 +94,7 @@ const Homepage = () => {
 
     if (windowDimensions.width <= 450) {
         return (
-            <div
-                // ref={homeScroll}
-                id="homepage"
-                // onScroll={() => {
-                //     if (homeScroll.current.scrollTop <= 0) {
-                //         setIsScroll(false);
-                //     } else {
-                //         setIsScroll(true);
-                //     }
-                // }}
-            >
+            <div id="homepage">
                 <section id="popular" className="section">
                     <div className="section-title-container">
                         <h2 className="section-title">What's Popular</h2>

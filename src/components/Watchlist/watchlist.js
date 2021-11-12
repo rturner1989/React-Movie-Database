@@ -178,7 +178,12 @@ const Watchlist = () => {
                             {isMovieShown ? <BiDownArrow /> : <BiRightArrow />}
                         </div>
                         <div
-                            className="fullscreen-watchlist-map"
+                            // className="fullscreen-watchlist-map"
+                            className={
+                                watchlistView === "card"
+                                    ? "fullscreen-watchlist-map card-map"
+                                    : "fullscreen-watchlist-map list-map"
+                            }
                             ref={movieWatchlistRef}
                         >
                             {movieWatchlist.length === 0 ? (
@@ -243,7 +248,11 @@ const Watchlist = () => {
                             {isTVShown ? <BiDownArrow /> : <BiRightArrow />}
                         </div>
                         <div
-                            className="fullscreen-watchlist-map"
+                            className={
+                                watchlistView === "card"
+                                    ? "fullscreen-watchlist-map card-map"
+                                    : "fullscreen-watchlist-map list-map"
+                            }
                             ref={tvWatchlistRef}
                         >
                             {tvWatchlist.length === 0 ? (
