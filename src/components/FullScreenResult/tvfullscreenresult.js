@@ -72,7 +72,7 @@ const TvFullScreenResult = () => {
                     <div className="mobile-fullscreen-overview">
                         <div className="mobile-fullscreen-list-info">
                             <p className="mobile-fullscreen-release-date">
-                                {convertDate(tvData.release_date)}
+                                {convertDate(tvData.first_air_date)}
                             </p>
                             <div className="ball"></div>
                             <div className="mobile-fullscreen-genre">
@@ -343,7 +343,7 @@ const TvFullScreenResult = () => {
                         <h1 className="fullscreen-title">{tvData.name}</h1>
                         <div className="fullscreen-list-info">
                             <p className="fullscreen-release-date">
-                                {convertDate(tvData.release_date)}
+                                {convertDate(tvData.first_air_date)}
                             </p>
                             <div className="ball"></div>
                             <div className="fullscreen-genre">
