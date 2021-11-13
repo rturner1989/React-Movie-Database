@@ -8,6 +8,7 @@ import {
 } from "react-icons/ai";
 import { GiExpand } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const PeopleFullScreenResult = () => {
     const { id } = useParams();
@@ -17,6 +18,9 @@ const PeopleFullScreenResult = () => {
     const [toggle, setToggle] = useState({ category: "credit" });
     const [expandImg, setExpandImg] = useState(false);
     const [imgModal, setImgModal] = useState(null);
+    const [mobilePersonToggle, setMobilePersonToggle] = useState({
+        category: "biography",
+    });
 
     const {
         convertDate,
@@ -25,6 +29,8 @@ const PeopleFullScreenResult = () => {
         modalContent,
         setModalContent,
     } = useGlobalContext();
+
+    const [windowDimensions] = useWindowDimensions();
 
     const getPeopleData = async () => {
         const response = await fetch(
@@ -55,6 +61,112 @@ const PeopleFullScreenResult = () => {
         getPeopleCreditData();
         getPeopleImageData();
     }, []);
+
+    if (windowDimensions.width <= 950) {
+        return (
+            <div className="mobile-fullscreen">
+                <div className="mobile-fullscreen-card">
+                    {peopleData.profile_path === null ? (
+                        <div className="mobile-fullscreen-img">
+                            <AiOutlineFileImage
+                                className="cast-btn-icon"
+                                aria-hidden={true}
+                                focusable={false}
+                            />
+                        </div>
+                    ) : (
+                        <img
+                            className="mobile-fullscreen-img"
+                            src={`https://image.tmdb.org/t/p/w500/${peopleData.profile_path}`}
+                            alt=""
+                        />
+                    )}
+                    <div className="mobile-fullscreen-section-container">
+                        <h1 className="mobile-fullscreen-title">
+                            {peopleData.name}
+                        </h1>
+                        <nav className="mobile-fullscreen-header-container">
+                            <ul className="mobile-fullscreen-header">
+                                <li
+                                    className={`mobile-toggle-btn mobile-overview-btn ${
+                                        mobilePersonToggle.category ===
+                                        "biography"
+                                            ? "active"
+                                            : ""
+                                    }`}
+                                    onClick={() =>
+                                        setMobilePersonToggle({
+                                            category: "biography",
+                                        })
+                                    }
+                                    disabled={
+                                        mobilePersonToggle.category ===
+                                        "biography"
+                                    }
+                                >
+                                    Biography
+                                </li>
+                                <li
+                                    className={`mobile-toggle-btn mobile-cast-btn ${
+                                        mobilePersonToggle.category === "movie"
+                                            ? "active"
+                                            : ""
+                                    }`}
+                                    onClick={() =>
+                                        setMobilePersonToggle({
+                                            category: "movie",
+                                        })
+                                    }
+                                    disabled={
+                                        mobilePersonToggle.category === "movie"
+                                    }
+                                >
+                                    Movie
+                                </li>
+                                <li
+                                    className={`mobile-toggle-btn mobile-review-btn ${
+                                        mobilePersonToggle.category === "image"
+                                            ? "active"
+                                            : ""
+                                    }`}
+                                    onClick={() =>
+                                        setMobilePersonToggle({
+                                            category: "image",
+                                        })
+                                    }
+                                    disabled={
+                                        mobilePersonToggle.category === "image"
+                                    }
+                                >
+                                    Images
+                                </li>
+                            </ul>
+                        </nav>
+                        {/* {movieContentToggle()} */}
+                    </div>
+                    <div
+                        className={
+                            expandBiography
+                                ? "modal-biography-active"
+                                : "modal-biography-hidden"
+                        }
+                    >
+                        <button
+                            className="model-exit-btn"
+                            onClick={() => setExpandBiography(false)}
+                        >
+                            <AiOutlineClose
+                                className="model-btn-icon"
+                                aria-hidden={true}
+                                focusable={false}
+                            />
+                        </button>
+                        <p className="modal-biography">{modalContent}</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="fullscreen">

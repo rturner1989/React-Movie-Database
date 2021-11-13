@@ -832,12 +832,13 @@
     }
     .review-content {
         -webkit-line-clamp: 3;
+        font-size: 0.8rem;
     }
     .fullscreen-review h4 {
         font-size: 1rem;
     }
-    .fullscreen-review p {
-        font-size: 0.8rem;
+    .mobile-expand-btn {
+        bottom: unset;
     }
     .review-modal-expand-btn {
         right: 0;
