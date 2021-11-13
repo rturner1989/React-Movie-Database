@@ -567,9 +567,6 @@
     height: 100%;
     width: auto;
     max-width: 47%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: grey;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
@@ -663,6 +660,7 @@
 }
 .mobile-fullscreen-overview-text {
     position: relative;
+    height: 100%;
 }
 .mobile-fullscreen-overview-content {
     display: -webkit-box;
@@ -721,7 +719,29 @@
     font-weight: 600;
 }
 .mobile-cast-role {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: transparent;
+    text-decoration: none;
+    z-index: 200;
+}
+.mobile-cast-role:hover {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: white;
+    background-color: rgba(37, 37, 37, 0.65);
 }
 .mobile-cast-btn-icon-container {
     width: 100%;
@@ -766,6 +786,74 @@
 }
 /* mobile portrait */
 @media screen and (max-width: 450px) and (orientation: portrait) {
+    .mobile-fullscreen {
+        padding-top: 0;
+    }
+    .mobile-fullscreen-card {
+        padding-top: 0.5rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: unset;
+        box-shadow: unset;
+        gap: 0.5rem;
+        overflow-y: auto;
+    }
+    .mobile-fullscreen-img {
+        height: unset;
+        width: 40%;
+        max-width: unset;
+        border-radius: 5px;
+    }
+    .mobile-fullscreen-section-container {
+        flex-grow: 2;
+        height: unset;
+    }
+    .mobile-fullscreen-overview {
+        height: 75%;
+    }
+    .mobile-cast-credit {
+        width: 31%;
+    }
+    .mobile-fullscreen-reviews {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0.5rem;
+        padding-top: 0;
+        gap: 0.5rem;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        color: white;
+    }
+    .mobile-fullscreen-reviews div {
+        position: relative;
+    }
+    .review-content {
+        -webkit-line-clamp: 3;
+    }
+    .fullscreen-review h4 {
+        font-size: 1rem;
+    }
+    .fullscreen-review p {
+        font-size: 0.8rem;
+    }
+    .review-modal-expand-btn {
+        right: 0;
+        top: 0;
+        bottom: unset;
+    }
+    .modal-biography-active {
+        padding: 1rem;
+        justify-content: unset;
+    }
+    .modal-biography {
+        width: 100%;
+        font-size: 1rem;
+        max-height: unset;
+        overflow-x: hidden;
+    }
 }
 /* Mobile Landscape */
 @media screen and (max-width: 926px) and (orientation: landscape) {

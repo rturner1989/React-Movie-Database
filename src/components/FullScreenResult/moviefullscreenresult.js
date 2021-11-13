@@ -187,11 +187,11 @@ const MovieFullScreenResult = () => {
                                     )}
                                     <Link
                                         to={`/result/people/${cast.id}`}
-                                        className="mobile-cast-name"
+                                        className="mobile-cast-role"
                                     >
                                         {cast.character}
                                     </Link>
-                                    <p className="mobile-cast-role">
+                                    <p className="mobile-cast-name">
                                         {cast.name}
                                     </p>
                                 </div>
