@@ -542,7 +542,7 @@
     font-size: 2rem;
     color: white;
 }
-/* Mobile Fullscreen */
+/* Mobile Fullscreen TV/Movie */
 .mobile-fullscreen {
     overflow: hidden;
     position: relative;
@@ -685,7 +685,7 @@
     gap: 0.5rem;
     padding: 0.3rem;
     overflow-y: auto;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .mobile-cast-credit {
     position: relative;
@@ -784,6 +784,66 @@
     background-color: var(--text-colour-selected);
     color: var(--lighter-dark-theme);
 }
+/* Mobile Fullscreen Person */
+.mobile-fullscreen-biography {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0.3rem;
+    padding-top: 0;
+}
+.mobile-person-info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.mobile-person-info-div {
+    display: flex;
+    font-size: 0.9rem;
+}
+.mobile-person-info-title {
+    margin: 0 0.3rem;
+}
+.mobile-person-biography {
+    width: 100%;
+    position: relative;
+}
+.mobile-person-bio-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.mobile-person-expand-btn {
+    position: absolute;
+    border: unset;
+    background: unset;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 200;
+}
+.mobile-person-fullscreen-images-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow-y: auto;
+    padding-top: 0.3rem;
+}
+.mobile-person-img-container {
+    position: relative;
+    width: 23%;
+    height: auto;
+    border-radius: 5px;
+}
+.mobile-person-img {
+    border-radius: 5px;
+    width: 100%;
+}
 /* mobile portrait */
 @media screen and (max-width: 450px) and (orientation: portrait) {
     .mobile-fullscreen {
@@ -855,6 +915,9 @@
         max-height: unset;
         overflow-x: hidden;
     }
+    .mobile-person-img-container {
+        width: 31%;
+    }
 }
 /* Mobile Landscape */
 @media screen and (max-width: 926px) and (orientation: landscape) {
@@ -891,5 +954,19 @@
     }
     .modal-biography {
         font-size: 1.2rem;
+    }
+    .person-img-hover {
+        border-radius: 5px;
+        height: 95%;
+    }
+    .modal-img-active {
+        padding: 0;
+    }
+    .model-person-img {
+        width: 25%;
+    }
+    .model-img-exit-btn {
+        position: absolute;
+        top: 0;
     }
 }

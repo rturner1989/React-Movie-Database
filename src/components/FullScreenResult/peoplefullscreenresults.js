@@ -62,6 +62,150 @@ const PeopleFullScreenResult = () => {
         getPeopleImageData();
     }, []);
 
+    const personContentToggle = () => {
+        switch (mobilePersonToggle.category) {
+            case "biography":
+                return (
+                    <div className="mobile-fullscreen-biography">
+                        <div className="mobile-person-info">
+                            <div className="mobile-person-info-div">
+                                <h4 className="mobile-person-info-title">
+                                    Birthdate:
+                                </h4>
+                                <p className="mobile-person-info-para">
+                                    {convertDate(peopleData.birthday)}
+                                </p>
+                            </div>
+                            <div className="mobile-person-info-div">
+                                <h4 className="mobile-person-info-title">
+                                    Place of Birth:
+                                </h4>
+                                <p className="mobile-person-info-para">
+                                    {peopleData.place_of_birth}
+                                </p>
+                            </div>
+                            <div className="mobile-person-info-div">
+                                <h4 className="mobile-person-info-title">
+                                    Known For:
+                                </h4>
+                                <p className="mobile-person-info-para">
+                                    {peopleData.known_for_department}
+                                </p>
+                            </div>
+                        </div>
+                        <div className="mobile-person-biography">
+                            <h3>Biography</h3>
+                            <p className="mobile-person-bio-content">
+                                {peopleData.biography}
+                            </p>
+                            <button
+                                className="mobile-person-expand-btn"
+                                onClick={() => {
+                                    setExpandBiography(!expandBiography);
+                                    setModalContent(peopleData.biography);
+                                }}
+                            >
+                                <AiOutlineExpandAlt
+                                    className="expand-icon"
+                                    aria-hidden={true}
+                                    focusable={false}
+                                />
+                            </button>
+                        </div>
+                    </div>
+                );
+            case "movie":
+                return (
+                    <div className="mobile-fullscreen-cast">
+                        {peopleCreditData.cast !== undefined ? (
+                            peopleCreditData.cast.map((cast, index) => {
+                                return (
+                                    <div
+                                        key={index}
+                                        className="mobile-cast-credit"
+                                    >
+                                        {cast.poster_path === null ? (
+                                            <div className="mobile-cast-btn-icon-container">
+                                                <AiOutlineFileImage
+                                                    className="cast-btn-icon"
+                                                    aria-hidden={true}
+                                                    focusable={false}
+                                                />
+                                            </div>
+                                        ) : (
+                                            <img
+                                                className="mobile-cast-img"
+                                                src={`https://image.tmdb.org/t/p/w500/${cast.poster_path}`}
+                                                alt=""
+                                            />
+                                        )}
+                                        <Link
+                                            to={`/result/movie/${cast.id}`}
+                                            className="mobile-cast-role"
+                                        >
+                                            <p className="mobile-cast-role">
+                                                {cast.title}
+                                            </p>
+                                        </Link>
+                                        <p className="mobile-cast-name">
+                                            {cast.character}
+                                        </p>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <div></div>
+                        )}
+                    </div>
+                );
+            case "image":
+                return (
+                    <div className="mobile-person-fullscreen-images-container">
+                        {peopleImageData.profiles !== null ? (
+                            peopleImageData.profiles.map((img, index) => {
+                                return (
+                                    <div
+                                        className="mobile-person-img-container"
+                                        key={index}
+                                    >
+                                        <img
+                                            className="mobile-person-img"
+                                            src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                            alt=""
+                                        />
+                                        <div
+                                            className="person-img-hover"
+                                            onClick={() => {
+                                                setExpandImg(!expandImg);
+                                                setImgModal(
+                                                    <img
+                                                        key={index}
+                                                        className="model-person-img"
+                                                        src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
+                                                        alt=""
+                                                    />
+                                                );
+                                            }}
+                                        >
+                                            <GiExpand
+                                                className="person-expand-btn-icon"
+                                                aria-hidden={true}
+                                                focusable={false}
+                                            />
+                                        </div>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <div></div>
+                        )}
+                    </div>
+                );
+            default:
+                break;
+        }
+    };
+
     if (windowDimensions.width <= 950) {
         return (
             <div className="mobile-fullscreen">
@@ -142,7 +286,7 @@ const PeopleFullScreenResult = () => {
                                 </li>
                             </ul>
                         </nav>
-                        {/* {movieContentToggle()} */}
+                        {personContentToggle()}
                     </div>
                     <div
                         className={
@@ -162,6 +306,23 @@ const PeopleFullScreenResult = () => {
                             />
                         </button>
                         <p className="modal-biography">{modalContent}</p>
+                    </div>
+                    <div
+                        className={
+                            expandImg ? "modal-img-active" : "modal-img-hidden"
+                        }
+                    >
+                        <button
+                            className="model-img-exit-btn"
+                            onClick={() => setExpandImg(!expandImg)}
+                        >
+                            <AiOutlineClose
+                                className="model-btn-icon"
+                                aria-hidden={true}
+                                focusable={false}
+                            />
+                        </button>
+                        <div className="modal-img">{imgModal}</div>
                     </div>
                 </div>
             </div>
