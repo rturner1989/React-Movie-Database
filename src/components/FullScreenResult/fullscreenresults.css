@@ -918,6 +918,16 @@
     .mobile-person-img-container {
         width: 31%;
     }
+    .modal-img-active {
+        padding: 0;
+    }
+    .model-person-img {
+        width: 75%;
+    }
+    .model-img-exit-btn {
+        position: absolute;
+        top: 0;
+    }
 }
 /* Mobile Landscape */
 @media screen and (max-width: 926px) and (orientation: landscape) {
