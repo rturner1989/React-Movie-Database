@@ -260,7 +260,7 @@ const MovieFullScreenResult = () => {
                                             ? "active"
                                             : ""
                                     }`}
-                                    onTouchStart={() =>
+                                    onClick={() =>
                                         setMobileToggle({
                                             category: "overview",
                                         })
@@ -277,7 +277,7 @@ const MovieFullScreenResult = () => {
                                             ? "active"
                                             : ""
                                     }`}
-                                    onTouchStart={() =>
+                                    onClick={() =>
                                         setMobileToggle({
                                             category: "cast",
                                         })
@@ -292,7 +292,7 @@ const MovieFullScreenResult = () => {
                                             ? "active"
                                             : ""
                                     }`}
-                                    onTouchStart={() =>
+                                    onClick={() =>
                                         setMobileToggle({
                                             category: "review",
                                         })

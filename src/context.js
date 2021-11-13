@@ -186,7 +186,7 @@ const AppProvider = ({ children }) => {
             return (
                 <button
                     className="return-to-top"
-                    onTouchStart={() => {
+                    onClick={() => {
                         ref.current.scrollTop = 0;
                     }}
                 >
