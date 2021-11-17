@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 const Carousel = ({ children }) => {
     const [activeCardIndex, setActiveCardIndex] = useState(0);
@@ -47,7 +47,7 @@ const Carousel = ({ children }) => {
         >
             {children.length > 1 && (
                 <button className="previous-btn" onClick={handlePreviousClick}>
-                    <BiLeftArrow
+                    <BsChevronLeft
                         className="previous-next-icon"
                         aria-hidden={true}
                         focusable={false}
@@ -56,7 +56,7 @@ const Carousel = ({ children }) => {
             )}
             {children.length > 1 && (
                 <button className="next-btn" onClick={handleNextClick}>
-                    <BiRightArrow
+                    <BsChevronRight
                         className="previous-next-icon"
                         aria-hidden={true}
                         focusable={false}

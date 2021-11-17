@@ -17,7 +17,8 @@ const RenderedCard = ({
     index,
     position = "",
 }) => {
-    const { addToWatchList, removeFromWatchList } = useGlobalContext();
+    const { addToWatchList, removeFromWatchList, setShowHideAlert } =
+        useGlobalContext();
 
     return (
         <div
@@ -39,6 +40,7 @@ const RenderedCard = ({
             <button
                 className="remove-from-wishlist"
                 onClick={() => {
+                    setShowHideAlert(true);
                     found
                         ? removeFromWatchList(removeCat, removeID)
                         : addToWatchList(addCat, addID);

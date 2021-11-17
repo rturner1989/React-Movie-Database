@@ -131,8 +131,8 @@
     border: unset;
 }
 .previous-next-icon {
-    color: white;
-    font-size: 2rem;
+    color: black;
+    font-size: 1.5rem;
 }
 /* homepage rendered card */
 .render-card {
@@ -307,11 +307,25 @@
     }
     .next-btn {
         top: 40%;
-        right: -3%;
+        right: -2%;
+        border-radius: 100%;
+        background-color: white;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .previous-btn {
         top: 40%;
-        left: -3%;
+        left: -2%;
+        border-radius: 100%;
+        background-color: white;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .toggle-button-group {
         width: 7rem;

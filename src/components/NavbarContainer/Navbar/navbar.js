@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
-import { useGlobalContext } from "../../context";
+import { useGlobalContext } from "../../../context";
 
 const Navbar = () => {
     const {

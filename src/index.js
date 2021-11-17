@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import "./components/Navbar/navbar.css";
+import "./components/NavbarContainer/Navbar/navbar.css";
 import "./components/Homepage/homepage.css";
 import "./components/Search/Searchbar/searchbar.css";
 import "./components/Search/SearchResults/searchresults.css";
